@@ -2,10 +2,9 @@ import discord
 from discord.ext import commands
 import os
 import asyncio
-from decouple import config
 
 client = discord.Client()
-token = config('TOKEN')
+token = os.getenv("TOKEN")
 
 @client.event
 async def on_ready():
@@ -97,5 +96,4 @@ async def on_message(message):
       else:
         await message.channel.send(oMess[1:])
 
-print(token)
 client.run(token)
