@@ -58,9 +58,10 @@ async def on_message(message):
         await message.channel.send('You got yourself into this mess. You\'ll have to get yourself out.')
 
       elif message.content == ('remember'):
+        bars = '\n**-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------**\n'
         first = 'You awaken alone in a shadowed room. A flickering, sourceless, flame, mere inches away, makes you aware of the drifting grey shape of this place. You cannot see the dark edges that skulk from the light... or perhaps you cannot remember. Memory begins to flood back, though jagged holes and shifting faces keep you from recalling clear. You remember *what you are*. You do not remember **why you are here**. You remember *who you were*. You do not remember **your name**. You remember *what you can do*. You do not remember **what you must do**.\n\nSomething... powerful... glints in the fire. Your hand, outstretched, runs and billows like smoke. You cannot reach it, not yet. When your memories - those that have not deserted you - are solid in your mind, then your body will be ready to bear the heat of the crucible!'
 
-        m = await message.channel.send(first)
+        m = await message.channel.send(bars + first + bars)
         await asyncio.sleep(10)
 
         while (client.state != "ready"):
@@ -94,9 +95,9 @@ async def on_message(message):
           first = first[1:]
           if first.startswith(" "): first = first[1:]
 
-          if bold and not first.startswith("**"): await m.edit(content= "**" + first)
-          elif italics and not first.startswith("*"): await m.edit(content= "*" + first)
-          else: await m.edit(content=first)
+          if bold and not first.startswith("**"): await m.edit(content= bars + "**" + first + bars)
+          elif italics and not first.startswith("*"): await m.edit(content= bars + "*" + first + bars)
+          else: await m.edit(content=bars + first + bars)
         client.state = "ready"
 
       else:
