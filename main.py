@@ -62,7 +62,7 @@ async def on_message(message):
 
         m = await message.channel.send(first)
 
-        while (state not "ready"):
+        while (state != "ready"):
           await asyncio.sleep(10)
         bold = False;
         italics = False;
