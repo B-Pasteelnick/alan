@@ -101,7 +101,7 @@ async def on_message(message):
           if bold and not first.startswith("**"): await m.edit(content= bars + "**" + first + bars)
           elif italics and not first.startswith("*"): await m.edit(content= bars + "*" + first + bars)
           else: await m.edit(content=bars + first + bars)
-          client.activeChannels.remove(message.channel)
+        client.activeChannels.remove(message.channel)
 
 
       else:
