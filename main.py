@@ -85,7 +85,7 @@ async def on_message(message):
             italics = False
             first = first[0] + first[2:]
           
-          await asyncio.sleep(1)
+          await asyncio.sleep(.5)
           if (first == '' or first[1:] == ''):
             await m.edit(content="You seem to have forgotten...")
             client.state = "ready"
@@ -96,6 +96,7 @@ async def on_message(message):
           if bold and not first.startswith("**"): await m.edit(content= "**" + first)
           elif italics and not first.startswith("*"): await m.edit(content= "*" + first)
           else: await m.edit(content=first)
+        client.state = "ready"
 
       else:
         await message.channel.send(oMess[1:])
