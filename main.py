@@ -5,7 +5,7 @@ import asyncio
 
 client = discord.Client()
 token = os.getenv("TOKEN")
-state = "ready"
+client.state = "ready"
 
 @client.event
 async def on_ready():
@@ -62,11 +62,11 @@ async def on_message(message):
 
         m = await message.channel.send(first)
 
-        while (state != "ready"):
+        while (client.state != "ready"):
           await asyncio.sleep(10)
         bold = False;
         italics = False;
-        state = "busy"
+        client.state = "busy"
 
         for i in first:
           while first.startswith ('\n'):
@@ -88,7 +88,7 @@ async def on_message(message):
           await asyncio.sleep(1)
           if (first == '' or first[1:] == ''):
             await m.edit(content="You seem to have forgotten...")
-            state = "ready"
+            client.state = "ready"
             return
           first = first[1:]
           if first.startswith(" "): first = first[1:]
