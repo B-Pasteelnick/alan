@@ -13,7 +13,7 @@ async def self_edit(message):
   for i in m:
     m = m[1:]
     await asyncio.sleep(1)
-    if not m: await message.edit('Don’t strain. Better to forget, first.')
+    if not m: await message.edit(conent='Don’t strain. Better to forget, first.')
     else: await message.edit(content=m)
 
 @client.event
