@@ -30,6 +30,7 @@ async def on_message(message):
 
       message.content = message.content[1:]
       print(message.content)
+      print(message.content.replace(' ',''))
       
 
       #permRole = discord.utils.get(message.guild.roles, name='Normie')
