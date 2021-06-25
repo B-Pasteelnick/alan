@@ -30,7 +30,7 @@ async def on_message(message):
 
       message.content = message.content[1:]
       print(message.content)
-      print(message.content.replace(' ',''))
+      message.content = message.content.replace(' ', '')
       
 
       #permRole = discord.utils.get(message.guild.roles, name='Normie')
@@ -58,10 +58,10 @@ async def on_message(message):
       elif message.content == ('test'):
         await message.channel.send('Perhaps it is.')
 
-      elif message.content.replace(' ', '') == ('echoes and memories'):
+      elif message.content == ('echoesandmemories'):
         await message.channel.send('Something does stir at the name. +1 Despair.')
 
-      elif message.content.replace(' ', '') == ('hope\'s peak') or message.content.replace(' ', '') == ('hopes peak') or message.content == ('ultimate') or message.content == ('danganronpa'):
+      elif message.content == ('hope\'speak') or message.content == ('hopespeak') or message.content == ('ultimate') or message.content == ('danganronpa'):
         await message.channel.send('A fantasy, and nothing more.')
 
       elif message.content == ('echo'):
@@ -73,13 +73,13 @@ async def on_message(message):
       elif message.content == ('guide') or message.content == ('guides'):
         await message.channel.send('Who are they? What do they know?')
 
-      elif message.content.replace(' ', '') == ('personal chats'):
+      elif message.content == ('personalchats'):
         await message.channel.send('It feels personal.')
 
-      elif message.content.replace(' ', '') == ('private channels'):
+      elif message.content == ('privatechannels'):
         await message.channel.send('Is it private, here? What lurks?')
 
-      elif message.content.replace(' ', '') == ('explore') or message.content.replace(' ', '') == ('lookaround') or message.content.replace(' ', '') == ('gonorth') or message.content.replace(' ', '') == ('goeast') or message.content.replace(' ', '') == ('gowest') or message.content.replace(' ', '') == ('gosouth'):
+      elif message.content == ('explore') or message.content == ('lookaround') or message.content == ('gonorth') or message.content == ('goeast') or message.content == ('gowest') or message.content == ('gosouth'):
         await message.channel.send('The flame captures your attention... but first you must remember who you are.')
 
       elif message.content == ('help'):
