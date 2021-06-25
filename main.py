@@ -57,10 +57,10 @@ async def on_message(message):
       elif message.content == ('test'):
         await message.channel.send('Perhaps it is.')
 
-      elif message.content == ('echoes and memories') || message.content == ('echoesandmemeories'):
+      elif message.content == ('echoes and memories') or message.content == ('echoesandmemeories'):
         await message.channel.send('Something does stir at the name. +1 Despair.')
 
-      elif message.content == ('hope\'s peak') || message.content == ('hope\'speak') || message.content == message.content == ('hopes peak') || message.content == ('hopespeak') || message.content == ('ultimate') || message.content == ('danganronpa'):
+      elif message.content == ('hope\'s peak') or message.content == ('hope\'speak') or message.content == message.content == ('hopes peak') or message.content == ('hopespeak') or message.content == ('ultimate') or message.content == ('danganronpa'):
         await message.channel.send('A fantasy, and nothing more.')
 
       elif message.content == ('echo'):
@@ -69,16 +69,16 @@ async def on_message(message):
       elif message.content == ('game'):
         await message.channel.send('The stakes are too high.')
 
-      elif message.content == ('guide') || message.content == ('guides'):
+      elif message.content == ('guide') or message.content == ('guides'):
         await message.channel.send('Who are they? What do they know?')
 
-      elif message.content == ('personal chats') || message.content == ('personalchats'):
+      elif message.content == ('personal chats') or message.content == ('personalchats'):
         await message.channel.send('It feels personal.')
 
-      elif message.content == ('private channels') || message.content == ('privatechannels'):
+      elif message.content == ('private channels') or message.content == ('privatechannels'):
         await message.channel.send('Is it private, here? What lurks?')
 
-      elif message.content.replace(' ', '') == ('explore') || message.content.replace(' ', '') == ('lookaround') || message.content.replace(' ', '') == ('gonorth') || message.content.replace(' ', '') == ('goeast') || message.content.replace(' ', '') == ('gowest') || message.content.replace(' ', '') == ('gosouth'):
+      elif message.content.replace(' ', '') == ('explore') or message.content.replace(' ', '') == ('lookaround') or message.content.replace(' ', '') == ('gonorth') or message.content.replace(' ', '') == ('goeast') or message.content.replace(' ', '') == ('gowest') or message.content.replace(' ', '') == ('gosouth'):
         await message.channel.send('The flame captures your attention... but first you must remember who you are.')
 
       elif message.content == ('help'):
