@@ -8,6 +8,14 @@ token = os.getenv("TOKEN")
 client.state = "ready"
 client.activeChannels = []
 
+async def self_edit(message):
+  m = message.content
+  for i in m:
+    m = m[1:]
+    await asyncio.sleep(1)
+    if not m: await message.edit('Don’t strain. Better to forget, first.')
+    else: await message.edit(content=m)
+
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
@@ -47,7 +55,8 @@ async def on_message(message):
       #  await message.author.remove_roles(role)
 
       if message.content == ('8622985399'):
-        await message.channel.send('A phone number, maybe? It\'s all a mess.')
+        m = await message.channel.send('A phone number, maybe? It\'s all a mess.')
+        self_edit(m)
 
       elif message.content == ('name'):
         await message.channel.send('If we could remember that, we would have.')
@@ -90,15 +99,16 @@ async def on_message(message):
         first = 'You awaken alone in a shadowed room. A flickering, sourceless, flame, mere inches away, makes you aware of the drifting grey shape of this place. You cannot see the dark edges that skulk from the light... or perhaps you cannot remember. Memory begins to flood back, though jagged holes and shifting faces keep you from recalling clear. You remember *what you are*. You do not remember **why you are here**. You remember *who you were*. You do not remember **your name**. You remember *what you can do*. You do not remember **what you must do**.\n\nSomething... powerful... glints in the fire. Your hand, outstretched, runs and billows like smoke. You cannot reach it, not yet. When your memories - those that have not deserted you - are solid in your mind, then your body will be ready to bear the heat of the crucible!'
 
         if message.channel in client.activeChannels:
-          await message.channel.send("You are already remembering.")
+          await message.channel.send("Don’t strain. Better to forget, first.")
           return
 
         m = await message.channel.send(bars + first + bars)
-        await asyncio.sleep(10)
         
         bold = False;
         italics = False;
         client.activeChannels.append(message.channel)
+
+        await asyncio.sleep(10)
 
         for i in first:
           while first.startswith ('\n'):
