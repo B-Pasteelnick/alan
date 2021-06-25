@@ -37,13 +37,6 @@ async def on_message(message):
       #  await message.channel.send('You don\'t have the right permissions.')
       #  return
 
-
-      if message.content == ('hello'):
-        await message.channel.send('Hello!')
-    
-      elif message.content == ('dm'):
-        await message.author.send('Here I am!')
-
       #elif message.content == ('normie'):
       #  role = discord.utils.get(message.guild.roles, name='Normie')
       #  await message.author.add_roles(role)
@@ -52,11 +45,44 @@ async def on_message(message):
       #  role = discord.utils.get(message.guild.roles, name='Normie')
       #  await message.author.remove_roles(role)
 
-      elif message.content == ('8622985399'):
-        await message.channel.send('Looks like a phone number to me.')
+      if message.content == ('8622985399'):
+        await message.channel.send('A phone number, maybe? It\'s all a mess.')
+
+      elif message.content == ('name'):
+        await message.channel.send('If we could remember that, we would have.')
+
+      elif message.content == ('rules'):
+        await message.channel.send('The parameters of life. This may help us remember who we are - but they may change with time, if only slightly. https://docs.google.com/document/d/1-V_DE5DHX8zRxWVKk6y_KeJvukQjswfMaqXpPSskfLA/edit?usp=sharing')
+
+      elif message.content == ('test'):
+        await message.channel.send('Perhaps it is.')
+
+      elif message.content == ('echoes and memories') || message.content == ('echoesandmemeories'):
+        await message.channel.send('Something does stir at the name. +1 Despair.')
+
+      elif message.content == ('hope\'s peak') || message.content == ('hope\'speak') || message.content == message.content == ('hopes peak') || message.content == ('hopespeak') || message.content == ('ultimate') || message.content == ('danganronpa'):
+        await message.channel.send('A fantasy, and nothing more.')
+
+      elif message.content == ('echo'):
+        await message.channel.send('Is that all we are?')
+
+      elif message.content == ('game'):
+        await message.channel.send('The stakes are too high.')
+
+      elif message.content == ('guide') || message.content == ('guides'):
+        await message.channel.send('Who are they? What do they know?')
+
+      elif message.content == ('personal chats') || message.content == ('personalchats'):
+        await message.channel.send('It feels personal.')
+
+      elif message.content == ('private channels') || message.content == ('privatechannels'):
+        await message.channel.send('Is it private, here? What lurks?')
+
+      elif message.content.replace(' ', '') == ('explore') || message.content.replace(' ', '') == ('lookaround') || message.content.replace(' ', '') == ('gonorth') || message.content.replace(' ', '') == ('goeast') || message.content.replace(' ', '') == ('gowest') || message.content.replace(' ', '') == ('gosouth'):
+        await message.channel.send('The flame captures your attention... but first you must remember who you are.')
 
       elif message.content == ('help'):
-        await message.channel.send('You got yourself into this mess. You\'ll have to get yourself out.')
+        await message.channel.send('We got ourselves into this mess. It\'s up to us to get out of it.')
 
       elif message.content == ('remember'):
         bars = '\n**-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------**\n'
