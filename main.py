@@ -56,7 +56,7 @@ async def on_message(message):
 
       if message.content == ('8622985399'):
         m = await message.channel.send('A phone number, maybe? It\'s all a mess.')
-        self_edit(m)
+        await self_edit(m)
 
       elif message.content == ('name'):
         await message.channel.send('If we could remember that, we would have.')
@@ -75,9 +75,6 @@ async def on_message(message):
 
       elif message.content == ('echo'):
         await message.channel.send('Is that all we are?')
-
-      elif message.content == ('theotime'):
-        await message.channel.send('aww yeah')
 
       elif message.content == ('game'):
         await message.channel.send('The stakes are too high.')
