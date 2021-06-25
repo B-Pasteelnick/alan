@@ -57,10 +57,10 @@ async def on_message(message):
       elif message.content == ('test'):
         await message.channel.send('Perhaps it is.')
 
-      elif message.content == ('echoes and memories') or message.content == ('echoesandmemeories'):
+      elif message.content.replace(' ', '') == ('echoes and memories'):
         await message.channel.send('Something does stir at the name. +1 Despair.')
 
-      elif message.content == ('hope\'s peak') or message.content == ('hope\'speak') or message.content == message.content == ('hopes peak') or message.content == ('hopespeak') or message.content == ('ultimate') or message.content == ('danganronpa'):
+      elif message.content.replace(' ', '') == ('hope\'s peak') or message.content.replace(' ', '') == ('hopes peak') or message.content == ('ultimate') or message.content == ('danganronpa'):
         await message.channel.send('A fantasy, and nothing more.')
 
       elif message.content == ('echo'):
@@ -72,10 +72,10 @@ async def on_message(message):
       elif message.content == ('guide') or message.content == ('guides'):
         await message.channel.send('Who are they? What do they know?')
 
-      elif message.content == ('personal chats') or message.content == ('personalchats'):
+      elif message.content.replace(' ', '') == ('personal chats'):
         await message.channel.send('It feels personal.')
 
-      elif message.content == ('private channels') or message.content == ('privatechannels'):
+      elif message.content.replace(' ', '') == ('private channels'):
         await message.channel.send('Is it private, here? What lurks?')
 
       elif message.content.replace(' ', '') == ('explore') or message.content.replace(' ', '') == ('lookaround') or message.content.replace(' ', '') == ('gonorth') or message.content.replace(' ', '') == ('goeast') or message.content.replace(' ', '') == ('gowest') or message.content.replace(' ', '') == ('gosouth'):
