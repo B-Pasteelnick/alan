@@ -76,6 +76,9 @@ async def on_message(message):
       elif message.content == ('echo'):
         await message.channel.send('Is that all we are?')
 
+      elif message.content == ('theotime'):
+        await message.channel.send('aww yeah')
+
       elif message.content == ('game'):
         await message.channel.send('The stakes are too high.')
 
