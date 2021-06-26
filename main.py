@@ -14,8 +14,8 @@ async def self_edit(message):
     m = m[1:]
     await asyncio.sleep(1)
     if not m[1:]:
-      print ("we got here")
       await message.edit(conent='Don’t strain. Better to forget, first.')
+      return
     else: await message.edit(content=m)
 
 @client.event
@@ -58,6 +58,10 @@ async def on_message(message):
 
       if message.content == ('8622985399'):
         m = await message.channel.send('A phone number, maybe? It\'s all a mess.')
+        await self_edit(m)
+
+      elif message.content == ('dream'):
+        m = await message.channel.send('We did think that, at first.')
         await self_edit(m)
 
       elif message.content == ('name'):
