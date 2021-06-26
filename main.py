@@ -15,7 +15,7 @@ async def self_edit(message):
     m = m[1:]
     await asyncio.sleep(1)
     if not m:
-      await message.edit(content='Don’t strain. Better to forget, first.')
+      await message.edit(content='You seem to have forgotten...')
       return
     await message.edit(content=m)
 
