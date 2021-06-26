@@ -9,14 +9,16 @@ client.state = "ready"
 client.activeChannels = []
 
 async def self_edit(message):
+  await asyncio.sleep(5)
   m = message.content
   for i in m:
-    m = m[1:]
+    
     await asyncio.sleep(1)
     if not m[1:]:
       await message.edit(conent='Don’t strain. Better to forget, first.')
       return
-    else: await message.edit(content=m)
+    m = m[1:]
+    await message.edit(content=m)
 
 @client.event
 async def on_ready():
