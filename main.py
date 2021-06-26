@@ -13,7 +13,7 @@ async def self_edit(message):
   for i in m:
     m = m[1:]
     await asyncio.sleep(1)
-    if not m: await message.edit(conent='Don’t strain. Better to forget, first.')
+    if not m[1:]: await message.edit(conent='Don’t strain. Better to forget, first.')
     else: await message.edit(content=m)
 
 @client.event
@@ -60,39 +60,51 @@ async def on_message(message):
 
       elif message.content == ('name'):
         await message.channel.send('If we could remember that, we would have.')
+        await self_edit(m)
 
       elif message.content == ('rules'):
         await message.channel.send('The parameters of life. This may help us remember who we are - but they may change with time, if only slightly. https://docs.google.com/document/d/1-V_DE5DHX8zRxWVKk6y_KeJvukQjswfMaqXpPSskfLA/edit?usp=sharing')
+        await self_edit(m)
 
       elif message.content == ('test'):
         await message.channel.send('Perhaps it is.')
+        await self_edit(m)
 
       elif message.content == ('echoesandmemories'):
-        await message.channel.send('Something does stir at the name. +1 Despair.')
+        await message.channel.send('Something does stir at the name... A hint of despair. (Both your characters start with one despair.)')
+        await self_edit(m)
 
       elif message.content == ('hope\'speak') or message.content == ('hopespeak') or message.content == ('ultimate') or message.content == ('danganronpa'):
         await message.channel.send('A fantasy, and nothing more.')
+        await self_edit(m)
 
       elif message.content == ('echo'):
         await message.channel.send('Is that all we are?')
+        await self_edit(m)
 
       elif message.content == ('game'):
         await message.channel.send('The stakes are too high.')
+        await self_edit(m)
 
       elif message.content == ('guide') or message.content == ('guides'):
         await message.channel.send('Who are they? What do they know?')
+        await self_edit(m)
 
       elif message.content == ('personalchats'):
         await message.channel.send('It feels personal.')
+        await self_edit(m)
 
       elif message.content == ('privatechannels'):
         await message.channel.send('Is it private, here? What lurks?')
+        await self_edit(m)
 
       elif message.content == ('explore') or message.content == ('lookaround') or message.content == ('gonorth') or message.content == ('goeast') or message.content == ('gowest') or message.content == ('gosouth'):
         await message.channel.send('The flame captures your attention... but first you must remember who you are.')
+        await self_edit(m)
 
       elif message.content == ('help'):
         await message.channel.send('We got ourselves into this mess. It\'s up to us to get out of it.')
+        await self_edit(m)
 
       elif message.content == ('remember'):
         bars = '\n**-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------**\n'
