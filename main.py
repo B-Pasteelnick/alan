@@ -12,12 +12,11 @@ async def self_edit(message):
   await asyncio.sleep(5)
   m = message.content
   for i in m:
-    
-    await asyncio.sleep(1)
-    if not m[1:]:
-      await message.edit(conent='Don’t strain. Better to forget, first.')
-      return
     m = m[1:]
+    await asyncio.sleep(1)
+    if not m:
+      await message.edit(content='Don’t strain. Better to forget, first.')
+      return
     await message.edit(content=m)
 
 @client.event
