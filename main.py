@@ -45,7 +45,7 @@ async def on_message(message):
       message.content = message.content[1:]
       print(message.content)
 
-      checkGuide = discord.utils.get(message.guild.roles, name='Guide')
+      checkGuide = discord.utils.get(message.guild.roles, name='Guides')
       if checkGuide in message.author.roles and message.startswith('announceall'):
         for i in allPCs:
           await client.get_channel(i).send(message[11:])
