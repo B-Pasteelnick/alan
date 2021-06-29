@@ -7,6 +7,9 @@ client = discord.Client()
 token = os.getenv("TOKEN")
 client.state = "ready"
 client.activeChannels = []
+client.allPCs = [853698538473914418, 853703038644912158, 858164604719071253, 858164641586216981, 858251891049496577, 858478351819866143, 858885465444712518, 853826338482028574, 853826359838244874, 853703410620301352, 853826398799134750, 853826418630328340, 858353300885602364, 858425078390456330]
+client.ASideChannels = [853698538473914418, 853703038644912158, 858164604719071253, 858164641586216981, 858251891049496577, 858478351819866143, 858885465444712518]
+client.BSideChannels = [853826338482028574, 853826359838244874, 853703410620301352, 853826398799134750, 853826418630328340, 858353300885602364, 858425078390456330]
 
 async def self_edit(message):
   await asyncio.sleep(5)
@@ -41,6 +44,21 @@ async def on_message(message):
 
       message.content = message.content[1:]
       print(message.content)
+
+      checkGuide = discord.utils.get(message.guild.roles, name='Guide')
+      if checkGuide in message.author.roles && message.startswith('announceall'):
+        for i in allPCs:
+          await client.get_channel(i).send(message[11:])
+        return
+      elif checkGuide in message.author.roles && message.startswith('announceaside'):
+        for i in ASideChannels:
+          await client.get_channel(i).send(message[13:])
+        return
+      elif checkGuide in message.author.roles && message.startswith('announcebside'):
+        for i in BSideChannels:
+          await client.get_channel(i).send(message[13:])
+        return
+
       message.content = message.content.replace(' ', '')
       
 
