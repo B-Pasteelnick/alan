@@ -46,15 +46,15 @@ async def on_message(message):
       print(message.content)
 
       checkGuide = discord.utils.get(message.guild.roles, name='Guide')
-      if checkGuide in message.author.roles && message.startswith('announceall'):
+      if checkGuide in message.author.roles and message.startswith('announceall'):
         for i in allPCs:
           await client.get_channel(i).send(message[11:])
         return
-      elif checkGuide in message.author.roles && message.startswith('announceaside'):
+      elif checkGuide in message.author.roles and message.startswith('announceaside'):
         for i in ASideChannels:
           await client.get_channel(i).send(message[13:])
         return
-      elif checkGuide in message.author.roles && message.startswith('announcebside'):
+      elif checkGuide in message.author.roles and message.startswith('announcebside'):
         for i in BSideChannels:
           await client.get_channel(i).send(message[13:])
         return
