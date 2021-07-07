@@ -7,9 +7,9 @@ client = discord.Client()
 token = os.getenv("TOKEN")
 client.state = "ready"
 client.activeChannels = []
-client.allPCs = [853698538473914418, 853703038644912158, 858164604719071253, 858164641586216981, 858251891049496577, 858478351819866143, 858885465444712518, 853826338482028574, 853826359838244874, 853703410620301352, 853826398799134750, 853826418630328340, 858353300885602364, 858425078390456330]
-client.ASideChannels = [853698538473914418, 853703038644912158, 858164604719071253, 858164641586216981, 858251891049496577, 858478351819866143, 858885465444712518]
-client.BSideChannels = [853826338482028574, 853826359838244874, 853703410620301352, 853826398799134750, 853826418630328340, 858353300885602364, 858425078390456330]
+client.allPCs = [853698538473914418, 853703038644912158, 858164604719071253, 858164641586216981, 858251891049496577, 858478351819866143, 858885465444712518, 853826338482028574, 853826359838244874, 853703410620301352, 853826398799134750, 853826418630328340, 858353300885602364, 858425078390456330, 861889058892283915, 862144551581384715]
+client.ASideChannels = [853698538473914418, 853703038644912158, 858164604719071253, 858164641586216981, 858251891049496577, 858478351819866143, 858885465444712518, 861889058892283915]
+client.BSideChannels = [853826338482028574, 853826359838244874, 853703410620301352, 853826398799134750, 853826418630328340, 858353300885602364, 858425078390456330, 862144551581384715]
 
 async def self_edit(message):
   await asyncio.sleep(5)
@@ -129,6 +129,20 @@ async def on_message(message):
 
       elif message.content == ('help'):
         m = await message.channel.send('We got ourselves into this mess. It\'s up to us to get out of it.')
+        await self_edit(m)
+
+      elif message.content == ('schedule'):
+        if message.channel.id in client.ASideChannels:
+          m = await message.channel.send('Who remembers schedules? Good thing you can check back later. https://docs.google.com/document/d/1yfWeXkCj6Eu7wezA_5Cox5q2sY7atYFqzwljcxpgOyw/edit?usp=sharing')
+          await self_edit(m)
+        elif message.channel.id in client.BSideChannels:
+          m = await message.channel.send('Who remembers schedules? Good thing you can check back later. https://docs.google.com/document/d/11oLM22FdQuvQEa_6pMFwRRn8RbJupL1OUtVLCjKNttM/edit?usp=sharing')
+          await self_edit(m)
+        else:
+          m = await message.channel.send('Try doing it somewhere more private.')
+          await self_edit(m)
+      elif message.content == ('remembersubconscious'):
+        m = await message.channel.send('Going through the poll as yourself is useful. But an Other might find something extra. Remember to stay offthebeatenpath.')
         await self_edit(m)
 
       elif message.content == ('remember'):
