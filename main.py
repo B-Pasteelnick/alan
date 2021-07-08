@@ -88,7 +88,7 @@ async def on_message(message):
         await self_edit(m)
 
       elif message.content == ('rules'):
-        m = await message.channel.send('The parameters of life. This may help us remember who we are - but they may change with time, if only slightly. https://docs.google.com/document/d/1-V_DE5DHX8zRxWVKk6y_KeJvukQjswfMaqXpPSskfLA/edit?usp=sharing')
+        m = await message.channel.send('The parameters of life. This may help us remember who we are - but they may change with time, if only slightly. https://docs.google.com/document/d/1mize8SgO12_uf3hR_xWUc_HbyAHwH22zWPSLsC9C4-Y/edit')
         await self_edit(m)
 
       elif message.content == ('test'):
