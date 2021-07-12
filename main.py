@@ -95,7 +95,7 @@ async def on_message(message):
         m = await message.channel.send('Perhaps it is.')
         await self_edit(m)
 
-      elif message.content == ('echoesandmemories'):
+      elif message.content == ('echoes&memories'):
         m = await message.channel.send('Something does stir at the name... A hint of despair. (Both your characters start with one despair.)')
         await self_edit(m)
 
