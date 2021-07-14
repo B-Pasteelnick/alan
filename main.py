@@ -48,18 +48,28 @@ async def on_message(message):
       checkGuide = discord.utils.get(message.guild.roles, name='Guides')
       if checkGuide in message.author.roles and message.content.startswith('announceall'):
         for i in client.allPCs:
-          await client.get_channel(i).send(oMess[11:])
+          await client.get_channel(i).send(oMess[12:])
         return
       elif checkGuide in message.author.roles and message.content.startswith('announceaside'):
         for i in client.ASideChannels:
-          await client.get_channel(i).send(oMess[13:])
+          await client.get_channel(i).send(oMess[14:])
         return
       elif checkGuide in message.author.roles and message.content.startswith('announcebside'):
         for i in client.BSideChannels:
-          await client.get_channel(i).send(oMess[13:])
+          await client.get_channel(i).send(oMess[14:])
         return
 
+
+      if checkGuide in message.author.roles and message.content.startswith('adda archetype'):
+        f = open("ASideArch.txt", "a")
+        f.write(oMess[15:] + '\n')
+        f.close()
+      elif checkGuide in message.author.roles and message.content.startswith('addb archetype'):
+        f = open("BSideArch.txt", "a")
+        f.write(oMess[15:] + '\n')
+        f.close()
       message.content = message.content.replace(' ', '')
+
       
 
       #permRole = discord.utils.get(message.guild.roles, name='Normie')
@@ -78,6 +88,28 @@ async def on_message(message):
       if message.content == ('8622985399'):
         m = await message.channel.send('A phone number, maybe? It\'s all a mess.')
         await self_edit(m)
+
+      elif message.content == ('archetypecheck'):
+        if message.channel.id in client.ASideChannels:
+          f = open("ASideArch", "r")
+          m = await message.channel.send(f.read())
+          f.close()
+          await(self_edit(m))
+        elif message.channel.id in client.BSideChannels:
+          f = open("BSideArch", "r")
+          m = await message.channel.send(f.read())
+          f.close()
+          await(self_edit(m))
+        elif message.channel.id == 855934709410562068:
+          f = open("ASideArch", "r")
+          m1 = await message.channel.send(f.read())
+          f.close()
+          f = open("BSideArch", "r")
+          m2 = await message.channel.send(f.read())
+          f.close()
+          await(self_edit(m1))
+          await(self_edit(m2))
+
 
       elif message.content == ('dream'):
         m = await message.channel.send('We did think that, at first.')
