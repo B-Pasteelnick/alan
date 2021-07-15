@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import os
 import asyncio
+import sqlite3
 
 client = discord.Client()
 token = os.getenv("TOKEN")
@@ -24,7 +25,10 @@ async def self_edit(message):
 
 @client.event
 async def on_ready():
-    print('We have logged in as {0.user}'.format(client))
+  db = sqlite3.connect(":memory:")
+  cursor = db.cursor()
+  cursor.execute("CREATE TABLE IF NOT EXISTS archs(side, name)")
+  print('We have logged in as {0.user}'.format(client))
 
 @client.event
 async def on_message(message):
@@ -61,14 +65,10 @@ async def on_message(message):
 
 
       if checkGuide in message.author.roles and message.content.startswith('adda archetype'):
-        f = open("ASideArch.txt", "a")
-        f.write(oMess[15:] + '\n')
-        f.close()
+        cursor.execute("insert into archs values (?, ?)", {"A", oMess[15:]})
         return
-      elif checkGuide in message.author.roles and message.content.startswith('addb archetype'):
-        f = open("BSideArch.txt", "a")
-        f.write(oMess[15:] + '\n')
-        f.close()
+      elif checkGuide in message.author.roles and message.content.startswith('adda archetype'):
+        cursor.execute("insert into archs values (?, ?)", {"B", oMess[15:]})
         return
       message.content = message.content.replace(' ', '')
 
@@ -93,24 +93,16 @@ async def on_message(message):
 
       elif message.content == ('archetypecheck'):
         if message.channel.id in client.ASideChannels:
-          f = open("ASideArch.txt", "r")
-          m = await message.channel.send(f.read())
-          f.close()
+          cursor.execute("select * from archs where side=:A")
+          m = await message.channel.send(cursor.fetchall())
           await(self_edit(m))
         elif message.channel.id in client.BSideChannels:
-          f = open("BSideArch.txt", "r")
-          m = await message.channel.send(f.read())
-          f.close()
+          cursor.execute("select * from archs where side=:B")
+          m = await message.channel.send(cursor.fetchall())
           await(self_edit(m))
         elif message.channel.id == 855934709410562068:
-          f = open("ASideArch.txt", "r")
-          m1 = await message.channel.send(f.read())
-          f.close()
-          f = open("BSideArch.txt", "r")
-          m2 = await message.channel.send(f.read())
-          f.close()
-          await(self_edit(m1))
-          await(self_edit(m2))
+          m = await message.channel.send(cursor.fetchall())
+          await(self_edit(m))
 
 
       elif message.content == ('dream'):
