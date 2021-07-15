@@ -12,6 +12,10 @@ client.allPCs = [853698538473914418, 853703038644912158, 858164604719071253, 858
 client.ASideChannels = [853698538473914418, 853703038644912158, 858164604719071253, 858164641586216981, 858251891049496577, 858478351819866143, 858885465444712518, 861889058892283915]
 client.BSideChannels = [853826338482028574, 853826359838244874, 853703410620301352, 853826398799134750, 853826418630328340, 858353300885602364, 858425078390456330, 862144551581384715]
 
+db = sqlite3.connect(":memory:")
+cursor = db.cursor()
+cursor.execute("CREATE TABLE IF NOT EXISTS archs(side, name)")
+
 async def self_edit(message):
   await asyncio.sleep(5)
   m = message.content
@@ -25,9 +29,6 @@ async def self_edit(message):
 
 @client.event
 async def on_ready():
-  db = sqlite3.connect(":memory:")
-  cursor = db.cursor()
-  cursor.execute("CREATE TABLE IF NOT EXISTS archs(side, name)")
   print('We have logged in as {0.user}'.format(client))
 
 @client.event
