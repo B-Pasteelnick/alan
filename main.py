@@ -66,10 +66,10 @@ async def on_message(message):
 
 
       if checkGuide in message.author.roles and message.content.startswith('adda archetype'):
-        cursor.execute("insert into archs values (?, ?)", {"A", oMess[15:]})
+        cursor.execute("insert into archs values (?, ?)", ("A", oMess[15:]))
         return
       elif checkGuide in message.author.roles and message.content.startswith('adda archetype'):
-        cursor.execute("insert into archs values (?, ?)", {"B", oMess[15:]})
+        cursor.execute("insert into archs values (?, ?)", ("B", oMess[15:]))
         return
       message.content = message.content.replace(' ', '')
 
