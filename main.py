@@ -96,11 +96,11 @@ async def on_message(message):
 
       elif message.content == ('archetypecheck'):
         if message.channel.id in client.ASideChannels:
-          cursor.execute("select A from archs where side=?", ("A",))
+          cursor.execute("select * from archs where side=?", ("A",))
           m = await message.channel.send(cursor.fetchall())
           await(self_edit(m))
         elif message.channel.id in client.BSideChannels:
-          cursor.execute("select * from archs where side=:?", ("B",))
+          cursor.execute("select * from archs where side=?", ("B",))
           m = await message.channel.send(cursor.fetchall())
           await(self_edit(m))
         elif message.channel.id == 855934709410562068:
