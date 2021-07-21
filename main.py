@@ -20,7 +20,9 @@ try:
         user=os.getenv("DBUSER"),
         password=os.getenv("DBPASS"),
     ) as connection:
-        print(connection)
+        create_db_query = "CREATE DATABASE archetypes"
+        with connection.cursor() as cursor:
+        cursor.execute(create_db_query)
 except Error as e:
     print(e)
 
