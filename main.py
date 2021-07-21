@@ -22,7 +22,7 @@ try:
     ) as connection:
         create_db_query = "CREATE DATABASE archetypes"
         with connection.cursor() as cursor:
-        cursor.execute(create_db_query)
+          cursor.execute(create_db_query)
 except Error as e:
     print(e)
 
