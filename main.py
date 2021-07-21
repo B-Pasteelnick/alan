@@ -29,7 +29,7 @@ try:
               Archetype varchar(100),
             );
             """)
-  connection.commit()
+          connection.commit()
 except Error as e:
     print(e)
 
