@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import os
 import asyncio
+import mysql.connector
 
 client = discord.Client()
 token = os.getenv("TOKEN")
