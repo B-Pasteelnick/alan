@@ -25,6 +25,14 @@ try:
 except Error as e:
     print(e)
 
+with connection.cursor() as cursor:
+  cursor.execute("""
+    CREATE TABLE Archetypes (
+      Side varchar(1),
+      Archetype varchar(100),
+    );
+    """)
+  connection.commit()
 
 async def self_edit(message):
   await asyncio.sleep(5)
