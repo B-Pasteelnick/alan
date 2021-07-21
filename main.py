@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import os
 import asyncio
-import sqlite3
+import mysql.connector
 
 client = discord.Client()
 token = os.getenv("TOKEN")
@@ -12,9 +12,7 @@ client.allPCs = [853698538473914418, 853703038644912158, 858164604719071253, 858
 client.ASideChannels = [853698538473914418, 853703038644912158, 858164604719071253, 858164641586216981, 858251891049496577, 858478351819866143, 858885465444712518, 861889058892283915]
 client.BSideChannels = [853826338482028574, 853826359838244874, 853703410620301352, 853826398799134750, 853826418630328340, 858353300885602364, 858425078390456330, 862144551581384715]
 
-db = sqlite3.connect(":memory:")
-cursor = db.cursor()
-cursor.execute("CREATE TABLE IF NOT EXISTS archs(side, name)")
+db = mysql.connector.connect()
 
 async def self_edit(message):
   await asyncio.sleep(5)
@@ -66,12 +64,10 @@ async def on_message(message):
 
 
       if checkGuide in message.author.roles and message.content.startswith('adda archetype'):
-        cursor.execute("insert into archs values (?, ?)", ("A", oMess[15:]))
-        db.commit()
+        
         return
       elif checkGuide in message.author.roles and message.content.startswith('adda archetype'):
-        cursor.execute("insert into archs values (?, ?)", ("B", oMess[15:]))
-        db.commit()
+        
         return
       message.content = message.content.replace(' ', '')
 
@@ -94,19 +90,13 @@ async def on_message(message):
         m = await message.channel.send('A phone number, maybe? It\'s all a mess.')
         await self_edit(m)
 
-      elif message.content == ('archetypecheck'):
-        if message.channel.id in client.ASideChannels:
-          cursor.execute("select * from archs where side=?", ("A",))
-          m = await message.channel.send(cursor.fetchall())
-          await(self_edit(m))
-        elif message.channel.id in client.BSideChannels:
-          cursor.execute("select * from archs where side=?", ("B",))
-          m = await message.channel.send(cursor.fetchall())
-          await(self_edit(m))
-        elif message.channel.id == 855934709410562068:
-          cursor.execute("select * from archs")
-          m = await message.channel.send(cursor.fetchall())
-          await(self_edit(m))
+      #elif message.content == ('archetypecheck'):
+        #if message.channel.id in client.ASideChannels:
+
+        #elif message.channel.id in client.BSideChannels:
+
+        #elif message.channel.id == 855934709410562068:
+
 
 
       elif message.content == ('dream'):
