@@ -22,17 +22,18 @@ try:
         database="pxjxsg6c1d91xf93",
     ) as connection:
         print(connection)
+        with connection.cursor() as cursor:
+          cursor.execute("""
+            CREATE TABLE Archetypes (
+              Side varchar(1),
+              Archetype varchar(100),
+            );
+            """)
+  connection.commit()
 except Error as e:
     print(e)
 
-with connection.cursor() as cursor:
-  cursor.execute("""
-    CREATE TABLE Archetypes (
-      Side varchar(1),
-      Archetype varchar(100),
-    );
-    """)
-  connection.commit()
+
 
 async def self_edit(message):
   await asyncio.sleep(5)
