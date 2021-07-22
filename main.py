@@ -119,6 +119,7 @@ async def on_message(message):
         if message.channel.id in client.ASideChannels:
           with connection.cursor() as cursor:
             cursor.execute("SELECT Archetype FROM archetypes WHERE Side = 'A'")
+            toSend = ""
             for i in cursor.fetchall():
               toSend += i + ", "
             m = await message.channel.send(toSend[:-2])
@@ -126,6 +127,7 @@ async def on_message(message):
         elif message.channel.id in client.BSideChannels:
           with connection.cursor() as cursor:
             cursor.execute("SELECT Archetype FROM archetypes WHERE Side = 'B'")
+            toSend = ""
             for i in cursor.fetchall():
               toSend += i + ", "
             m = await message.channel.send(toSend[:-2])
