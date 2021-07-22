@@ -26,7 +26,7 @@ try:
           cursor.execute('''
             CREATE TABLE Archetypes (
               Side varchar(1),
-              Archetype varchar(100),
+              Archetype varchar(100)
             );
             ''')
           connection.commit()
