@@ -27,7 +27,7 @@ try:
             CREATE TABLE Archetypes (
               Side varchar(1),
               Archetype varchar(100),
-            );
+            )
             """)
           connection.commit()
 except Error as e:
