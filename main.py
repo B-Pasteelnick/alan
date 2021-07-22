@@ -85,12 +85,12 @@ async def on_message(message):
 
 
       if checkGuide in message.author.roles and message.content.startswith('adda archetype'):
-        connection.cursor().execute("INSERT INTO archetypes (Side, Archetypes) VALUES (%s, %s)", ("A", oMess[15:]))
+        connection.cursor().execute("INSERT INTO archetypes (Side, Archetype) VALUES (%s, %s)", ("A", oMess[15:]))
         connection.commit()
         await message.channel.send("Added " + oMess[15:] + " to A Side")
         return
       elif checkGuide in message.author.roles and message.content.startswith('addb archetype'):
-        connection.cursor().execute("INSERT INTO archetypes (Side, Archetypes) VALUES (%s, %s)", ("B", oMess[15:]))
+        connection.cursor().execute("INSERT INTO archetypes (Side, Archetype) VALUES (%s, %s)", ("B", oMess[15:]))
         connection.commit()
         await message.channel.send("Added " + oMess[15:] + " to B Side")
         return
