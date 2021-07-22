@@ -15,21 +15,21 @@ client.ASideChannels = [853698538473914418, 853703038644912158, 8581646047190712
 client.BSideChannels = [853826338482028574, 853826359838244874, 853703410620301352, 853826398799134750, 853826418630328340, 858353300885602364, 858425078390456330, 862144551581384715]
 
 try:
-    with connect(
-        host=os.getenv("DBHOST"),
-        user=os.getenv("DBUSER"),
-        password=os.getenv("DBPASS"),
-        database="pxjxsg6c1d91xf93",
-    ) as connection:
-        print(connection)
-        with connection.cursor() as cursor:
-          cursor.execute('''
-            CREATE TABLE Archetypes (
-              Side varchar(1),
-              Archetype varchar(100)
-            );
-            ''')
-          connection.commit()
+  connection = connect(
+    host=os.getenv("DBHOST"),
+    user=os.getenv("DBUSER"),
+    password=os.getenv("DBPASS"),
+    database="pxjxsg6c1d91xf93",
+  )
+  print(connection)
+  with connection.cursor() as cursor:
+    cursor.execute('''
+      CREATE TABLE Archetypes (
+        Side varchar(1),
+        Archetype varchar(100)
+      );
+      ''')
+    connection.commit()
 except Error as e:
     print(e)
 
@@ -85,10 +85,14 @@ async def on_message(message):
 
 
       if checkGuide in message.author.roles and message.content.startswith('adda archetype'):
-        
+        connection.cursor().execute("INSERT INTO archetypes (Side, Archetypes) VALUES (%s, %s)", ("A", oMess[15:]))
+        connection.commit()
+        await message.channel.send("Added " + oMess[15:] + " to A Side")
         return
-      elif checkGuide in message.author.roles and message.content.startswith('adda archetype'):
-        
+      elif checkGuide in message.author.roles and message.content.startswith('addb archetype'):
+        connection.cursor().execute("INSERT INTO archetypes (Side, Archetypes) VALUES (%s, %s)", ("B", oMess[15:]))
+        connection.commit()
+        await message.channel.send("Added " + oMess[15:] + " to B Side")
         return
       message.content = message.content.replace(' ', '')
 
@@ -111,14 +115,21 @@ async def on_message(message):
         m = await message.channel.send('A phone number, maybe? It\'s all a mess.')
         await self_edit(m)
 
-      #elif message.content == ('archetypecheck'):
-        #if message.channel.id in client.ASideChannels:
-
-        #elif message.channel.id in client.BSideChannels:
-
-        #elif message.channel.id == 855934709410562068:
-
-
+      elif message.content == ('archetypecheck'):
+        if message.channel.id in client.ASideChannels:
+          with connection.cursor() as cursor:
+            cursor.execute("SELECT Archetype FROM archetypes WHERE Side = 'A'")
+            m = await message.channel.send(cursor.fetchall())
+            await self_edit(m)
+        elif message.channel.id in client.BSideChannels:
+          with connection.cursor() as cursor:
+            cursor.execute("SELECT Archetype FROM archetypes WHERE Side = 'B'")
+            m = await message.channel.send(cursor.fetchall())
+            await self_edit(m)
+        elif message.channel.id == 855934709410562068:
+          with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM archetypes")
+            await message.channel.send(cursor.fetchall())
 
       elif message.content == ('dream'):
         m = await message.channel.send('We did think that, at first.')
