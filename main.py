@@ -85,12 +85,12 @@ async def on_message(message):
 
 
       if checkGuide in message.author.roles and message.content.startswith('adda archetype'):
-        connection.cursor().execute("INSERT INTO archetypes (Side, Archetype) VALUES (%s, %s)", ("A", oMess[15:]))
+        connection.cursor().execute("INSERT INTO archetypes (Side, Archetype) VALUES (%s, %s)", ("A", oMess[16:]))
         connection.commit()
         await message.channel.send("Added " + oMess[16:] + " to A Side")
         return
       elif checkGuide in message.author.roles and message.content.startswith('addb archetype'):
-        connection.cursor().execute("INSERT INTO archetypes (Side, Archetype) VALUES (%s, %s)", ("B", oMess[15:]))
+        connection.cursor().execute("INSERT INTO archetypes (Side, Archetype) VALUES (%s, %s)", ("B", oMess[16:]))
         connection.commit()
         await message.channel.send("Added " + oMess[16:] + " to B Side")
         return
@@ -119,12 +119,16 @@ async def on_message(message):
         if message.channel.id in client.ASideChannels:
           with connection.cursor() as cursor:
             cursor.execute("SELECT Archetype FROM archetypes WHERE Side = 'A'")
-            m = await message.channel.send(cursor.fetchall())
+            for i in cursor.fetchall():
+              toSend += i + ", "
+            m = await message.channel.send(toSend[:-2])
             await self_edit(m)
         elif message.channel.id in client.BSideChannels:
           with connection.cursor() as cursor:
             cursor.execute("SELECT Archetype FROM archetypes WHERE Side = 'B'")
-            m = await message.channel.send(cursor.fetchall())
+            for i in cursor.fetchall():
+              toSend += i + ", "
+            m = await message.channel.send(toSend[:-2])
             await self_edit(m)
         elif message.channel.id == 855934709410562068:
           with connection.cursor() as cursor:
