@@ -121,7 +121,8 @@ async def on_message(message):
             cursor.execute("SELECT Archetype FROM archetypes WHERE Side = 'A'")
             toSend = ""
             for i in cursor.fetchall():
-              toSend += i + ", "
+              for e in i:
+                toSend += e + ", "
             m = await message.channel.send(toSend[:-2])
             await self_edit(m)
         elif message.channel.id in client.BSideChannels:
@@ -129,7 +130,8 @@ async def on_message(message):
             cursor.execute("SELECT Archetype FROM archetypes WHERE Side = 'B'")
             toSend = ""
             for i in cursor.fetchall():
-              toSend += i + ", "
+              for e in i:
+                toSend += e + ", "
             m = await message.channel.send(toSend[:-2])
             await self_edit(m)
         elif message.channel.id == 855934709410562068:
