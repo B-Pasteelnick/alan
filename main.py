@@ -94,6 +94,10 @@ async def on_message(message):
         connection.commit()
         await message.channel.send("Added " + oMess[16:] + " to B Side")
         return
+      elif checkGuide in message.author.roles and message.content.startswith('archetype replace'):
+        args = oMess.split("\"")
+        connection.cursor().execute("UPDATE archetypes SET Archetype = %s WHERE Archetype = %s", (args[3], args[1]))
+        connection.commit()
       message.content = message.content.replace(' ', '')
 
       
