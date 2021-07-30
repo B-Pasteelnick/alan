@@ -72,15 +72,15 @@ async def on_message(message):
       checkGuide = discord.utils.get(message.guild.roles, name='Guides')
       if checkGuide in message.author.roles and message.content.startswith('announceall'):
         for i in client.allPCs:
-          await client.get_channel(i).send(oMess[12:])
+          await client.get_channel(i).send("ANNOUNCEMENT: \n" + oMess[12:])
         return
       elif checkGuide in message.author.roles and message.content.startswith('announceaside'):
         for i in client.ASideChannels:
-          await client.get_channel(i).send(oMess[14:])
+          await client.get_channel(i).send("ANNOUNCEMENT: \n" + oMess[14:])
         return
       elif checkGuide in message.author.roles and message.content.startswith('announcebside'):
         for i in client.BSideChannels:
-          await client.get_channel(i).send(oMess[14:])
+          await client.get_channel(i).send("ANNOUNCEMENT: \n" + oMess[14:])
         return
 
 
@@ -98,6 +98,8 @@ async def on_message(message):
         args = oMess.split("\"")
         connection.cursor().execute("UPDATE archetypes SET Archetype = %s WHERE Archetype = %s", (args[3], args[1]))
         connection.commit()
+        return
+
       message.content = message.content.replace(' ', '')
 
       
@@ -196,15 +198,21 @@ async def on_message(message):
         await self_edit(m)
 
       elif message.content == ('schedule'):
-        if message.channel.id in client.ASideChannels:
+        if message.channel.id in client.ASideChannels or checkGuide in message.author.roles:
           m = await message.channel.send('Who remembers schedules? Good thing you can check back later. https://docs.google.com/document/d/1yfWeXkCj6Eu7wezA_5Cox5q2sY7atYFqzwljcxpgOyw/edit?usp=sharing')
           await self_edit(m)
-        elif message.channel.id in client.BSideChannels:
+        if message.channel.id in client.BSideChannels or checkGuide in message.author.roles:
           m = await message.channel.send('Who remembers schedules? Good thing you can check back later. https://docs.google.com/document/d/11oLM22FdQuvQEa_6pMFwRRn8RbJupL1OUtVLCjKNttM/edit?usp=sharing')
           await self_edit(m)
-        else:
-          m = await message.channel.send('Try doing it somewhere more private.')
+
+      elif message.content == ('questionnaire'):
+        if message.channel.id in client.ASideChannels or checkGuide in message.author.roles:
+          m = await message.channel.send('Memory is rather fickle... but you can always make a backup. https://docs.google.com/document/d/1rXDT17ei9PJyVi0OISm65l8j-plqY08s00WEUAdUx_A/edit?usp=sharing')
           await self_edit(m)
+        if message.channel.id in client.BSideChannels or checkGuide in message.author.roles:
+          m = await message.channel.send('Memory is rather fickle... but you can always make a backup. https://docs.google.com/document/d/1C9vJfUEOIlWeYGaEinr9OLkX-4BH_OK8H0Kyu1tkxQE/edit?usp=sharing')
+          await self_edit(m)
+
       elif message.content == ('remembersubconscious'):
         m = await message.channel.send('Going through the poll as yourself is useful. But an Other might find something extra. Remember to stay offthebeatenpath.')
         await self_edit(m)
