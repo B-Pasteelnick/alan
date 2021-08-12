@@ -155,10 +155,10 @@ async def on_message(message):
 
       elif message.content == ('rules'):
         if message.channel.id in client.ASideChannels or checkGuide in message.author.roles:
-          m = await message.channel.send('The parameters of life. This may help us remember who we are - but they may change with time, if only slightly. https://docs.google.com/document/d/1mize8SgO12_uf3hR_xWUc_HbyAHwH22zWPSLsC9C4-Y/edit')
+          m = await message.channel.send('The parameters of life. This may help us remember who we are - but they may change with time, if only slightly. https://docs.google.com/document/d/1H-eWcMv_5avqHZ5_uFek-W18zlNfkbUcC54gzVWMqC4/edit?usp=sharing')
           await self_edit(m)
         if message.channel.id in client.BSideChannels or checkGuide in message.author.roles:
-          m = await message.channel.send('The parameters of life. This may help us remember who we are - but they may change with time, if only slightly. https://docs.google.com/document/d/1mize8SgO12_uf3hR_xWUc_HbyAHwH22zWPSLsC9C4-Y/edit')
+          m = await message.channel.send('The parameters of life. This may help us remember who we are - but they may change with time, if only slightly. https://docs.google.com/document/d/1RkLS-1lk0A2PbrUZ0dpfNolKy0iJBaCmMwCDmf5k5dg/edit?usp=sharing')
           await self_edit(m)
 
       elif message.content == ('test'):
