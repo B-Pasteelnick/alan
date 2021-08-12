@@ -154,8 +154,12 @@ async def on_message(message):
         await self_edit(m)
 
       elif message.content == ('rules'):
-        m = await message.channel.send('The parameters of life. This may help us remember who we are - but they may change with time, if only slightly. https://docs.google.com/document/d/1mize8SgO12_uf3hR_xWUc_HbyAHwH22zWPSLsC9C4-Y/edit')
-        await self_edit(m)
+        if message.channel.id in client.ASideChannels or checkGuide in message.author.roles:
+          m = await message.channel.send('The parameters of life. This may help us remember who we are - but they may change with time, if only slightly. https://docs.google.com/document/d/1mize8SgO12_uf3hR_xWUc_HbyAHwH22zWPSLsC9C4-Y/edit')
+          await self_edit(m)
+        if message.channel.id in client.BSideChannels or checkGuide in message.author.roles:
+          m = await message.channel.send('The parameters of life. This may help us remember who we are - but they may change with time, if only slightly. https://docs.google.com/document/d/1mize8SgO12_uf3hR_xWUc_HbyAHwH22zWPSLsC9C4-Y/edit')
+          await self_edit(m)
 
       elif message.content == ('test'):
         m = await message.channel.send('Perhaps it is.')
@@ -214,7 +218,7 @@ async def on_message(message):
           await self_edit(m)
 
       elif message.content == ('remembersubconscious'):
-        m = await message.channel.send('Going through the poll as yourself is useful. But an Other might find something extra. Remember to stay offthebeatenpath.')
+        m = await message.channel.send('Murder is a drastic measure, but sometimes it is necessary. Try to figure out all you can before coming to a decision. Remember to stay offthebeatenpath.')
         await self_edit(m)
 
       elif message.content == ('remember'):
