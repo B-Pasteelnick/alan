@@ -218,12 +218,8 @@ async def on_message(message):
           await self_edit(m)
 
       elif message.content == ('poll'):
-        if message.channel.id in client.ASideChannels or checkGuide in message.author.roles:
-          m = await message.channel.send('Let us know your thoughts. https://forms.gle/h3evqrGxyZo9PPXo8')
-          await self_edit(m)
-        if message.channel.id in client.BSideChannels or checkGuide in message.author.roles:
-          m = await message.channel.send('Let us know your thoughts. https://forms.gle/h3evqrGxyZo9PPXo8')
-          await self_edit(m)
+        m = await message.channel.send('Let us know your thoughts. https://forms.gle/h3evqrGxyZo9PPXo8')
+        await self_edit(m)
 
       elif message.content == ('remembersubconscious'):
         m = await message.channel.send('Murder is a drastic measure, but sometimes it is necessary. Try to figure out all you can before coming to a decision. Remember to stay offthebeatenpath.')
