@@ -225,6 +225,22 @@ async def on_message(message):
         m = await message.channel.send('Murder is a drastic measure, but sometimes it is necessary. Try to figure out all you can before coming to a decision. Remember to stay offthebeatenpath.')
         await self_edit(m)
 
+      elif message.content == ('leftbrain'):
+        m = await message.channel.send('You were missed.')
+        await self_edit(m)
+
+      elif message.content == ('rightbrain'):
+        m = await message.channel.send('I was lonely.')
+        await self_edit(m)
+
+      elif message.content == ('connectingthedots'):
+        m = await message.channel.send('There is a reward for this. It isn\'t ready yet. We will get back to you.')
+        await self_edit(m)
+
+      elif message.content == ('ampersandtechnologies'):
+        m = await message.channel.send('The & always means there\'s more to come.')
+        await self_edit(m)
+
       elif message.content == ('remember'):
         bars = '\n**-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------**\n'
         first = 'You awaken alone in a shadowed room. A flickering, sourceless, flame, mere inches away, makes you aware of the drifting grey shape of this place. You cannot see the dark edges that skulk from the light... or perhaps you cannot remember. Memory begins to flood back, though jagged holes and shifting faces keep you from recalling clear. You remember *what you are*. You do not remember **why you are here**. You remember *who you were*. You do not remember **your name**. You remember *what you can do*. You do not remember **what you must do**.\n\nSomething... powerful... glints in the fire. Your hand, outstretched, runs and billows like smoke. You cannot reach it, not yet. When your memories - those that have not deserted you - are solid in your mind, then your body will be ready to bear the heat of the crucible!'
