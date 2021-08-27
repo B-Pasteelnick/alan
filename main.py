@@ -217,6 +217,14 @@ async def on_message(message):
           m = await message.channel.send('Memory is rather fickle... but you can always make a backup. https://docs.google.com/document/d/1C9vJfUEOIlWeYGaEinr9OLkX-4BH_OK8H0Kyu1tkxQE/edit?usp=sharing')
           await self_edit(m)
 
+      elif message.content == ('poll'):
+        if message.channel.id in client.ASideChannels or checkGuide in message.author.roles:
+          m = await message.channel.send('Let us know your thoughts. https://forms.gle/h3evqrGxyZo9PPXo8')
+          await self_edit(m)
+        if message.channel.id in client.BSideChannels or checkGuide in message.author.roles:
+          m = await message.channel.send('Let us know your thoughts. https://forms.gle/h3evqrGxyZo9PPXo8')
+          await self_edit(m)
+
       elif message.content == ('remembersubconscious'):
         m = await message.channel.send('Murder is a drastic measure, but sometimes it is necessary. Try to figure out all you can before coming to a decision. Remember to stay offthebeatenpath.')
         await self_edit(m)
