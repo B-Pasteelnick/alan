@@ -322,7 +322,7 @@ async def on_message(message):
               await message.channel.send("Little more than I can handle...")
               return
             for i in range(numDice):
-              roll = random.randInt(1, diceType)
+              roll = random.randint(1, diceType)
               result += roll + ", "
               if roll > 3: successes += 1
             await message.channel.send(message.author.display_name + " rolled: " + roll[:-2] +". Successes: " + successes)
@@ -335,7 +335,7 @@ async def on_message(message):
               await message.channel.send("Little more than I can handle...")
               return
             for i in range(numDice):
-              roll = random.randInt(1, 6)
+              roll = random.randint(1, 6)
               result += roll + ", "
               if roll > 3: successes += 1
             await message.channel.send(message.author.display_name + " rolled: " + roll[:-2] +". Successes: " + successes)
