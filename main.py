@@ -321,7 +321,7 @@ async def on_message(message):
             if numDice > 100:
               await message.channel.send("Little more than I can handle...")
               return
-            for i in numDice:
+            for i in range(numDice):
               roll = random.randInt(1, diceType)
               result += roll + ", "
               if roll > 3: successes += 1
@@ -334,7 +334,7 @@ async def on_message(message):
             if numDice > 100:
               await message.channel.send("Little more than I can handle...")
               return
-            for i in numDice:
+            for i in range(numDice):
               roll = random.randInt(1, 6)
               result += roll + ", "
               if roll > 3: successes += 1
