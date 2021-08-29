@@ -241,6 +241,26 @@ async def on_message(message):
         m = await message.channel.send('The & always means there\'s more to come.')
         await self_edit(m)
 
+      elif message.content == ('&'):
+        m = await message.channel.send('That would be bad.')
+        await self_edit(m)
+
+      elif message.content == (':'):
+        m = await message.channel.send('That again? I\'m practically seeing it in my sleep at this point.')
+        await self_edit(m)
+
+      elif message.content == ('offthebeatenpath'):
+        m = await message.channel.send('Good instinct. Find the right place for it. Maybe ask around?')
+        await self_edit(m)
+
+      elif message.content == ('forget'):
+        m = await message.channel.send('We\'ve already forgotten so much. We cannot afford to forget any more.')
+        await self_edit(m)
+
+      elif message.content.replace('.', '') == ('alann'):
+        m = await message.channel.send('Ben just likes referencing himself. Little vain if you ask me. This isn\'t relevant.')
+        await self_edit(m)
+
       elif message.content == ('remember'):
         bars = '\n**-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------**\n'
         first = 'You awaken alone in a shadowed room. A flickering, sourceless, flame, mere inches away, makes you aware of the drifting grey shape of this place. You cannot see the dark edges that skulk from the light... or perhaps you cannot remember. Memory begins to flood back, though jagged holes and shifting faces keep you from recalling clear. You remember *what you are*. You do not remember **why you are here**. You remember *who you were*. You do not remember **your name**. You remember *what you can do*. You do not remember **what you must do**.\n\nSomething... powerful... glints in the fire. Your hand, outstretched, runs and billows like smoke. You cannot reach it, not yet. When your memories - those that have not deserted you - are solid in your mind, then your body will be ready to bear the heat of the crucible!'
