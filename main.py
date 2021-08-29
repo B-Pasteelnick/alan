@@ -3,6 +3,7 @@ from discord.ext import commands
 import os
 import asyncio
 import mysql.connector
+import random
 from getpass import getpass
 from mysql.connector import connect, Error
 
@@ -306,6 +307,43 @@ async def on_message(message):
           elif italics and not first.startswith("*"): await m.edit(content= bars + "*" + first + bars)
           else: await m.edit(content=bars + first + bars)
         client.activeChannels.remove(message.channel)
+
+
+      elif message.content.startswith('r'):
+        full = message.content[1:]
+        result = ""
+        successes = 0
+        if 'd' in full:
+          dArgs = full.split("d")
+          try:
+            numDice = int(dArgs[0])
+            diceType = int(dArgs[1])
+            if numDice > 100:
+              await message.channel.send("Little more than I can handle...")
+              return
+            for i in numDice:
+              roll = random.randInt(1, diceType)
+              result += roll + ", "
+              if roll > 3: successes++
+            await message.channel.send(message.author.display_name + " rolled: " + roll[:-2] +". Successes: " + successes)
+          except:
+            await message.channel.send("Failed to roll dice. Hopefully that's what you were going for.")
+        else:
+          try:
+            numDice = int(full)
+            if numDice > 100:
+              await message.channel.send("Little more than I can handle...")
+              return
+            for i in numDice:
+              roll = random.randInt(1, 6)
+              result += roll + ", "
+              if roll > 3: successes++
+            await message.channel.send(message.author.display_name + " rolled: " + roll[:-2] +". Successes: " + successes)
+          except:
+            await message.channel.send("Failed to roll dice. Hopefully that's what you were going for.")
+
+
+
 
 
       else:
