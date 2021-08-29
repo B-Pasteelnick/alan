@@ -329,7 +329,7 @@ async def on_message(message):
           except:
             await message.channel.send("Failed to roll dice. Hopefully that's what you were going for.")
         else:
-          try:
+          #try:
             numDice = int(full)
             if numDice > 100:
               await message.channel.send("Little more than I can handle...")
@@ -339,8 +339,8 @@ async def on_message(message):
               result += roll + ", "
               if roll > 3: successes += 1
             await message.channel.send(message.author.display_name + " rolled: " + roll[:-2] +". Successes: " + successes)
-          except:
-            await message.channel.send("Failed to roll dice. Hopefully that's what you were going for.")
+          #except:
+            #await message.channel.send("Failed to roll dice. Hopefully that's what you were going for.")
 
 
 
