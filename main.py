@@ -309,8 +309,8 @@ async def on_message(message):
         client.activeChannels.remove(message.channel)
 
 
-      elif message.content.startswith('r'):
-        full = message.content[1:]
+      elif message.content.startswith('roll'):
+        full = message.content[4:]
         result = ""
         successes = 0
         if 'd' in full:
