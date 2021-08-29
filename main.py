@@ -325,7 +325,7 @@ async def on_message(message):
               roll = random.randint(1, diceType)
               result += str(roll) + ", "
               if roll > 3: successes += 1
-            await message.channel.send(message.author.display_name + " rolled: " + roll[:-2] +". Successes: " + successes)
+            await message.channel.send(message.author.display_name + " rolled: " + result[:-2] +". Successes: " + successes)
           except:
             await message.channel.send("Failed to roll dice. Hopefully that's what you were going for.")
         else:
@@ -338,7 +338,7 @@ async def on_message(message):
               roll = random.randint(1, 6)
               result += str(roll) + ", "
               if roll > 3: successes += 1
-            await message.channel.send(message.author.display_name + " rolled: " + roll[:-2] +". Successes: " + successes)
+            await message.channel.send(message.author.display_name + " rolled: " + result[:-2] +". Successes: " + successes)
           #except:
             #await message.channel.send("Failed to roll dice. Hopefully that's what you were going for.")
 
