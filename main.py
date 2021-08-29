@@ -323,7 +323,7 @@ async def on_message(message):
               return
             for i in range(numDice):
               roll = random.randint(1, diceType)
-              result += roll + ", "
+              result += str(roll) + ", "
               if roll > 3: successes += 1
             await message.channel.send(message.author.display_name + " rolled: " + roll[:-2] +". Successes: " + successes)
           except:
@@ -336,7 +336,7 @@ async def on_message(message):
               return
             for i in range(numDice):
               roll = random.randint(1, 6)
-              result += roll + ", "
+              result += str(roll) + ", "
               if roll > 3: successes += 1
             await message.channel.send(message.author.display_name + " rolled: " + roll[:-2] +". Successes: " + successes)
           #except:
