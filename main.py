@@ -262,6 +262,18 @@ async def on_message(message):
         m = await message.channel.send('Ben just likes referencing himself. Little vain if you ask me. This isn\'t relevant.')
         await self_edit(m)
 
+      elif message.content == ('general'):
+        if message.channel.id in client.ASideChannels:
+          general = discord.get_channel(884660041632845845)
+          await general.set_permissions(message.author, read_messages=True, send_messages=True)
+          general.send(message.author.display_name + " is now among you.")
+
+        elif message.channel.id in client.BSideChannels:
+          general = discord.get_channel(884660176718819330)
+          await general.set_permissions(message.author, read_messages=True, send_messages=True)
+          general.send(message.author.display_name + " is now among you.")
+
+
       elif message.content == ('remember'):
         bars = '\n**-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------**\n'
         first = 'You awaken alone in a shadowed room. A flickering, sourceless, flame, mere inches away, makes you aware of the drifting grey shape of this place. You cannot see the dark edges that skulk from the light... or perhaps you cannot remember. Memory begins to flood back, though jagged holes and shifting faces keep you from recalling clear. You remember *what you are*. You do not remember **why you are here**. You remember *who you were*. You do not remember **your name**. You remember *what you can do*. You do not remember **what you must do**.\n\nSomething... powerful... glints in the fire. Your hand, outstretched, runs and billows like smoke. You cannot reach it, not yet. When your memories - those that have not deserted you - are solid in your mind, then your body will be ready to bear the heat of the crucible!'
