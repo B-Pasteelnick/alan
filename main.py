@@ -266,12 +266,12 @@ async def on_message(message):
         if message.channel.id in client.ASideChannels:
           general = client.get_channel(884660041632845845)
           await general.set_permissions(message.author, read_messages=True, send_messages=True)
-          general.send(message.author.display_name + " is now among you.")
+          await general.send(message.author.display_name + " is now among you.")
 
         elif message.channel.id in client.BSideChannels:
           general = client.get_channel(884660176718819330)
           await general.set_permissions(message.author, read_messages=True, send_messages=True)
-          general.send(message.author.display_name + " is now among you.")
+          await general.send(message.author.display_name + " is now among you.")
 
 
       elif message.content == ('remember'):
