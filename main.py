@@ -167,7 +167,7 @@ async def on_message(message):
         await self_edit(m)
 
       elif message.content == ('echoes&memories'):
-        m = await message.channel.send('Something does stir at the name... A hint of despair. (Both your characters start with one despair.)')
+        m = await message.channel.send('We\'re excited to see you!')
         await self_edit(m)
 
       elif message.content == ('hope\'speak') or message.content == ('hopespeak') or message.content == ('ultimate') or message.content == ('danganronpa'):
