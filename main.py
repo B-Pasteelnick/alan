@@ -92,7 +92,7 @@ async def on_message(message):
       if checkGuide in message.author.roles and message.content.startswith("harm"):
         target = message.content[5:]
         if message.channel.id in client.ASideChannels:
-          cursor = connection.cursor(buffered=true)
+          cursor = connection.cursor(buffered=True)
           cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("A", target.capitalize()))
           record = cursor.fetchall()
           print(record)
