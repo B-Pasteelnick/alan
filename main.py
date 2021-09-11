@@ -319,7 +319,7 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Trickster has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + "stress.")
+        await message.channel.send("The Trickster has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
         return
 
       elif message.content == ("strong&silent") or message.content == ("strongandsilent") or message.content == ("s&s") or message.content == ("sands"):
@@ -339,7 +339,7 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Strong & Silent has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + "stress.")
+        await message.channel.send("The Strong & Silent has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
         return
 
       elif message.content == ("cynic"):
@@ -359,7 +359,7 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Cynic has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + "stress.")
+        await message.channel.send("The Cynic has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
         return
 
       elif message.content == ("storyteller"):
@@ -379,7 +379,7 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Storyteller has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + "stress.")
+        await message.channel.send("The Storyteller has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
         return
 
       elif message.content == ("paragon"):
@@ -399,7 +399,7 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Paragon has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + "stress.")
+        await message.channel.send("The Paragon has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
         return
 
       elif message.content == ("fae"):
@@ -419,7 +419,7 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Fae has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + "stress.")
+        await message.channel.send("The Fae has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
         return
 
       elif message.content == ("mentor") or message.content == ("eccentricmentor"):
@@ -439,7 +439,7 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Mentor has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + "stress.")
+        await message.channel.send("The Mentor has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
         return
 
       elif message.content == ("sidekick"):
@@ -459,7 +459,7 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Sidekick has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + "stress.")
+        await message.channel.send("The Sidekick has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
         return
 
       elif message.content == ("beast"):
@@ -479,7 +479,7 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Beast has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + "stress.")
+        await message.channel.send("The Beast has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
         return
 
       elif message.content == ("eee") or message.content == ("enigmaticempoweringentity"):
@@ -499,7 +499,7 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Enigmatic Empowering Entity has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + "stress.")
+        await message.channel.send("The Enigmatic Empowering Entity has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
         return
 
       elif message.content == ("hedonist"):
@@ -519,7 +519,7 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Hedonist has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + "stress.")
+        await message.channel.send("The Hedonist has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
         return
 
       elif message.content == ("hauntedone"):
@@ -539,7 +539,7 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Haunted One has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + "stress.")
+        await message.channel.send("The Haunted One has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
         return
 
       elif message.content == ("geniusditz"):
@@ -559,7 +559,7 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Genius Ditz has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + "stress.")
+        await message.channel.send("The Genius Ditz has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
         return
 
       elif message.content == ("rebel"):
@@ -579,7 +579,7 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Rebel has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + "stress.")
+        await message.channel.send("The Rebel has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
         return
 
       elif message.content == ("dynamo"):
@@ -599,7 +599,7 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Dynamo has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + "stress.")
+        await message.channel.send("The Dynamo has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
         return
 
       elif message.content == ("ob") or message.content == ("obstructivebureaucrat"):
@@ -619,7 +619,7 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Obstructive Bureaucrat has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + "stress.")
+        await message.channel.send("The Obstructive Bureaucrat has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
         return
       
 
