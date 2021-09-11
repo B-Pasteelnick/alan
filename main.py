@@ -25,10 +25,23 @@ try:
   print(connection)
   with connection.cursor() as cursor:
     cursor.execute('''
-      CREATE TABLE Archetypes (
-        Side varchar(1),
-        Archetype varchar(100)
-      );
+      DELETE FROM archetypes;
+      ''')
+    cursor.execute('''
+      ALTER TABLE archetypes
+      ADD Echoes TINYINT
+      ''')
+    cursor.execute('''
+      ALTER TABLE archetypes
+      ADD Memories TINYINT
+      ''')
+    cursor.execute('''
+      ALTER TABLE archetypes
+      ADD Harm TINYINT
+      ''')
+    cursor.execute('''
+      ALTER TABLE archetypes
+      ADD Stress TINYINT
       ''')
     connection.commit()
 except Error as e:
@@ -86,19 +99,22 @@ async def on_message(message):
 
 
       if checkGuide in message.author.roles and message.content.startswith('adda archetype'):
-        connection.cursor().execute("INSERT INTO archetypes (Side, Archetype) VALUES (%s, %s)", ("A", oMess[16:]))
+        connection.cursor().execute("INSERT INTO archetypes (Side, Archetype, Echoes, Memories, Harm, Stress) VALUES (%s, %s, %s, %s, %s, %s)", ("A", oMess[16:], 0, 0, 0, 0))
         connection.commit()
         await message.channel.send("Added " + oMess[16:] + " to A Side")
         return
       elif checkGuide in message.author.roles and message.content.startswith('addb archetype'):
-        connection.cursor().execute("INSERT INTO archetypes (Side, Archetype) VALUES (%s, %s)", ("B", oMess[16:]))
+        connection.cursor().execute("INSERT INTO archetypes (Side, Archetype, Echoes, Memories, Harm, Stress) VALUES (%s, %s, %s, %s, %s, %s)", ("B", oMess[16:], 0, 0, 0, 0))
         connection.commit()
         await message.channel.send("Added " + oMess[16:] + " to B Side")
         return
-      elif checkGuide in message.author.roles and message.content.startswith('archetype replace'):
-        args = oMess.split("\"")
-        connection.cursor().execute("UPDATE archetypes SET Archetype = %s WHERE Archetype = %s", (args[3], args[1]))
-        connection.commit()
+
+      if checkGuide in message.author.roles and message.content.startswith("harm"):
+        target = message.content[5:]
+        if message.channel.id in ASideChannels:
+          cursor.execute("select * from archetypes where Side = %s, Archetype = %s", ("A", target))
+          record = cursor.fetchone()
+          print(record)
         return
 
       message.content = message.content.replace(' ', '')
