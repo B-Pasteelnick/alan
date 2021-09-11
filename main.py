@@ -326,7 +326,7 @@ async def on_message(message):
             result = cursor.fetchall()
             r = ""
             for row in result:
-              r += row + "\n"
+              r += str(row) + "\n"
             await message.channel.send(r)
 
       elif message.content == ('dream'):
