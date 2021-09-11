@@ -93,7 +93,7 @@ async def on_message(message):
         target = message.content[5:]
         if message.channel.id in client.ASideChannels:
           connection.cursor().execute("select * from archetypes where Side = %s and Archetype = %s", ("A", target.capitalize()))
-          record = connection.cursor().fetchone()
+          record = connection.cursor().fetchall()
           print(record)
         return
 
