@@ -755,7 +755,7 @@ async def on_message(message):
         await self_edit(m)
 
       elif message.content == ('offthebeatenpath'):
-        m = await message.channel.send('Good instinct. Find the right place for it. Maybe ask around?')
+        m = await message.channel.send('There is no path unbeaten here.')
         await self_edit(m)
 
       elif message.content == ('forget'):
@@ -784,6 +784,9 @@ async def on_message(message):
       elif message.content == ('audience'):
         m = await message.channel.send('That could be anybody...')
         await self_edit(m)
+
+      elif message.content == ('esarebrokenwiththepowerd'):
+        await message.channel.send(file=discord.File('&esarebrokenwiththePowerD.png'))
 
 
       elif message.content == ('remember'):
