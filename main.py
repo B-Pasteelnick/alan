@@ -90,12 +90,212 @@ async def on_message(message):
         return
 
       if checkGuide in message.author.roles and message.content.startswith("harm"):
-        target = message.content[5:]
+        target = message.content[5:].capitalize()
         if message.channel.id in client.ASideChannels:
           cursor = connection.cursor(buffered=True)
-          cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("A", target.capitalize()))
+          cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("A", target))
           record = cursor.fetchall()
-          print(record)
+          curr = 0
+          for row in record:
+            curr = row[4]
+          curr = curr + 1
+          cursor.execute("UPDATE archetypes SET Harm = %s WHERE Side = %s AND Archetype = %s", (curr, "A", target))
+          connection.commit()
+          await message.channel.send(target + "'s harm is now " + str(curr))
+        elif message.channel.id in client.BSideChannels:
+          cursor = connection.cursor(buffered=True)
+          cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("B", target))
+          record = cursor.fetchall()
+          curr = 0
+          for row in record:
+            curr = row[4]
+          curr = curr + 1
+          cursor.execute("UPDATE archetypes SET Harm = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
+          connection.commit()
+          await message.channel.send(target + "'s harm is now " + str(curr))
+        return
+
+      elif checkGuide in message.author.roles and message.content.startswith("healharm"):
+        target = message.content[9:].capitalize()
+        if message.channel.id in client.ASideChannels:
+          cursor = connection.cursor(buffered=True)
+          cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("A", target))
+          record = cursor.fetchall()
+          curr = 0
+          for row in record:
+            curr = row[4]
+          curr = min(0,curr - 1)
+          cursor.execute("UPDATE archetypes SET Harm = %s WHERE Side = %s AND Archetype = %s", (curr, "A", target))
+          connection.commit()
+          await message.channel.send(target + "'s harm is now " + str(curr))
+        elif message.channel.id in client.BSideChannels:
+          cursor = connection.cursor(buffered=True)
+          cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("B", target))
+          record = cursor.fetchall()
+          curr = 0
+          for row in record:
+            curr = row[4]
+          curr = min(0,curr - 1)
+          cursor.execute("UPDATE archetypes SET Harm = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
+          connection.commit()
+          await message.channel.send(target + "'s harm is now " + str(curr))
+        return
+
+      elif checkGuide in message.author.roles and message.content.startswith("stress"):
+        target = message.content[7:].capitalize()
+        if message.channel.id in client.ASideChannels:
+          cursor = connection.cursor(buffered=True)
+          cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("A", target))
+          record = cursor.fetchall()
+          curr = 0
+          for row in record:
+            curr = row[5]
+          curr = curr + 1
+          cursor.execute("UPDATE archetypes SET Stress = %s WHERE Side = %s AND Archetype = %s", (curr, "A", target))
+          connection.commit()
+          await message.channel.send(target + "'s stress is now " + str(curr))
+        elif message.channel.id in client.BSideChannels:
+          cursor = connection.cursor(buffered=True)
+          cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("B", target))
+          record = cursor.fetchall()
+          curr = 0
+          for row in record:
+            curr = row[5]
+          curr = curr + 1
+          cursor.execute("UPDATE archetypes SET Stress = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
+          connection.commit()
+          await message.channel.send(target + "'s stress is now " + str(curr))
+        return
+
+      elif checkGuide in message.author.roles and message.content.startswith("healstress"):
+        target = message.content[11:].capitalize()
+        if message.channel.id in client.ASideChannels:
+          cursor = connection.cursor(buffered=True)
+          cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("A", target))
+          record = cursor.fetchall()
+          curr = 0
+          for row in record:
+            curr = row[5]
+          curr = min(0,curr - 1)
+          cursor.execute("UPDATE archetypes SET Stress = %s WHERE Side = %s AND Archetype = %s", (curr, "A", target))
+          connection.commit()
+          await message.channel.send(target + "'s stress is now " + str(curr))
+        elif message.channel.id in client.BSideChannels:
+          cursor = connection.cursor(buffered=True)
+          cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("B", target))
+          record = cursor.fetchall()
+          curr = 0
+          for row in record:
+            curr = row[5]
+          curr = min(0,curr - 1)
+          cursor.execute("UPDATE archetypes SET Stress = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
+          connection.commit()
+          await message.channel.send(target + "'s stress is now " + str(curr))
+        return
+
+
+      elif checkGuide in message.author.roles and message.content.startswith("addmemory"):
+        target = message.content[10:].capitalize()
+        if message.channel.id in client.ASideChannels:
+          cursor = connection.cursor(buffered=True)
+          cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("A", target))
+          record = cursor.fetchall()
+          curr = 0
+          for row in record:
+            curr = row[3]
+          curr = curr + 1
+          cursor.execute("UPDATE archetypes SET Memories = %s WHERE Side = %s AND Archetype = %s", (curr, "A", target))
+          connection.commit()
+          await message.channel.send(target + " now has " + str(curr) + " memories.")
+        elif message.channel.id in client.BSideChannels:
+          cursor = connection.cursor(buffered=True)
+          cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("B", target))
+          record = cursor.fetchall()
+          curr = 0
+          for row in record:
+            curr = row[3]
+          curr = curr + 1
+          cursor.execute("UPDATE archetypes SET Memories = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
+          connection.commit()
+          await message.channel.send(target + " now has " + str(curr) + " memories.")
+        return
+
+      elif message.content.startswith("paymemory"):
+        target = message.content[10:].capitalize()
+        if message.channel.id in client.ASideChannels:
+          cursor = connection.cursor(buffered=True)
+          cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("A", target))
+          record = cursor.fetchall()
+          curr = 0
+          for row in record:
+            curr = row[3]
+          curr = min(0,curr - 1)
+          cursor.execute("UPDATE archetypes SET Memories = %s WHERE Side = %s AND Archetype = %s", (curr, "A", target))
+          connection.commit()
+          await message.channel.send(target + " now has " + str(curr) + " memories.")
+        elif message.channel.id in client.BSideChannels:
+          cursor = connection.cursor(buffered=True)
+          cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("B", target))
+          record = cursor.fetchall()
+          curr = 0
+          for row in record:
+            curr = row[3]
+          curr = min(0,curr - 1)
+          cursor.execute("UPDATE archetypes SET Memories = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
+          connection.commit()
+          await message.channel.send(target + " now has " + str(curr) + " memories.")
+        return
+
+      elif checkGuide in message.author.roles and message.content.startswith("addecho"):
+        target = message.content[8:].capitalize()
+        if message.channel.id in client.ASideChannels:
+          cursor = connection.cursor(buffered=True)
+          cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("A", target))
+          record = cursor.fetchall()
+          curr = 0
+          for row in record:
+            curr = row[2]
+          curr = curr + 1
+          cursor.execute("UPDATE archetypes SET Echoes = %s WHERE Side = %s AND Archetype = %s", (curr, "A", target))
+          connection.commit()
+          await message.channel.send(target + " now has " + str(curr) + " echoes.")
+        elif message.channel.id in client.BSideChannels:
+          cursor = connection.cursor(buffered=True)
+          cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("B", target))
+          record = cursor.fetchall()
+          curr = 0
+          for row in record:
+            curr = row[2]
+          curr = curr + 1
+          cursor.execute("UPDATE archetypes SET Echoes = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
+          connection.commit()
+          await message.channel.send(target + " now has " + str(curr) + " echoes.")
+        return
+
+      elif message.content.startswith("payecho"):
+        target = message.content[8:].capitalize()
+        if message.channel.id in client.ASideChannels:
+          cursor = connection.cursor(buffered=True)
+          cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("A", target))
+          record = cursor.fetchall()
+          curr = 0
+          for row in record:
+            curr = row[2]
+          curr = min(0,curr - 1)
+          cursor.execute("UPDATE archetypes SET Echoes = %s WHERE Side = %s AND Archetype = %s", (curr, "A", target))
+          connection.commit()
+          await message.channel.send(target + " now has " + str(curr) + " echoes.")
+        elif message.channel.id in client.BSideChannels:
+          cursor = connection.cursor(buffered=True)
+          cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("B", target))
+          record = cursor.fetchall()
+          curr = 0
+          for row in record:
+            curr = row[2]
+          curr = min(0,curr - 1)
+          cursor.execute("UPDATE archetypes SET Echoes = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
+          connection.commit()
+          await message.channel.send(target + " now has " + str(curr) + " echoes.")
         return
 
       message.content = message.content.replace(' ', '')
