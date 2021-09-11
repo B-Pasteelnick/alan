@@ -24,26 +24,6 @@ try:
   )
   print(connection)
   with connection.cursor() as cursor:
-    cursor.execute('''
-      DELETE FROM archetypes;
-      ''')
-    cursor.execute('''
-      ALTER TABLE archetypes
-      ADD Echoes TINYINT
-      ''')
-    cursor.execute('''
-      ALTER TABLE archetypes
-      ADD Memories TINYINT
-      ''')
-    cursor.execute('''
-      ALTER TABLE archetypes
-      ADD Harm TINYINT
-      ''')
-    cursor.execute('''
-      ALTER TABLE archetypes
-      ADD Stress TINYINT
-      ''')
-    connection.commit()
 except Error as e:
     print(e)
 
@@ -111,7 +91,7 @@ async def on_message(message):
 
       if checkGuide in message.author.roles and message.content.startswith("harm"):
         target = message.content[5:]
-        if message.channel.id in ASideChannels:
+        if message.channel.id in client.ASideChannels:
           cursor.execute("select * from archetypes where Side = %s, Archetype = %s", ("A", target))
           record = cursor.fetchone()
           print(record)
