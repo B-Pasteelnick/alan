@@ -101,7 +101,7 @@ async def on_message(message):
           curr = curr + 1
           cursor.execute("UPDATE archetypes SET Harm = %s WHERE Side = %s AND Archetype = %s", (curr, "A", target))
           connection.commit()
-          await message.channel.send(target + "'s harm is now " + str(curr))
+          await message.channel.send(target + "'s harm is now " + str(curr) + ".")
         elif message.channel.id in client.BSideChannels:
           cursor = connection.cursor(buffered=True)
           cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("B", target))
@@ -112,7 +112,7 @@ async def on_message(message):
           curr = curr + 1
           cursor.execute("UPDATE archetypes SET Harm = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
-          await message.channel.send(target + "'s harm is now " + str(curr))
+          await message.channel.send(target + "'s harm is now " + str(curr) + ".")
         return
 
       elif checkGuide in message.author.roles and message.content.startswith("healharm"):
@@ -124,10 +124,10 @@ async def on_message(message):
           curr = 0
           for row in record:
             curr = row[4]
-          curr = min(0,curr - 1)
+          curr = max(0,curr - 1)
           cursor.execute("UPDATE archetypes SET Harm = %s WHERE Side = %s AND Archetype = %s", (curr, "A", target))
           connection.commit()
-          await message.channel.send(target + "'s harm is now " + str(curr))
+          await message.channel.send(target + "'s harm is now " + str(curr) + ".")
         elif message.channel.id in client.BSideChannels:
           cursor = connection.cursor(buffered=True)
           cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("B", target))
@@ -135,10 +135,10 @@ async def on_message(message):
           curr = 0
           for row in record:
             curr = row[4]
-          curr = min(0,curr - 1)
+          curr = max(0,curr - 1)
           cursor.execute("UPDATE archetypes SET Harm = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
-          await message.channel.send(target + "'s harm is now " + str(curr))
+          await message.channel.send(target + "'s harm is now " + str(curr) + ".")
         return
 
       elif checkGuide in message.author.roles and message.content.startswith("stress"):
@@ -153,7 +153,7 @@ async def on_message(message):
           curr = curr + 1
           cursor.execute("UPDATE archetypes SET Stress = %s WHERE Side = %s AND Archetype = %s", (curr, "A", target))
           connection.commit()
-          await message.channel.send(target + "'s stress is now " + str(curr))
+          await message.channel.send(target + "'s stress is now " + str(curr) + ".")
         elif message.channel.id in client.BSideChannels:
           cursor = connection.cursor(buffered=True)
           cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("B", target))
@@ -164,7 +164,7 @@ async def on_message(message):
           curr = curr + 1
           cursor.execute("UPDATE archetypes SET Stress = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
-          await message.channel.send(target + "'s stress is now " + str(curr))
+          await message.channel.send(target + "'s stress is now " + str(curr) + ".")
         return
 
       elif checkGuide in message.author.roles and message.content.startswith("healstress"):
@@ -176,10 +176,10 @@ async def on_message(message):
           curr = 0
           for row in record:
             curr = row[5]
-          curr = min(0,curr - 1)
+          curr = max(0,curr - 1)
           cursor.execute("UPDATE archetypes SET Stress = %s WHERE Side = %s AND Archetype = %s", (curr, "A", target))
           connection.commit()
-          await message.channel.send(target + "'s stress is now " + str(curr))
+          await message.channel.send(target + "'s stress is now " + str(curr) + ".")
         elif message.channel.id in client.BSideChannels:
           cursor = connection.cursor(buffered=True)
           cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("B", target))
@@ -187,10 +187,10 @@ async def on_message(message):
           curr = 0
           for row in record:
             curr = row[5]
-          curr = min(0,curr - 1)
+          curr = max(0,curr - 1)
           cursor.execute("UPDATE archetypes SET Stress = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
-          await message.channel.send(target + "'s stress is now " + str(curr))
+          await message.channel.send(target + "'s stress is now " + str(curr) + ".")
         return
 
 
@@ -229,7 +229,7 @@ async def on_message(message):
           curr = 0
           for row in record:
             curr = row[3]
-          curr = min(0,curr - 1)
+          curr = max(0,curr - 1)
           cursor.execute("UPDATE archetypes SET Memories = %s WHERE Side = %s AND Archetype = %s", (curr, "A", target))
           connection.commit()
           await message.channel.send(target + " now has " + str(curr) + " memories.")
@@ -240,7 +240,7 @@ async def on_message(message):
           curr = 0
           for row in record:
             curr = row[3]
-          curr = min(0,curr - 1)
+          curr = max(0,curr - 1)
           cursor.execute("UPDATE archetypes SET Memories = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
           await message.channel.send(target + " now has " + str(curr) + " memories.")
@@ -281,7 +281,7 @@ async def on_message(message):
           curr = 0
           for row in record:
             curr = row[2]
-          curr = min(0,curr - 1)
+          curr = max(0,curr - 1)
           cursor.execute("UPDATE archetypes SET Echoes = %s WHERE Side = %s AND Archetype = %s", (curr, "A", target))
           connection.commit()
           await message.channel.send(target + " now has " + str(curr) + " echoes.")
@@ -292,7 +292,7 @@ async def on_message(message):
           curr = 0
           for row in record:
             curr = row[2]
-          curr = min(0,curr - 1)
+          curr = max(0,curr - 1)
           cursor.execute("UPDATE archetypes SET Echoes = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
           await message.channel.send(target + " now has " + str(curr) + " echoes.")
@@ -319,29 +319,15 @@ async def on_message(message):
         m = await message.channel.send('A phone number, maybe? It\'s all a mess.')
         await self_edit(m)
 
-      elif message.content == ('archetypecheck'):
-        if message.channel.id in client.ASideChannels:
-          with connection.cursor() as cursor:
-            cursor.execute("SELECT Archetype FROM archetypes WHERE Side = 'A'")
-            toSend = ""
-            for i in cursor.fetchall():
-              for e in i:
-                toSend += e + ", "
-            m = await message.channel.send(toSend[:-2])
-            await self_edit(m)
-        elif message.channel.id in client.BSideChannels:
-          with connection.cursor() as cursor:
-            cursor.execute("SELECT Archetype FROM archetypes WHERE Side = 'B'")
-            toSend = ""
-            for i in cursor.fetchall():
-              for e in i:
-                toSend += e + ", "
-            m = await message.channel.send(toSend[:-2])
-            await self_edit(m)
-        elif message.channel.id == 855934709410562068:
-          with connection.cursor() as cursor:
+      elif message.content == ('checkall') and checkGuide in message.author.roles:
+        if message.channel.id == 855934709410562068:
+          with connection.cursor(buffered=True) as cursor:
             cursor.execute("SELECT * FROM archetypes")
-            await message.channel.send(cursor.fetchall())
+            result = cursor.fetchall()
+            r = ""
+            for row in result:
+              r += row + "\n"
+            await message.channel.send(r)
 
       elif message.content == ('dream'):
         m = await message.channel.send('We did think that, at first.')
