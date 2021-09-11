@@ -23,7 +23,7 @@ try:
     database="pxjxsg6c1d91xf93",
   )
   print(connection)
-  with connection.cursor() as cursor:
+  #with connection.cursor() as cursor:
 except Error as e:
     print(e)
 
