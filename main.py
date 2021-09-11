@@ -308,7 +308,7 @@ async def on_message(message):
         elif message.channel.id == 858425078390456330: tgtChar = 'B'
         else: return
         cursor = connection.cursor(buffered=True)
-        cursor.execute("select * from achetypes where Side = %s and Archetype = %s", (tgtChar, "Trickster"))
+        cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Trickster"))
         record = cursor.fetchall()
         echoes = 0
         memories = 0
@@ -328,7 +328,7 @@ async def on_message(message):
         elif message.channel.id == 853826359838244874: tgtChar = 'B'
         else: return
         cursor = connection.cursor(buffered=True)
-        cursor.execute("select * from achetypes where Side = %s and Archetype = %s", (tgtChar, "Strong & Silent"))
+        cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Strong & Silent"))
         record = cursor.fetchall()
         echoes = 0
         memories = 0
@@ -348,7 +348,7 @@ async def on_message(message):
         elif message.channel.id == 853826338482028574: tgtChar = 'B'
         else: return
         cursor = connection.cursor(buffered=True)
-        cursor.execute("select * from achetypes where Side = %s and Archetype = %s", (tgtChar, "Cynic"))
+        cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Cynic"))
         record = cursor.fetchall()
         echoes = 0
         memories = 0
@@ -368,7 +368,7 @@ async def on_message(message):
         elif message.channel.id == 858353300885602364: tgtChar = 'B'
         else: return
         cursor = connection.cursor(buffered=True)
-        cursor.execute("select * from achetypes where Side = %s and Archetype = %s", (tgtChar, "Storyteller"))
+        cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Storyteller"))
         record = cursor.fetchall()
         echoes = 0
         memories = 0
@@ -388,7 +388,7 @@ async def on_message(message):
         elif message.channel.id == 853703410620301352: tgtChar = 'B'
         else: return
         cursor = connection.cursor(buffered=True)
-        cursor.execute("select * from achetypes where Side = %s and Archetype = %s", (tgtChar, "Paragon"))
+        cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Paragon"))
         record = cursor.fetchall()
         echoes = 0
         memories = 0
@@ -408,7 +408,7 @@ async def on_message(message):
         elif message.channel.id == 853826418630328340: tgtChar = 'B'
         else: return
         cursor = connection.cursor(buffered=True)
-        cursor.execute("select * from achetypes where Side = %s and Archetype = %s", (tgtChar, "Fae"))
+        cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Fae"))
         record = cursor.fetchall()
         echoes = 0
         memories = 0
@@ -428,7 +428,7 @@ async def on_message(message):
         elif message.channel.id == 853826359838244874: tgtChar = 'B'
         else: return
         cursor = connection.cursor(buffered=True)
-        cursor.execute("select * from achetypes where Side = %s and Archetype = %s", (tgtChar, "Mentor"))
+        cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Mentor"))
         record = cursor.fetchall()
         echoes = 0
         memories = 0
@@ -448,7 +448,7 @@ async def on_message(message):
         elif message.channel.id == 853826398799134750: tgtChar = 'B'
         else: return
         cursor = connection.cursor(buffered=True)
-        cursor.execute("select * from achetypes where Side = %s and Archetype = %s", (tgtChar, "Sidekick"))
+        cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Sidekick"))
         record = cursor.fetchall()
         echoes = 0
         memories = 0
@@ -468,7 +468,7 @@ async def on_message(message):
         elif message.channel.id == 858353300885602364: tgtChar = 'B'
         else: return
         cursor = connection.cursor(buffered=True)
-        cursor.execute("select * from achetypes where Side = %s and Archetype = %s", (tgtChar, "Beast"))
+        cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Beast"))
         record = cursor.fetchall()
         echoes = 0
         memories = 0
@@ -488,7 +488,7 @@ async def on_message(message):
         elif message.channel.id == 862144551581384715: tgtChar = 'B'
         else: return
         cursor = connection.cursor(buffered=True)
-        cursor.execute("select * from achetypes where Side = %s and Archetype = %s", (tgtChar, "EEE"))
+        cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "EEE"))
         record = cursor.fetchall()
         echoes = 0
         memories = 0
@@ -508,7 +508,7 @@ async def on_message(message):
         elif message.channel.id == 862144551581384715: tgtChar = 'B'
         else: return
         cursor = connection.cursor(buffered=True)
-        cursor.execute("select * from achetypes where Side = %s and Archetype = %s", (tgtChar, "Hedonist"))
+        cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Hedonist"))
         record = cursor.fetchall()
         echoes = 0
         memories = 0
@@ -528,7 +528,7 @@ async def on_message(message):
         elif message.channel.id == 853826338482028574: tgtChar = 'B'
         else: return
         cursor = connection.cursor(buffered=True)
-        cursor.execute("select * from achetypes where Side = %s and Archetype = %s", (tgtChar, "Haunted One"))
+        cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Haunted One"))
         record = cursor.fetchall()
         echoes = 0
         memories = 0
@@ -548,7 +548,7 @@ async def on_message(message):
         elif message.channel.id == 853826418630328340: tgtChar = 'B'
         else: return
         cursor = connection.cursor(buffered=True)
-        cursor.execute("select * from achetypes where Side = %s and Archetype = %s", (tgtChar, "Genius Ditz"))
+        cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Genius Ditz"))
         record = cursor.fetchall()
         echoes = 0
         memories = 0
@@ -568,7 +568,7 @@ async def on_message(message):
         elif message.channel.id == 858425078390456330: tgtChar = 'B'
         else: return
         cursor = connection.cursor(buffered=True)
-        cursor.execute("select * from achetypes where Side = %s and Archetype = %s", (tgtChar, "Rebel"))
+        cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Rebel"))
         record = cursor.fetchall()
         echoes = 0
         memories = 0
@@ -588,7 +588,7 @@ async def on_message(message):
         elif message.channel.id == 853826418630328340: tgtChar = 'B'
         else: return
         cursor = connection.cursor(buffered=True)
-        cursor.execute("select * from achetypes where Side = %s and Archetype = %s", (tgtChar, "Dynamo"))
+        cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Dynamo"))
         record = cursor.fetchall()
         echoes = 0
         memories = 0
@@ -608,7 +608,7 @@ async def on_message(message):
         elif message.channel.id == 853703410620301352: tgtChar = 'B'
         else: return
         cursor = connection.cursor(buffered=True)
-        cursor.execute("select * from achetypes where Side = %s and Archetype = %s", (tgtChar, "OB"))
+        cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "OB"))
         record = cursor.fetchall()
         echoes = 0
         memories = 0
