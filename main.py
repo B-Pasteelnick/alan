@@ -699,7 +699,7 @@ async def on_message(message):
         await self_edit(m)
 
       elif message.content == ('explore') or message.content == ('lookaround') or message.content == ('gonorth') or message.content == ('goeast') or message.content == ('gowest') or message.content == ('gosouth'):
-        m = await message.channel.send('The flame captures your attention... but first you must remember who you are.')
+        m = await message.channel.send('You don’t have to remember that anymore. You can do it now.')
         await self_edit(m)
 
       elif message.content == ('help'):
@@ -781,12 +781,29 @@ async def on_message(message):
           general = client.get_channel(884832202221826059)
           await general.set_permissions(message.author, read_messages=True, send_messages=True)
 
+      elif message.content == ('spiderweb'):
+        if message.channel.id in client.ASideChannels:
+          puzzle = client.get_channel(886841297485324328)
+          if (puzzle.permissions_for(message.author).read_messages == True):
+            await puzzle.set_permissions(message.author, read_messages=False, send_messages=False)
+          else:
+            await puzzle.set_permissions(message.author, read_messages=True, send_messages=True)
+
+
+        elif message.channel.id in client.BSideChannels:
+          puzzle = client.get_channel(886812805527924768)
+          if (puzzle.permissions_for(message.author).read_messages == True):
+            await puzzle.set_permissions(message.author, read_messages=False, send_messages=False)
+          else:
+            await puzzle.set_permissions(message.author, read_messages=True, send_messages=True)
+
       elif message.content == ('audience'):
         m = await message.channel.send('That could be anybody...')
         await self_edit(m)
 
       elif message.content == ('esarebrokenwiththepowerd'):
         await message.channel.send(file=discord.File('&esarebrokenwiththePowerD.png'))
+
 
 
       elif message.content == ('remember'):
