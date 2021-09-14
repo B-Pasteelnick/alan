@@ -801,6 +801,10 @@ async def on_message(message):
         m = await message.channel.send('That could be anybody...')
         await self_edit(m)
 
+      elif message.content == ('weaver'):
+        m = await message.channel.send('We always thought it was ironic, considering what happened.')
+        await self_edit(m)
+
       elif message.content == ('esarebrokenwiththepowerd'):
         await message.channel.send(file=discord.File('&esarebrokenwiththePowerD.png'))
 
