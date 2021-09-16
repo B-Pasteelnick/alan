@@ -808,6 +808,8 @@ async def on_message(message):
       elif message.content == ('esarebrokenwiththepowerd'):
         await message.channel.send(file=discord.File('&esarebrokenwiththePowerD.png'))
 
+      elif message.content == ('cardad954e87cf8f7b9e661a5e39814bb31b'):
+        await message.channel.send(file=discord.File('The Sidekick\'s Lab.png'))
 
 
       elif message.content == ('remember'):
