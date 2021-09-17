@@ -545,7 +545,7 @@ async def on_message(message):
       elif message.content == ("geniusditz"):
         tgtChar = 'Z'
         if message.channel.id == 858885465444712518: tgtChar = 'A'
-        elif message.channel.id == 853826418630328340: tgtChar = 'B'
+        elif message.channel.id == 853826398799134750: tgtChar = 'B'
         else: return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Genius Ditz"))
@@ -813,6 +813,8 @@ async def on_message(message):
 
       elif message.content == ('card46361a71632e9810d8422c00c49029e9'):
         await message.channel.send(file=discord.File('The GD\'s Lab.png'))
+
+      #elif message.content == ('14e49010c0cf571e3133a585dd833789') or message.content == ('0e3964e70f6aca22f1edc573a01882eb')
 
 
       elif message.content == ('remember'):
