@@ -813,6 +813,9 @@ async def on_message(message):
         m = await message.channel.send('What an asshole.')
         await self_edit(m)
 
+      elif message.content == ('spider'):
+        await message.channel.send(':spider:')
+
       elif message.content == ('esarebrokenwiththepowerd'):
         await message.channel.send(file=discord.File('&esarebrokenwiththePowerD.png'))
 
