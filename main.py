@@ -805,11 +805,11 @@ async def on_message(message):
         m = await message.channel.send('We always thought it was ironic, considering what happened.')
         await self_edit(m)
 
-      elif message.content == ('mr.young'):
-        m = await message.channel.send('Wished he was nicer.')
+      elif message.content == ('ms.harriet'):
+        m = await message.channel.send('Wished she was nicer.')
         await self_edit(m)
 
-      elif message.content == ('ms.harriet'):
+      elif message.content == ('mr.young'):
         m = await message.channel.send('What an asshole.')
         await self_edit(m)
 
