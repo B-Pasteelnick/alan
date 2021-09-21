@@ -828,12 +828,13 @@ async def on_message(message):
         await message.channel.send(file=discord.File('&esarebrokenwiththePowerD.png'))
 
       elif message.content == ('cardad954e87cf8f7b9e661a5e39814bb31b'):
-        await message.channel.send(file=discord.File('The Sidekick\'s Lab.png'))
+        await message.channel.send(file=discord.File('B Labs/The Sidekick\'s Lab.png'))
 
       elif message.content == ('card46361a71632e9810d8422c00c49029e9'):
-        await message.channel.send(file=discord.File('The GD\'s Lab.png'))
+        await message.channel.send(file=discord.File('B Labs/The GD\'s Lab.png'))
 
-      #elif message.content == ('14e49010c0cf571e3133a585dd833789') or message.content == ('0e3964e70f6aca22f1edc573a01882eb') or message.content == ('03e423335d50461e14f5c71bb089e861') or message.content == ('157546964e5aa203d49b80c828aa53db') or message.content == ('5e06edb4ed226b1711b4acfb7a3aefa3')
+      elif message.content == ('14e49010c0cf571e3133a585dd833789') or message.content == ('0e3964e70f6aca22f1edc573a01882eb') or message.content == ('03e423335d50461e14f5c71bb089e861') or message.content == ('157546964e5aa203d49b80c828aa53db') or message.content == ('5e06edb4ed226b1711b4acfb7a3aefa3'):
+        await message.channel.send('You found a memory token! @Guides will help you figure out what this means. Good job!')
 
 
       elif message.content == ('remember'):
