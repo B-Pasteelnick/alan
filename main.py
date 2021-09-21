@@ -758,6 +758,10 @@ async def on_message(message):
         m = await message.channel.send('There is no path unbeaten here.')
         await self_edit(m)
 
+      elif message.content == ('Julie'):
+        m = await message.channel.send('Juliette Armstrong, butler and bodyguard. How could you have forgotten her? There was so much going on, I suppose you could cut yourself a little slack..')
+        await self_edit(m)
+
       elif message.content == ('forget'):
         m = await message.channel.send('We\'ve already forgotten so much. We cannot afford to forget any more.')
         await self_edit(m)
@@ -827,11 +831,41 @@ async def on_message(message):
       elif message.content == ('esarebrokenwiththepowerd'):
         await message.channel.send(file=discord.File('&esarebrokenwiththePowerD.png'))
 
+      elif message.content == ('cardbcd28d078b562cbc168cb62a018ddaca'):
+        await message.channel.send(file=discord.File('A Labs/The Fae\'s Lab.png'))
+
+      elif message.content == ('cardd0aba11c6b5a7467d76b7f5713eeba8d'):
+        await message.channel.send(file=discord.File('A Labs/The Paragon\'s Lab.png'))
+
       elif message.content == ('cardad954e87cf8f7b9e661a5e39814bb31b'):
         await message.channel.send(file=discord.File('B Labs/The Sidekick\'s Lab.png'))
 
       elif message.content == ('card46361a71632e9810d8422c00c49029e9'):
         await message.channel.send(file=discord.File('B Labs/The GD\'s Lab.png'))
+
+      elif message.content == ('carda8515bd8faebac07d0f484f51f22df19'):
+        await message.channel.send(file=discord.File('B Labs/The OB\'s Lab.png'))
+
+      elif message.content == ('card248b72b23153515929a3a605fc16e5f7'):
+        await message.channel.send(file=discord.File('B Labs/The Paragon\'s Lab.png'))
+
+      elif message.content == ('carda4ef37044af1b18f767f86cde513e443'):
+        await message.channel.send(file=discord.File('B Labs/The EEE\'s Lab.png'))
+
+      elif message.content == ('card835675ec40be36e4b4b0f149e64da117'):
+        await message.channel.send(file=discord.File('B Labs/The Hedonist\'s Lab.png'))
+
+      elif message.content == ('carda4e2466d6ab2f25fa40235d5024f7893'):
+        await message.channel.send(file=discord.File('B Labs/The Dynamo\'s Lab.png'))
+
+      elif message.content == ('card1495d8e7a1bab809481255c4fe58cb5a'):
+        await message.channel.send(file=discord.File('B Labs/The Fae\'s Lab.png'))
+
+      elif message.content == ('card4857ed8827790609fd88a94a25686ead'):
+        await message.channel.send(file=discord.File('B Labs/The Cynic\'s Lab.png'))
+
+      elif message.content == ('card7e9a0b300a3a7d8e2ce50ba6b6dcbfe0'):
+        await message.channel.send(file=discord.File('B Labs/The Haunted One\'s Lab.png'))
 
       elif message.content == ('14e49010c0cf571e3133a585dd833789') or message.content == ('0e3964e70f6aca22f1edc573a01882eb') or message.content == ('03e423335d50461e14f5c71bb089e861') or message.content == ('157546964e5aa203d49b80c828aa53db') or message.content == ('5e06edb4ed226b1711b4acfb7a3aefa3'):
         await message.channel.send('You found a memory token! @Guides will help you figure out what this means. Good job!')
