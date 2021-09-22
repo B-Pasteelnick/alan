@@ -837,6 +837,18 @@ async def on_message(message):
       elif message.content == ('cardd0aba11c6b5a7467d76b7f5713eeba8d'):
         await message.channel.send(file=discord.File('A Labs/The Paragon\'s Lab.png'))
 
+      elif message.content == ('card41835c2a6ddf12373e09160394e2dc57'):
+        await message.channel.send(file=discord.File('A Labs/The S&S\'s Lab.png'))
+
+      elif message.content == ('card0f6f83536aff1225d01c3d471b6c9d05'):
+        await message.channel.send(file=discord.File('A Labs/The Trickster\'s Lab.png'))
+
+      elif message.content == ('card75a7955f7abdffea5d992c34a57d97e0'):
+        await message.channel.send(file=discord.File('A Labs/The Beast\'s Lab.png'))
+
+      elif message.content == ('card8cdfe5fb3b4aecae4a312e27100155c3'):
+        await message.channel.send(file=discord.File('A Labs/The EEE\'s Lab.png'))
+
       elif message.content == ('cardad954e87cf8f7b9e661a5e39814bb31b'):
         await message.channel.send(file=discord.File('B Labs/The Sidekick\'s Lab.png'))
 
