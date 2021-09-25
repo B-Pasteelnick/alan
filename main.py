@@ -23,6 +23,8 @@ connection = connect(
 )
 print(connection)
 with connection.cursor() as cursor:
+  cursor.execute("DROP TABLE Players")
+
   cursor.execute("CREATE TABLE Players (Name varchar(20), Tokens TINYINT, UID varchar(30))")
   cursor.execute("INSERT INTO Players (Name, Tokens, UID) VALUES ('Ava', 0, '209560384313491456')")
   cursor.execute("INSERT INTO Players (Name, Tokens, UID) VALUES ('Christina', 0, '367539851559567360')")
