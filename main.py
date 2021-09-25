@@ -22,29 +22,7 @@ connection = connect(
   database="pxjxsg6c1d91xf93",
 )
 print(connection)
-with connection.cursor() as cursor:
-  cursor.execute("DROP TABLE Players")
-
-  cursor.execute("CREATE TABLE Players (Name varchar(20), Tokens TINYINT, UID varchar(30))")
-  cursor.execute("INSERT INTO Players (Name, Tokens, UID) VALUES ('Ava', 0, '209560384313491456')")
-  cursor.execute("INSERT INTO Players (Name, Tokens, UID) VALUES ('Christina', 0, '367539851559567360')")
-  cursor.execute("INSERT INTO Players (Name, Tokens, UID) VALUES ('Gary', 0, '449781760083886080')")
-  cursor.execute("INSERT INTO Players (Name, Tokens, UID) VALUES ('Jack', 0, '148560657640325121')")
-  cursor.execute("INSERT INTO Players (Name, Tokens, UID) VALUES ('Janice', 0, '306992983926898689')")
-  cursor.execute("INSERT INTO Players (Name, Tokens, UID) VALUES ('Joey', 0, '336671543423795201')")
-  cursor.execute("INSERT INTO Players (Name, Tokens, UID) VALUES ('Sid', 0, '501107249960189982')")
-  cursor.execute("INSERT INTO Players (Name, Tokens, UID) VALUES ('Sienna', 0, '354347011635544066')")
-
-  cursor.execute("INSERT INTO Players (Name, Tokens, UID) VALUES ('Audrey', 0, '236845578317856769')")
-  cursor.execute("INSERT INTO Players (Name, Tokens, UID) VALUES ('Becca', 0, '371627728643948566')")
-  cursor.execute("INSERT INTO Players (Name, Tokens, UID) VALUES ('Brian', 0, '315992836002676751')")
-  cursor.execute("INSERT INTO Players (Name, Tokens, UID) VALUES ('Christine', 0, '676468054691020810')")
-  cursor.execute("INSERT INTO Players (Name, Tokens, UID) VALUES ('Ed', 0, '268470573137526785')")
-  cursor.execute("INSERT INTO Players (Name, Tokens, UID) VALUES ('Jun', 0, '275464916188790784')")
-  cursor.execute("INSERT INTO Players (Name, Tokens, UID) VALUES ('Eden', 0, '112651984275849216')")
-  cursor.execute("INSERT INTO Players (Name, Tokens, UID) VALUES ('Sarah', 0, '468679170227175424')")
-
-  connection.commit()
+#with connection.cursor() as cursor:
 
 
 
