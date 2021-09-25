@@ -23,7 +23,28 @@ try:
     database="pxjxsg6c1d91xf93",
   )
   print(connection)
-  #with connection.cursor() as cursor:
+  with connection.cursor() as cursor:
+    cursor.execute("CREATE TABLE Players(Name CHAR(20), Tokens TINYINT,  UID CHAR(30)")
+    cursor.execute("INSERT INTO Players (Name, Tokens) VALUES ('Ava', 0, '209560384313491456')")
+    cursor.execute("INSERT INTO Players (Name, Tokens) VALUES ('Christina', 0, '367539851559567360')")
+    cursor.execute("INSERT INTO Players (Name, Tokens) VALUES ('Gary', 0, '449781760083886080')")
+    cursor.execute("INSERT INTO Players (Name, Tokens) VALUES ('Jack', 0, '148560657640325121')")
+    cursor.execute("INSERT INTO Players (Name, Tokens) VALUES ('Janice', 0, '306992983926898689')")
+    cursor.execute("INSERT INTO Players (Name, Tokens) VALUES ('Joey', 0, '336671543423795201')")
+    cursor.execute("INSERT INTO Players (Name, Tokens) VALUES ('Sid', 0, '501107249960189982')")
+    cursor.execute("INSERT INTO Players (Name, Tokens) VALUES ('Sienna', 0, '354347011635544066')")
+
+    cursor.execute("INSERT INTO Players (Name, Tokens) VALUES ('Audrey', 0, '236845578317856769')")
+    cursor.execute("INSERT INTO Players (Name, Tokens) VALUES ('Becca', 0, '371627728643948566')")
+    cursor.execute("INSERT INTO Players (Name, Tokens) VALUES ('Brian', 0, '315992836002676751')")
+    cursor.execute("INSERT INTO Players (Name, Tokens) VALUES ('Christine', 0, '676468054691020810')")
+    cursor.execute("INSERT INTO Players (Name, Tokens) VALUES ('Ed', 0, '268470573137526785')")
+    cursor.execute("INSERT INTO Players (Name, Tokens) VALUES ('Jun', 0, '275464916188790784')")
+    cursor.execute("INSERT INTO Players (Name, Tokens) VALUES ('Eden', 0, '112651984275849216')")
+    cursor.execute("INSERT INTO Players (Name, Tokens) VALUES ('Sarah', 0, '468679170227175424')")
+
+    connection.commit()
+
 except Error as e:
     print(e)
 
@@ -650,6 +671,16 @@ async def on_message(message):
               r += str(row) + "\n"
             await message.channel.send(r)
 
+      elif message.content == ('checkplayers') and checkGuide in message.author.roles:
+        if message.channel.id == 855934709410562068:
+          with connection.cursor(buffered=True) as cursor:
+            cursor.execute("SELECT * FROM Players")
+            result = cursor.fetchall()
+            r = ""
+            for row in result:
+              r += str(row) + "\n"
+            await message.channel.send(r)
+
       elif message.content == ('dream'):
         m = await message.channel.send('We did think that, at first.')
         await self_edit(m)
@@ -849,6 +880,9 @@ async def on_message(message):
       elif message.content == ('card8cdfe5fb3b4aecae4a312e27100155c3'):
         await message.channel.send(file=discord.File('A Labs/The EEE\'s Lab.png'))
 
+      elif message.content == ('carddccfeac2e60b1d47e4d81facbd069b13'):
+        await message.channel.send(file=discord.File('A Labs/The OB\'s Lab.png'))
+
       elif message.content == ('cardad954e87cf8f7b9e661a5e39814bb31b'):
         await message.channel.send(file=discord.File('B Labs/The Sidekick\'s Lab.png'))
 
@@ -881,6 +915,107 @@ async def on_message(message):
 
       elif message.content == ('14e49010c0cf571e3133a585dd833789') or message.content == ('0e3964e70f6aca22f1edc573a01882eb') or message.content == ('03e423335d50461e14f5c71bb089e861') or message.content == ('157546964e5aa203d49b80c828aa53db') or message.content == ('5e06edb4ed226b1711b4acfb7a3aefa3'):
         await message.channel.send('You found a memory token! @Guides will help you figure out what this means. Good job!')
+        with connection.cursor(buffered=True) as cursor:
+          cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE Name = %s", (message.author.id))
+          connection.commit()
+
+      elif (message.content == ('nicky') or message.content == ('anna')) and message.author.id == (336671543423795201):
+        await message.channel.send('You found a memory token! @Guides will help you figure out what this means. Good job!')
+        with connection.cursor(buffered=True) as cursor:
+          cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE Name = %s", (message.author.id))
+          connection.commit()
+
+      elif (message.content == ('clay') or message.content == ('eleanor')) and message.author.id == (501107249960189982):
+        await message.channel.send('You found a memory token! @Guides will help you figure out what this means. Good job!')
+        with connection.cursor(buffered=True) as cursor:
+          cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE Name = %s", (message.author.id))
+          connection.commit()
+
+      elif (message.content == ('charlie') or message.content == ('tania')) and message.author.id == (209560384313491456):
+        await message.channel.send('You found a memory token! @Guides will help you figure out what this means. Good job!')
+        with connection.cursor(buffered=True) as cursor:
+          cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE Name = %s", (message.author.id))
+          connection.commit()
+
+      elif (message.content == ('sage') or message.content == ('paige')) and message.author.id == (354347011635544066):
+        await message.channel.send('You found a memory token! @Guides will help you figure out what this means. Good job!')
+        with connection.cursor(buffered=True) as cursor:
+          cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE Name = %s", (message.author.id))
+          connection.commit()
+
+      elif (message.content == ('ken') or message.content == ('remy')) and message.author.id == (449781760083886080):
+        await message.channel.send('You found a memory token! @Guides will help you figure out what this means. Good job!')
+        with connection.cursor(buffered=True) as cursor:
+          cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE Name = %s", (message.author.id))
+          connection.commit()
+
+      elif (message.content == ('blythe') or message.content == ('august')) and message.author.id == (148560657640325121):
+        await message.channel.send('You found a memory token! @Guides will help you figure out what this means. Good job!')
+        with connection.cursor(buffered=True) as cursor:
+          cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE Name = %s", (message.author.id))
+          connection.commit()
+
+      elif (message.content == ('quinn') or message.content == ('aiden')) and message.author.id == (306992983926898689):
+        await message.channel.send('You found a memory token! @Guides will help you figure out what this means. Good job!')
+        with connection.cursor(buffered=True) as cursor:
+          cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE Name = %s", (message.author.id))
+          connection.commit()
+
+      elif (message.content == ('vivian') or message.content == ('marlow')) and message.author.id == (367539851559567360):
+        await message.channel.send('You found a memory token! @Guides will help you figure out what this means. Good job!')
+        with connection.cursor(buffered=True) as cursor:
+          cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE Name = %s", (message.author.id))
+          connection.commit()
+
+      elif (message.content == ('marlow') or message.content == ('charlie')) and message.author.id == (315992836002676751):
+        await message.channel.send('You found a memory token! @Guides will help you figure out what this means. Good job!')
+        with connection.cursor(buffered=True) as cursor:
+          cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE Name = %s", (message.author.id))
+          connection.commit()
+
+      elif (message.content == ('paige') or message.content == ('quinn')) and message.author.id == (371627728643948566):
+        await message.channel.send('You found a memory token! @Guides will help you figure out what this means. Good job!')
+        with connection.cursor(buffered=True) as cursor:
+          cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE Name = %s", (message.author.id))
+          connection.commit()
+
+      elif (message.content == ('tania') or message.content == ('vivian')) and message.author.id == (676468054691020810):
+        await message.channel.send('You found a memory token! @Guides will help you figure out what this means. Good job!')
+        with connection.cursor(buffered=True) as cursor:
+          cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE Name = %s", (message.author.id))
+          connection.commit()
+
+      elif (message.content == ('eleanor') or message.content == ('ken')) and message.author.id == (112651984275849216):
+        await message.channel.send('You found a memory token! @Guides will help you figure out what this means. Good job!')
+        with connection.cursor(buffered=True) as cursor:
+          cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE Name = %s", (message.author.id))
+          connection.commit()
+
+      elif (message.content == ('aiden') or message.content == ('nicky')) and message.author.id == (275464916188790784):
+        await message.channel.send('You found a memory token! @Guides will help you figure out what this means. Good job!')
+        with connection.cursor(buffered=True) as cursor:
+          cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE Name = %s", (message.author.id))
+          connection.commit()
+
+      elif (message.content == ('anna') or message.content == ('sage')) and message.author.id == (468679170227175424):
+        await message.channel.send('You found a memory token! @Guides will help you figure out what this means. Good job!')
+        with connection.cursor(buffered=True) as cursor:
+          cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE Name = %s", (message.author.id))
+          connection.commit()
+
+      elif (message.content == ('august') or message.content == ('clay')) and message.author.id == (268470573137526785):
+        await message.channel.send('You found a memory token! @Guides will help you figure out what this means. Good job!')
+        with connection.cursor(buffered=True) as cursor:
+          cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE Name = %s", (message.author.id))
+          connection.commit()
+
+      elif (message.content == ('remy') or message.content == ('blythe')) and message.author.id == (236845578317856769):
+        await message.channel.send('You found a memory token! @Guides will help you figure out what this means. Good job!')
+        with connection.cursor(buffered=True) as cursor:
+          cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE Name = %s", (message.author.id))
+          connection.commit()
+
+
 
 
       elif message.content == ('remember'):
