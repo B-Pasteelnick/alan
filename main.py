@@ -191,7 +191,7 @@ async def on_message(message):
         return
 
 
-      elif checkGuide in message.author.roles and message.content.startswith("addmemory"):
+      elif message.content.startswith("addmemory"):
         target = message.content[10:].capitalize()
         if message.channel.id in client.ASideChannels:
           cursor = connection.cursor(buffered=True)
@@ -243,7 +243,7 @@ async def on_message(message):
           await message.channel.send(target + " now has " + str(curr) + " memories.")
         return
 
-      elif checkGuide in message.author.roles and message.content.startswith("addecho"):
+      elif message.content.startswith("addecho"):
         target = message.content[8:].capitalize()
         if message.channel.id in client.ASideChannels:
           cursor = connection.cursor(buffered=True)
