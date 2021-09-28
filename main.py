@@ -22,9 +22,9 @@ connection = connect(
   database="pxjxsg6c1d91xf93",
 )
 print(connection)
-with connection.cursor() as cursor:
-  cursor.execute("INSERT INTO Players (Name, Tokens) VALUES ('Mastermind', 25)")
-  connection.commit()
+#with connection.cursor() as cursor:
+#  cursor.execute("INSERT INTO Players (Name, Tokens) VALUES ('Mastermind', 25)")
+#  connection.commit()
 
 
 
