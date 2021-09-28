@@ -1020,7 +1020,7 @@ async def on_message(message):
 
       elif (message.content.startswith('spendpoints') and (message.author.id == 209560384313491456 or message.author.id == 315992836002676751 or checkGuide in message.author.roles)):
         tgt = ""
-        tgt.join(i for i in message.content if i.isdigit())
+        tgt = "".join(i for i in message.content if i.isdigit())
         with connection.cursor(buffered=True) as cursor:
 
           cursor.execute("select * from Players where Name = 'Mastermind'")
@@ -1038,7 +1038,7 @@ async def on_message(message):
 
       elif (message.content.startswith('addpoints') and checkGuide in message.author.roles):
         tgt = ""
-        tgt.join(i for i in message.content if i.isdigit())
+        tgt = "".join(i for i in message.content if i.isdigit())
         with connection.cursor(buffered=True) as cursor:
           cursor.execute("UPDATE Players SET Tokens = Tokens + %s WHERE Name = &s", (int(tgt), "Mastermind"))
           connection.commit()
