@@ -22,7 +22,9 @@ connection = connect(
   database="pxjxsg6c1d91xf93",
 )
 print(connection)
-#with connection.cursor() as cursor:
+with connection.cursor() as cursor:
+  cursor.execute("INSERT INTO Players (Name, Tokens) VALUES (Mastermind, 25)")
+  connection.commit()
 
 
 
@@ -673,6 +675,14 @@ async def on_message(message):
           m = await message.channel.send('The parameters of life. This may help us remember who we are - but they may change with time, if only slightly. https://docs.google.com/document/d/1RkLS-1lk0A2PbrUZ0dpfNolKy0iJBaCmMwCDmf5k5dg/edit?usp=sharing')
           await self_edit(m)
 
+      elif message.content == ('chapter1poll'):
+        if message.channel.id in client.ASideChannels:
+          m = await message.channel.send('The beginning of the end. https://forms.gle/WHKzfARkL2BsksK49')
+          await self_edit(m)
+        elif message.channel.id in client.BSideChannels:
+          m = await message.channel.send('The beginning of the end. https://forms.gle/UguffiJY6pGQ36pJ8')
+          await self_edit(m)
+
       elif message.content == ('test'):
         m = await message.channel.send('Perhaps it is.')
         await self_edit(m)
@@ -831,8 +841,16 @@ async def on_message(message):
         m = await message.channel.send('They never talked about it.')
         await self_edit(m)
 
+      elif message.content == ('end'):
+        m = await message.channel.send('Of a memory, maybe. But can you use it?')
+        await self_edit(m)
+
       elif message.content == ('wilfredweaver') or message.content == ('dr.wilfredweaver'):
         m = await message.channel.send('What happened to them?')
+        await self_edit(m)
+
+      elif message.content == ('ionsthatdo'):
+        m = await message.channel.send('If you find a memory in a public place (such as a construction site or park, for example), you should leave it there for other people to find.')
         await self_edit(m)
 
       elif message.content == ('esarebrokenwiththepowerd'):
@@ -990,6 +1008,40 @@ async def on_message(message):
         with connection.cursor(buffered=True) as cursor:
           cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE Name = %s", (message.author.id))
           connection.commit()
+
+      elif (message.content == ('checkpoints') and (message.author.id == 209560384313491456 or message.author.id == 315992836002676751 or checkGuide in message.author.roles)):
+        with connection.cursor(buffered=True) as cursor:
+          cursor.execute("select * from Players where Name = 'Mastermind'")
+          record = cursor.fetchall()
+          points = 0
+          for row in record:
+            points = row[1]
+          await message.channel.send("You have " + str(points) + " points remaining.")
+
+      elif (message.content.startswith('spendpoints') and (message.author.id == 209560384313491456 or message.author.id == 315992836002676751 or checkGuide in message.author.roles)):
+        arguments = message.content.split(' ')
+        tgt = int(arguments[1])
+        with connection.cursor(buffered=True) as cursor:
+
+          cursor.execute("select * from Players where Name = 'Mastermind'")
+          record = cursor.fetchall()
+          curr = 0
+          for row in record:
+            curr = row[1]
+          if (curr < tgt):
+            await message.channel.send("You don't have enough points...")
+            return
+          curr = max(0,curr - tgt)
+          cursor.execute("UPDATE Players SET Tokens = %s WHERE Name = %s", (curr, "Mastermind"))
+          connection.commit()
+          await message.channel.send("You now have " + str(curr) + " Points.")
+
+      elif (message.content.startswith('addpoints') and checkGuide in message.author.roles):
+        arguments = message.content.split(' ')
+        with connection.cursor(buffered=True) as cursor:
+          cursor.execute("UPDATE Players SET Tokens = Tokens + %s WHERE Name = &s", (int(arguments[1]), "Mastermind"))
+          connection.commit()
+          await message.channel.send("You added " + arguments[1] + " Points.")
 
 
 
