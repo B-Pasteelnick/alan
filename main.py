@@ -1040,7 +1040,7 @@ async def on_message(message):
         tgt = ""
         tgt = "".join(i for i in message.content if i.isdigit())
         with connection.cursor(buffered=True) as cursor:
-          cursor.execute("UPDATE Players SET Tokens = Tokens + %s WHERE Name = &s", (int(tgt), "Mastermind"))
+          cursor.execute("UPDATE Players SET Tokens = Tokens + %s WHERE Name = %s", (int(tgt), "Mastermind"))
           connection.commit()
           await message.channel.send("You added " + tgt + " Points.")
 
