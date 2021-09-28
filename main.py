@@ -1020,7 +1020,8 @@ async def on_message(message):
 
       elif (message.content.startswith('spendpoints') and (message.author.id == 209560384313491456 or message.author.id == 315992836002676751 or checkGuide in message.author.roles)):
         arguments = message.content.split(' ')
-        tgt = int(arguments[1])
+        tgt = ""
+        filter(lambda x: x.isdigit(), tgt)
         with connection.cursor(buffered=True) as cursor:
 
           cursor.execute("select * from Players where Name = 'Mastermind'")
@@ -1028,20 +1029,21 @@ async def on_message(message):
           curr = 0
           for row in record:
             curr = row[1]
-          if (curr < tgt):
+          if (curr < int(tgt)):
             await message.channel.send("You don't have enough points...")
             return
-          curr = max(0,curr - tgt)
+          curr = max(0,curr - int(tgt))
           cursor.execute("UPDATE Players SET Tokens = %s WHERE Name = %s", (curr, "Mastermind"))
           connection.commit()
           await message.channel.send("You now have " + str(curr) + " Points.")
 
       elif (message.content.startswith('addpoints') and checkGuide in message.author.roles):
-        arguments = message.content.split(' ')
+        tgt = ""
+        filter(lambda x: x.isdigit(), tgt)
         with connection.cursor(buffered=True) as cursor:
-          cursor.execute("UPDATE Players SET Tokens = Tokens + %s WHERE Name = &s", (int(arguments[1]), "Mastermind"))
+          cursor.execute("UPDATE Players SET Tokens = Tokens + %s WHERE Name = &s", (int(tgt), "Mastermind"))
           connection.commit()
-          await message.channel.send("You added " + arguments[1] + " Points.")
+          await message.channel.send("You added " + tgt + " Points.")
 
 
 
