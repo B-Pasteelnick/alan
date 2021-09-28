@@ -23,7 +23,7 @@ connection = connect(
 )
 print(connection)
 with connection.cursor() as cursor:
-  cursor.execute("INSERT INTO Players (Name, Tokens) VALUES (Mastermind, 25)")
+  cursor.execute("INSERT INTO Players (Name, Tokens) VALUES ('Mastermind', 25)")
   connection.commit()
 
 
