@@ -305,7 +305,9 @@ async def on_message(message):
         tgtChar = 'Z'
         if message.channel.id == 853698538473914418: tgtChar = 'A'
         elif message.channel.id == 858425078390456330: tgtChar = 'B'
-        else: connection.close() return
+        else:
+          connection.close()
+          return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Trickster"))
         record = cursor.fetchall()
@@ -324,7 +326,9 @@ async def on_message(message):
         tgtChar = 'Z'
         if message.channel.id == 853698538473914418: tgtChar = 'A'
         elif message.channel.id == 853826359838244874: tgtChar = 'B'
-        else: connection.close() return
+        else:
+          connection.close()
+          return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Strong & Silent"))
         record = cursor.fetchall()
@@ -343,7 +347,9 @@ async def on_message(message):
         tgtChar = 'Z'
         if message.channel.id == 858251891049496577: tgtChar = 'A'
         elif message.channel.id == 853826338482028574: tgtChar = 'B'
-        else: connection.close() return
+        else:
+          connection.close()
+          return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Cynic"))
         record = cursor.fetchall()
@@ -362,7 +368,9 @@ async def on_message(message):
         tgtChar = 'Z'
         if message.channel.id == 858251891049496577: tgtChar = 'A'
         elif message.channel.id == 858353300885602364: tgtChar = 'B'
-        else: connection.close() return
+        else:
+          connection.close()
+          return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Storyteller"))
         record = cursor.fetchall()
@@ -381,7 +389,9 @@ async def on_message(message):
         tgtChar = 'Z'
         if message.channel.id == 853703038644912158: tgtChar = 'A'
         elif message.channel.id == 853703410620301352: tgtChar = 'B'
-        else: connection.close() return
+        else:
+          connection.close()
+          return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Paragon"))
         record = cursor.fetchall()
@@ -400,7 +410,9 @@ async def on_message(message):
         tgtChar = 'Z'
         if message.channel.id == 853703038644912158: tgtChar = 'A'
         elif message.channel.id == 853826418630328340: tgtChar = 'B'
-        else: connection.close() return
+        else:
+          connection.close()
+          return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Fae"))
         record = cursor.fetchall()
@@ -419,7 +431,9 @@ async def on_message(message):
         tgtChar = 'Z'
         if message.channel.id == 858478351819866143: tgtChar = 'A'
         elif message.channel.id == 853826359838244874: tgtChar = 'B'
-        else: connection.close() return
+        else:
+          connection.close()
+          return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Mentor"))
         record = cursor.fetchall()
@@ -438,7 +452,9 @@ async def on_message(message):
         tgtChar = 'Z'
         if message.channel.id == 858478351819866143: tgtChar = 'A'
         elif message.channel.id == 853826398799134750: tgtChar = 'B'
-        else: connection.close() return
+        else:
+          connection.close()
+          return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Sidekick"))
         record = cursor.fetchall()
@@ -457,7 +473,9 @@ async def on_message(message):
         tgtChar = 'Z'
         if message.channel.id == 858164641586216981: tgtChar = 'A'
         elif message.channel.id == 858353300885602364: tgtChar = 'B'
-        else: connection.close() return
+        else:
+          connection.close()
+          return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Beast"))
         record = cursor.fetchall()
@@ -476,7 +494,9 @@ async def on_message(message):
         tgtChar = 'Z'
         if message.channel.id == 858164641586216981: tgtChar = 'A'
         elif message.channel.id == 862144551581384715: tgtChar = 'B'
-        else: connection.close() return
+        else:
+          connection.close()
+          return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "EEE"))
         record = cursor.fetchall()
@@ -495,7 +515,9 @@ async def on_message(message):
         tgtChar = 'Z'
         if message.channel.id == 858164604719071253: tgtChar = 'A'
         elif message.channel.id == 862144551581384715: tgtChar = 'B'
-        else: connection.close() return
+        else:
+          connection.close()
+          return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Hedonist"))
         record = cursor.fetchall()
@@ -514,7 +536,9 @@ async def on_message(message):
         tgtChar = 'Z'
         if message.channel.id == 858164604719071253: tgtChar = 'A'
         elif message.channel.id == 853826338482028574: tgtChar = 'B'
-        else: connection.close() return
+        else:
+          connection.close()
+          return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Haunted One"))
         record = cursor.fetchall()
@@ -533,7 +557,9 @@ async def on_message(message):
         tgtChar = 'Z'
         if message.channel.id == 858885465444712518: tgtChar = 'A'
         elif message.channel.id == 853826398799134750: tgtChar = 'B'
-        else: connection.close() return
+        else:
+          connection.close()
+          return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Genius Ditz"))
         record = cursor.fetchall()
@@ -552,7 +578,9 @@ async def on_message(message):
         tgtChar = 'Z'
         if message.channel.id == 858885465444712518: tgtChar = 'A'
         elif message.channel.id == 858425078390456330: tgtChar = 'B'
-        else: connection.close() return
+        else:
+          connection.close()
+          return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Rebel"))
         record = cursor.fetchall()
@@ -571,7 +599,9 @@ async def on_message(message):
         tgtChar = 'Z'
         if message.channel.id == 861889058892283915: tgtChar = 'A'
         elif message.channel.id == 853826418630328340: tgtChar = 'B'
-        else: connection.close() return
+        else:
+          connection.close()
+          return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Dynamo"))
         record = cursor.fetchall()
@@ -590,7 +620,9 @@ async def on_message(message):
         tgtChar = 'Z'
         if message.channel.id == 861889058892283915: tgtChar = 'A'
         elif message.channel.id == 853703410620301352: tgtChar = 'B'
-        else: connection.close() return
+        else:
+          connection.close()
+          return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "OB"))
         record = cursor.fetchall()
