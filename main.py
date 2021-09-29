@@ -25,6 +25,7 @@ print(connection)
 #with connection.cursor() as cursor:
 #  cursor.execute("INSERT INTO Players (Name, Tokens) VALUES ('Mastermind', 25)")
 #  connection.commit()
+connection.close()
 
 
 
@@ -77,16 +78,23 @@ async def on_message(message):
         return
 
 
-      if checkGuide in message.author.roles and message.content.startswith('adda archetype'):
-        connection.cursor().execute("INSERT INTO archetypes (Side, Archetype, Echoes, Memories, Harm, Stress) VALUES (%s, %s, %s, %s, %s, %s)", ("A", oMess[16:], 0, 0, 0, 0))
-        connection.commit()
-        await message.channel.send("Added " + oMess[16:] + " to A Side")
-        return
-      elif checkGuide in message.author.roles and message.content.startswith('addb archetype'):
-        connection.cursor().execute("INSERT INTO archetypes (Side, Archetype, Echoes, Memories, Harm, Stress) VALUES (%s, %s, %s, %s, %s, %s)", ("B", oMess[16:], 0, 0, 0, 0))
-        connection.commit()
-        await message.channel.send("Added " + oMess[16:] + " to B Side")
-        return
+      #if checkGuide in message.author.roles and message.content.startswith('adda archetype'):
+      #  connection.cursor().execute("INSERT INTO archetypes (Side, Archetype, Echoes, Memories, Harm, Stress) VALUES (%s, %s, %s, %s, %s, %s)", ("A", oMess[16:], 0, 0, 0, 0))
+      #  connection.commit()
+      #  await message.channel.send("Added " + oMess[16:] + " to A Side")
+      #  return
+      #elif checkGuide in message.author.roles and message.content.startswith('addb archetype'):
+      #  connection.cursor().execute("INSERT INTO archetypes (Side, Archetype, Echoes, Memories, Harm, Stress) VALUES (%s, %s, %s, %s, %s, %s)", ("B", oMess[16:], 0, 0, 0, 0))
+      #  connection.commit()
+      #  await message.channel.send("Added " + oMess[16:] + " to B Side")
+      #  return
+
+      connection = connect(
+      host=os.getenv("DBHOST"),
+      user=os.getenv("DBUSER"),
+      password=os.getenv("DBPASS"),
+      database="pxjxsg6c1d91xf93",
+      )
 
       if checkGuide in message.author.roles and message.content.startswith("harm"):
         target = message.content[5:].capitalize()
@@ -112,7 +120,6 @@ async def on_message(message):
           cursor.execute("UPDATE archetypes SET Harm = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
           await message.channel.send(target + "'s harm is now " + str(curr) + ".")
-        return
 
       elif checkGuide in message.author.roles and message.content.startswith("healharm"):
         target = message.content[9:].capitalize()
@@ -138,7 +145,6 @@ async def on_message(message):
           cursor.execute("UPDATE archetypes SET Harm = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
           await message.channel.send(target + "'s harm is now " + str(curr) + ".")
-        return
 
       elif checkGuide in message.author.roles and message.content.startswith("stress"):
         target = message.content[7:].capitalize()
@@ -164,7 +170,6 @@ async def on_message(message):
           cursor.execute("UPDATE archetypes SET Stress = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
           await message.channel.send(target + "'s stress is now " + str(curr) + ".")
-        return
 
       elif checkGuide in message.author.roles and message.content.startswith("healstress"):
         target = message.content[11:].capitalize()
@@ -190,7 +195,6 @@ async def on_message(message):
           cursor.execute("UPDATE archetypes SET Stress = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
           await message.channel.send(target + "'s stress is now " + str(curr) + ".")
-        return
 
 
       elif message.content.startswith("addmemory"):
@@ -217,7 +221,6 @@ async def on_message(message):
           cursor.execute("UPDATE archetypes SET Memories = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
           await message.channel.send(target + " now has " + str(curr) + " memories.")
-        return
 
       elif message.content.startswith("paymemory"):
         target = message.content[10:].capitalize()
@@ -243,7 +246,6 @@ async def on_message(message):
           cursor.execute("UPDATE archetypes SET Memories = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
           await message.channel.send(target + " now has " + str(curr) + " memories.")
-        return
 
       elif message.content.startswith("addecho"):
         target = message.content[8:].capitalize()
@@ -269,7 +271,6 @@ async def on_message(message):
           cursor.execute("UPDATE archetypes SET Echoes = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
           await message.channel.send(target + " now has " + str(curr) + " echoes.")
-        return
 
       elif message.content.startswith("payecho"):
         target = message.content[8:].capitalize()
@@ -295,7 +296,6 @@ async def on_message(message):
           cursor.execute("UPDATE archetypes SET Echoes = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
           await message.channel.send(target + " now has " + str(curr) + " echoes.")
-        return
 
 
       message.content = message.content.replace(' ', '')
@@ -305,7 +305,7 @@ async def on_message(message):
         tgtChar = 'Z'
         if message.channel.id == 853698538473914418: tgtChar = 'A'
         elif message.channel.id == 858425078390456330: tgtChar = 'B'
-        else: return
+        else: connection.close() return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Trickster"))
         record = cursor.fetchall()
@@ -319,13 +319,12 @@ async def on_message(message):
           harm = row[4]
           stress = row[5]
         await message.channel.send("The Trickster has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
-        return
 
       elif message.content == ("strong&silent") or message.content == ("strongandsilent") or message.content == ("s&s") or message.content == ("sands"):
         tgtChar = 'Z'
         if message.channel.id == 853698538473914418: tgtChar = 'A'
         elif message.channel.id == 853826359838244874: tgtChar = 'B'
-        else: return
+        else: connection.close() return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Strong & Silent"))
         record = cursor.fetchall()
@@ -339,13 +338,12 @@ async def on_message(message):
           harm = row[4]
           stress = row[5]
         await message.channel.send("The Strong & Silent has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
-        return
 
       elif message.content == ("cynic"):
         tgtChar = 'Z'
         if message.channel.id == 858251891049496577: tgtChar = 'A'
         elif message.channel.id == 853826338482028574: tgtChar = 'B'
-        else: return
+        else: connection.close() return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Cynic"))
         record = cursor.fetchall()
@@ -359,13 +357,12 @@ async def on_message(message):
           harm = row[4]
           stress = row[5]
         await message.channel.send("The Cynic has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
-        return
 
       elif message.content == ("storyteller"):
         tgtChar = 'Z'
         if message.channel.id == 858251891049496577: tgtChar = 'A'
         elif message.channel.id == 858353300885602364: tgtChar = 'B'
-        else: return
+        else: connection.close() return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Storyteller"))
         record = cursor.fetchall()
@@ -379,13 +376,12 @@ async def on_message(message):
           harm = row[4]
           stress = row[5]
         await message.channel.send("The Storyteller has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
-        return
 
       elif message.content == ("paragon"):
         tgtChar = 'Z'
         if message.channel.id == 853703038644912158: tgtChar = 'A'
         elif message.channel.id == 853703410620301352: tgtChar = 'B'
-        else: return
+        else: connection.close() return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Paragon"))
         record = cursor.fetchall()
@@ -399,13 +395,12 @@ async def on_message(message):
           harm = row[4]
           stress = row[5]
         await message.channel.send("The Paragon has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
-        return
 
       elif message.content == ("fae"):
         tgtChar = 'Z'
         if message.channel.id == 853703038644912158: tgtChar = 'A'
         elif message.channel.id == 853826418630328340: tgtChar = 'B'
-        else: return
+        else: connection.close() return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Fae"))
         record = cursor.fetchall()
@@ -419,13 +414,12 @@ async def on_message(message):
           harm = row[4]
           stress = row[5]
         await message.channel.send("The Fae has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
-        return
 
       elif message.content == ("mentor") or message.content == ("eccentricmentor"):
         tgtChar = 'Z'
         if message.channel.id == 858478351819866143: tgtChar = 'A'
         elif message.channel.id == 853826359838244874: tgtChar = 'B'
-        else: return
+        else: connection.close() return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Mentor"))
         record = cursor.fetchall()
@@ -439,13 +433,12 @@ async def on_message(message):
           harm = row[4]
           stress = row[5]
         await message.channel.send("The Mentor has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
-        return
 
       elif message.content == ("sidekick"):
         tgtChar = 'Z'
         if message.channel.id == 858478351819866143: tgtChar = 'A'
         elif message.channel.id == 853826398799134750: tgtChar = 'B'
-        else: return
+        else: connection.close() return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Sidekick"))
         record = cursor.fetchall()
@@ -459,13 +452,12 @@ async def on_message(message):
           harm = row[4]
           stress = row[5]
         await message.channel.send("The Sidekick has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
-        return
 
       elif message.content == ("beast"):
         tgtChar = 'Z'
         if message.channel.id == 858164641586216981: tgtChar = 'A'
         elif message.channel.id == 858353300885602364: tgtChar = 'B'
-        else: return
+        else: connection.close() return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Beast"))
         record = cursor.fetchall()
@@ -479,13 +471,12 @@ async def on_message(message):
           harm = row[4]
           stress = row[5]
         await message.channel.send("The Beast has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
-        return
 
       elif message.content == ("eee") or message.content == ("enigmaticempoweringentity"):
         tgtChar = 'Z'
         if message.channel.id == 858164641586216981: tgtChar = 'A'
         elif message.channel.id == 862144551581384715: tgtChar = 'B'
-        else: return
+        else: connection.close() return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "EEE"))
         record = cursor.fetchall()
@@ -499,13 +490,12 @@ async def on_message(message):
           harm = row[4]
           stress = row[5]
         await message.channel.send("The Enigmatic Empowering Entity has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
-        return
 
       elif message.content == ("hedonist"):
         tgtChar = 'Z'
         if message.channel.id == 858164604719071253: tgtChar = 'A'
         elif message.channel.id == 862144551581384715: tgtChar = 'B'
-        else: return
+        else: connection.close() return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Hedonist"))
         record = cursor.fetchall()
@@ -519,13 +509,12 @@ async def on_message(message):
           harm = row[4]
           stress = row[5]
         await message.channel.send("The Hedonist has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
-        return
 
       elif message.content == ("hauntedone"):
         tgtChar = 'Z'
         if message.channel.id == 858164604719071253: tgtChar = 'A'
         elif message.channel.id == 853826338482028574: tgtChar = 'B'
-        else: return
+        else: connection.close() return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Haunted One"))
         record = cursor.fetchall()
@@ -539,13 +528,12 @@ async def on_message(message):
           harm = row[4]
           stress = row[5]
         await message.channel.send("The Haunted One has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
-        return
 
       elif message.content == ("geniusditz"):
         tgtChar = 'Z'
         if message.channel.id == 858885465444712518: tgtChar = 'A'
         elif message.channel.id == 853826398799134750: tgtChar = 'B'
-        else: return
+        else: connection.close() return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Genius Ditz"))
         record = cursor.fetchall()
@@ -559,13 +547,12 @@ async def on_message(message):
           harm = row[4]
           stress = row[5]
         await message.channel.send("The Genius Ditz has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
-        return
 
       elif message.content == ("rebel"):
         tgtChar = 'Z'
         if message.channel.id == 858885465444712518: tgtChar = 'A'
         elif message.channel.id == 858425078390456330: tgtChar = 'B'
-        else: return
+        else: connection.close() return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Rebel"))
         record = cursor.fetchall()
@@ -579,13 +566,12 @@ async def on_message(message):
           harm = row[4]
           stress = row[5]
         await message.channel.send("The Rebel has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
-        return
 
       elif message.content == ("dynamo"):
         tgtChar = 'Z'
         if message.channel.id == 861889058892283915: tgtChar = 'A'
         elif message.channel.id == 853826418630328340: tgtChar = 'B'
-        else: return
+        else: connection.close() return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "Dynamo"))
         record = cursor.fetchall()
@@ -599,13 +585,12 @@ async def on_message(message):
           harm = row[4]
           stress = row[5]
         await message.channel.send("The Dynamo has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
-        return
 
       elif message.content == ("ob") or message.content == ("obstructivebureaucrat"):
         tgtChar = 'Z'
         if message.channel.id == 861889058892283915: tgtChar = 'A'
         elif message.channel.id == 853703410620301352: tgtChar = 'B'
-        else: return
+        else: connection.close() return
         cursor = connection.cursor(buffered=True)
         cursor.execute("select * from archetypes where Side = %s and Archetype = %s", (tgtChar, "OB"))
         record = cursor.fetchall()
@@ -619,7 +604,6 @@ async def on_message(message):
           harm = row[4]
           stress = row[5]
         await message.channel.send("The Obstructive Bureaucrat has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
-        return
       
 
       #permRole = discord.utils.get(message.guild.roles, name='Normie')
@@ -1030,11 +1014,11 @@ async def on_message(message):
             curr = row[1]
           if (curr < int(tgt)):
             await message.channel.send("You don't have enough points...")
-            return
-          curr = max(0,curr - int(tgt))
-          cursor.execute("UPDATE Players SET Tokens = %s WHERE Name = %s", (curr, "Mastermind"))
-          connection.commit()
-          await message.channel.send("You now have " + str(curr) + " Points.")
+          else:
+            curr = max(0,curr - int(tgt))
+            cursor.execute("UPDATE Players SET Tokens = %s WHERE Name = %s", (curr, "Mastermind"))
+            connection.commit()
+            await message.channel.send("You now have " + str(curr) + " Points.")
 
       elif (message.content.startswith('addpoints') and checkGuide in message.author.roles):
         tgt = ""
@@ -1046,6 +1030,8 @@ async def on_message(message):
 
 
 
+
+      connection.close()
 
       elif message.content == ('remember'):
         bars = '\n**-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------**\n'
