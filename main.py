@@ -667,7 +667,7 @@ async def on_message(message):
       #  role = discord.utils.get(message.guild.roles, name='Normie')
       #  await message.author.remove_roles(role)
 
-      if message.content == ('8622985399'):
+      elif message.content == ('8622985399'):
         m = await message.channel.send('A phone number, maybe? It\'s all a mess.')
         await self_edit(m)
 
