@@ -120,6 +120,8 @@ async def on_message(message):
           cursor.execute("UPDATE archetypes SET Harm = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
           await message.channel.send(target + "'s harm is now " + str(curr) + ".")
+        connection.close()
+        return
 
       elif checkGuide in message.author.roles and message.content.startswith("healharm"):
         target = message.content[9:].capitalize()
@@ -145,6 +147,8 @@ async def on_message(message):
           cursor.execute("UPDATE archetypes SET Harm = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
           await message.channel.send(target + "'s harm is now " + str(curr) + ".")
+        connection.close()
+        return
 
       elif checkGuide in message.author.roles and message.content.startswith("stress"):
         target = message.content[7:].capitalize()
@@ -170,6 +174,8 @@ async def on_message(message):
           cursor.execute("UPDATE archetypes SET Stress = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
           await message.channel.send(target + "'s stress is now " + str(curr) + ".")
+        connection.close()
+        return
 
       elif checkGuide in message.author.roles and message.content.startswith("healstress"):
         target = message.content[11:].capitalize()
@@ -195,6 +201,8 @@ async def on_message(message):
           cursor.execute("UPDATE archetypes SET Stress = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
           await message.channel.send(target + "'s stress is now " + str(curr) + ".")
+        connection.close()
+        return
 
 
       elif message.content.startswith("addmemory"):
@@ -221,6 +229,8 @@ async def on_message(message):
           cursor.execute("UPDATE archetypes SET Memories = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
           await message.channel.send(target + " now has " + str(curr) + " memories.")
+        connection.close()
+        return
 
       elif message.content.startswith("paymemory"):
         target = message.content[10:].capitalize()
@@ -246,6 +256,8 @@ async def on_message(message):
           cursor.execute("UPDATE archetypes SET Memories = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
           await message.channel.send(target + " now has " + str(curr) + " memories.")
+        connection.close()
+        return
 
       elif message.content.startswith("addecho"):
         target = message.content[8:].capitalize()
@@ -271,6 +283,8 @@ async def on_message(message):
           cursor.execute("UPDATE archetypes SET Echoes = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
           await message.channel.send(target + " now has " + str(curr) + " echoes.")
+        connection.close()
+        return
 
       elif message.content.startswith("payecho"):
         target = message.content[8:].capitalize()
@@ -296,6 +310,8 @@ async def on_message(message):
           cursor.execute("UPDATE archetypes SET Echoes = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           connection.commit()
           await message.channel.send(target + " now has " + str(curr) + " echoes.")
+        connection.close()
+        return
 
 
       message.content = message.content.replace(' ', '')
@@ -1061,16 +1077,13 @@ async def on_message(message):
           await message.channel.send("You added " + tgt + " Points.")
 
 
-
-
-      connection.close()
-
-      if message.content == ('remember'):
+      elif message.content == ('remember'):
         bars = '\n**-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------**\n'
         first = 'You awaken alone in a shadowed room. A flickering, sourceless, flame, mere inches away, makes you aware of the drifting grey shape of this place. You cannot see the dark edges that skulk from the light... or perhaps you cannot remember. Memory begins to flood back, though jagged holes and shifting faces keep you from recalling clear. You remember *what you are*. You do not remember **why you are here**. You remember *who you were*. You do not remember **your name**. You remember *what you can do*. You do not remember **what you must do**.\n\nSomething... powerful... glints in the fire. Your hand, outstretched, runs and billows like smoke. You cannot reach it, not yet. When your memories - those that have not deserted you - are solid in your mind, then your body will be ready to bear the heat of the crucible!'
 
         if message.channel in client.activeChannels:
           await message.channel.send("Don’t strain. Better to forget, first.")
+          connection.close()
           return
 
         m = await message.channel.send(bars + first + bars)
@@ -1102,6 +1115,7 @@ async def on_message(message):
           if (first == '' or first[1:] == ''):
             await m.edit(content="You seem to have forgotten...")
             client.activeChannels.remove(message.channel)
+            connection.close()
             return
           first = first[1:]
           if first.startswith(" "): first = first[1:]
@@ -1123,6 +1137,7 @@ async def on_message(message):
             diceType = int(dArgs[1])
             if numDice > 100:
               await message.channel.send("Little more than I can handle...")
+              connection.close()
               return
             for i in range(numDice):
               roll = random.randint(1, diceType)
@@ -1136,6 +1151,7 @@ async def on_message(message):
             numDice = int(full)
             if numDice > 100:
               await message.channel.send("Little more than I can handle...")
+              connection.close()
               return
             for i in range(numDice):
               roll = random.randint(1, 6)
@@ -1151,5 +1167,6 @@ async def on_message(message):
 
       else:
         await message.channel.send(oMess[1:])
+        connection.close()
 
 client.run(token)
