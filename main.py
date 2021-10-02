@@ -15,6 +15,8 @@ client.allPCs = [853698538473914418, 853703038644912158, 858164604719071253, 858
 client.ASideChannels = [853698538473914418, 853703038644912158, 858164604719071253, 858164641586216981, 858251891049496577, 858478351819866143, 858885465444712518, 861889058892283915]
 client.BSideChannels = [853826338482028574, 853826359838244874, 853703410620301352, 853826398799134750, 853826418630328340, 858353300885602364, 858425078390456330, 862144551581384715]
 
+#client.playerIDS = {}
+
 connection = connect(
   host=os.getenv("DBHOST"),
   user=os.getenv("DBUSER"),
@@ -23,8 +25,11 @@ connection = connect(
 )
 print(connection)
 #with connection.cursor() as cursor:
+  #cursor.execute("ALTER archetypes ADD SpentMemories TINYINT")
+  #cursor.execute("ALTER archetypes ADD SpecialMemories TINYINT")
+  #cursor.execute("CREATE TABLE Memories(Player VARCHAR(255), Words TEXT)")
 #  cursor.execute("INSERT INTO Players (Name, Tokens) VALUES ('Mastermind', 25)")
-#  connection.commit()
+  #connection.commit()
 connection.close()
 
 
@@ -243,6 +248,7 @@ async def on_message(message):
             curr = row[3]
           curr = max(0,curr - 1)
           cursor.execute("UPDATE archetypes SET Memories = %s WHERE Side = %s AND Archetype = %s", (curr, "A", target))
+          cursor.execute("UPDATE archetypes SET SpentMemories = SpentMemories + 1 WHERE Side = %s AND Archetype = %s", ("A", target))
           connection.commit()
           await message.channel.send(target + " now has " + str(curr) + " memories.")
         elif message.channel.id in client.BSideChannels:
@@ -254,6 +260,7 @@ async def on_message(message):
             curr = row[3]
           curr = max(0,curr - 1)
           cursor.execute("UPDATE archetypes SET Memories = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
+           cursor.execute("UPDATE archetypes SET SpentMemories = SpentMemories + 1 WHERE Side = %s AND Archetype = %s", ("B", target))
           connection.commit()
           await message.channel.send(target + " now has " + str(curr) + " memories.")
         connection.close()
@@ -313,6 +320,40 @@ async def on_message(message):
         connection.close()
         return
 
+      elif message.content.startswith("setspecial"):
+        arguments = message.content.split(' ', 3)
+
+        if message.channel.id in client.ASideChannels:
+          cursor = connection.cursor(buffered=True)
+          cursor.execute("UPDATE archetypes SET SpecialMemories = %s WHERE Side = %s AND Archetype = %s", (arguments[1], "A", arguments[2]))
+          connection.commit()
+          await message.channel.send(target + " now has " + arguments[1] + " special memories.")
+        elif message.channel.id in client.BSideChannels:
+          cursor = connection.cursor(buffered=True)
+          cursor.execute("UPDATE archetypes SET SpecialMemories = %s WHERE Side = %s AND Archetype = %s", (arguments[1], "B", arguments[2]))
+          connection.commit()
+          await message.channel.send(target + " now has " + arguments[1] + " special memories.")
+        connection.close()
+        return
+
+
+      elif message.content.startswith("setspent"):
+        arguments = message.content.split(' ', 3)
+
+        if message.channel.id in client.ASideChannels:
+          cursor = connection.cursor(buffered=True)
+          cursor.execute("UPDATE archetypes SET SpentMemories = %s WHERE Side = %s AND Archetype = %s", (arguments[1], "A", arguments[2]))
+          connection.commit()
+          await message.channel.send(target + " now has " + arguments[1] + " spent memories.")
+        elif message.channel.id in client.BSideChannels:
+          cursor = connection.cursor(buffered=True)
+          cursor.execute("UPDATE archetypes SET SpentMemories = %s WHERE Side = %s AND Archetype = %s", (arguments[1], "B", arguments[2]))
+          connection.commit()
+          await message.channel.send(target + " now has " + arguments[1] + " spent memories.")
+        connection.close()
+        return
+
+
 
       message.content = message.content.replace(' ', '')
 
@@ -336,7 +377,8 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Trickster has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
+          special = row[6]
+        await message.channel.send("The Trickster has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(special) + " special memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
 
       elif message.content == ("strong&silent") or message.content == ("strongandsilent") or message.content == ("s&s") or message.content == ("sands"):
         tgtChar = 'Z'
@@ -357,7 +399,8 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Strong & Silent has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
+          special = row[6]
+        await message.channel.send("The Strong & Silent has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(special) + " special memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
 
       elif message.content == ("cynic"):
         tgtChar = 'Z'
@@ -378,7 +421,8 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Cynic has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
+          special = row[6]
+        await message.channel.send("The Cynic has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(special) + " special memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
 
       elif message.content == ("storyteller"):
         tgtChar = 'Z'
@@ -399,7 +443,8 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Storyteller has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
+          special = row[6]
+        await message.channel.send("The Storyteller has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(special) + " special memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
 
       elif message.content == ("paragon"):
         tgtChar = 'Z'
@@ -420,7 +465,8 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Paragon has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
+          special = row[6]
+        await message.channel.send("The Paragon has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(special) + " special memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
 
       elif message.content == ("fae"):
         tgtChar = 'Z'
@@ -441,7 +487,8 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Fae has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
+          special = row[6]
+        await message.channel.send("The Fae has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(special) + " special memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
 
       elif message.content == ("mentor") or message.content == ("eccentricmentor"):
         tgtChar = 'Z'
@@ -462,7 +509,8 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Mentor has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
+          special = row[6]
+        await message.channel.send("The Mentor has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(special) + " special memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
 
       elif message.content == ("sidekick"):
         tgtChar = 'Z'
@@ -483,7 +531,8 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Sidekick has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
+          special = row[6]
+        await message.channel.send("The Sidekick has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(special) + " special memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
 
       elif message.content == ("beast"):
         tgtChar = 'Z'
@@ -504,7 +553,8 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Beast has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
+          special = row[6]
+        await message.channel.send("The Beast has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(special) + " special memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
 
       elif message.content == ("eee") or message.content == ("enigmaticempoweringentity"):
         tgtChar = 'Z'
@@ -525,7 +575,8 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Enigmatic Empowering Entity has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
+          special = row[6]
+        await message.channel.send("The Enigmatic Empowering Entity has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(special) + " special memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
 
       elif message.content == ("hedonist"):
         tgtChar = 'Z'
@@ -546,7 +597,8 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Hedonist has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
+          special = row[6]
+        await message.channel.send("The Hedonist has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(special) + " special memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
 
       elif message.content == ("hauntedone"):
         tgtChar = 'Z'
@@ -567,7 +619,8 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Haunted One has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
+          special = row[6]
+        await message.channel.send("The Haunted One has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(special) + " special memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
 
       elif message.content == ("geniusditz"):
         tgtChar = 'Z'
@@ -588,7 +641,8 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Genius Ditz has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
+          special = row[6]
+        await message.channel.send("The Genius Ditz has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(special) + " special memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
 
       elif message.content == ("rebel"):
         tgtChar = 'Z'
@@ -609,7 +663,8 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Rebel has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
+          special = row[6]
+        await message.channel.send("The Rebel has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(special) + " special memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
 
       elif message.content == ("dynamo"):
         tgtChar = 'Z'
@@ -630,7 +685,8 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Dynamo has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
+          special = row[6]
+        await message.channel.send("The Dynamo has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(special) + " special memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
 
       elif message.content == ("ob") or message.content == ("obstructivebureaucrat"):
         tgtChar = 'Z'
@@ -651,7 +707,8 @@ async def on_message(message):
           memories = row[3]
           harm = row[4]
           stress = row[5]
-        await message.channel.send("The Obstructive Bureaucrat has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
+          special = row[6]
+        await message.channel.send("The Obstructive Bureaucrat has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(special) + " special memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
       
 
       #permRole = discord.utils.get(message.guild.roles, name='Normie')
