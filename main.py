@@ -260,7 +260,7 @@ async def on_message(message):
             curr = row[3]
           curr = max(0,curr - 1)
           cursor.execute("UPDATE archetypes SET Memories = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
-           cursor.execute("UPDATE archetypes SET SpentMemories = SpentMemories + 1 WHERE Side = %s AND Archetype = %s", ("B", target))
+          cursor.execute("UPDATE archetypes SET SpentMemories = SpentMemories + 1 WHERE Side = %s AND Archetype = %s", ("B", target))
           connection.commit()
           await message.channel.send(target + " now has " + str(curr) + " memories.")
         connection.close()
