@@ -991,6 +991,12 @@ async def on_message(message):
       elif message.content == ('card248b72b23153515929a3a605fc16e5f7'):
         await message.channel.send(file=discord.File('B Labs/The Paragon\'s Lab.png'))
 
+      elif message.content == ('card27ceafb83235496b23f0d38a2aed78af'):
+        await message.channel.send(file=discord.File('B Labs/The Mentor\'s Lab.png'))
+
+      elif message.content == ('card5df665b9a88d9b4574e1c830ffc1a8f9'):
+        await message.channel.send(file=discord.File('B Labs/The SnS\'s Lab.png'))
+
       elif message.content == ('carda4ef37044af1b18f767f86cde513e443'):
         await message.channel.send(file=discord.File('B Labs/The EEE\'s Lab.png'))
 
