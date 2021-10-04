@@ -943,14 +943,26 @@ async def on_message(message):
         m = await message.channel.send('If you find a memory in a public place (such as a construction site or park, for example), you should leave it there for other people to find.')
         await self_edit(m)
 
+      elif message.content == ('a3') or message.content == ('a4') or message.content == ('b3') or message.content == ('b4') or message.content == ('c3') or message.content == ('c4') or message.content == ('d3') or message.content == ('d4') or message.content == ('e3') or message.content == ('e4') or message.content == ('f3') or message.content == ('f4') or message.content == ('g3') or message.content == ('g4') or message.content == ('h3') or message.content == ('h4') or message.content == ('na3') or message.content == ('nc3') or message.content == ('nf3') or message.content == ('nh3'):
+        m = await message.channel.send('https://lichess.org/mNGUjl9z')
+
       elif message.content == ('esarebrokenwiththepowerd'):
         await message.channel.send(file=discord.File('&esarebrokenwiththePowerD.png'))
 
       elif message.content == ('cardbcd28d078b562cbc168cb62a018ddaca'):
         await message.channel.send(file=discord.File('A Labs/The Fae\'s Lab.png'))
 
+      elif message.content == ('card11e965753fb6d9ed832481f13c016c6f'):
+        await message.channel.send(file=discord.File('A Labs/The Dynamo\'s Lab.png'))
+
+      elif message.content == ('card11e71a35a5c47816fb7491d931184fc464d'):
+        await message.channel.send(file=discord.File('A Labs/The Haunted One\'s Lab.png'))
+
       elif message.content == ('cardd0aba11c6b5a7467d76b7f5713eeba8d'):
         await message.channel.send(file=discord.File('A Labs/The Paragon\'s Lab.png'))
+
+      elif message.content == ('card34e188ab1e100dd9c204241b4af733ad'):
+        await message.channel.send(file=discord.File('A Labs/The Hedonist\'s Lab.png'))
 
       elif message.content == ('card41835c2a6ddf12373e09160394e2dc57'):
         await message.channel.send(file=discord.File('A Labs/The S&S\'s Lab.png'))
