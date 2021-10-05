@@ -353,7 +353,26 @@ async def on_message(message):
         connection.close()
         return
 
+      elif message.content.startswith("writememory"):
+        arguments = message.content.split(' ', 3)
+        cursor = connection.cursor(buffered=True)
+        cursor.execute("INSERT INTO memories (Character, Memory, UID) VALUES (%s, %s, %s)", (arguments[1], arguments[2], message.author.id))
+        connection.commit()
+        await message.channel.send("A memory for the " + arguements[1] + " has been recorded.")
+        connection.close()
+        return
 
+      elif message.content == ("recallmemories"):
+        cursor = connection.cursor(buffered=True)
+        if (checkGuide in message.author.roles):
+          cursor.execute("select * from memories")
+        else:
+          cursor.execute("select * from memories where UID = %s", (message.author.id))
+        record = cursor.fetchall()
+        for row in record:
+          await message.channel.send(row[1])
+        connection.close()
+        return
 
       message.content = message.content.replace(' ', '')
 
