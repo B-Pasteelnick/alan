@@ -370,7 +370,7 @@ async def on_message(message):
           cursor.execute("select * from memories where UID = %s", (message.author.id))
         record = cursor.fetchall()
         for row in record:
-          await message.channel.send(row[1])
+          await message.channel.send(row[0] + " remembers: " + row[1])
         connection.close()
         return
 
