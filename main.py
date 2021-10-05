@@ -1021,8 +1021,8 @@ async def on_message(message):
       elif message.content == ('card7e9a0b300a3a7d8e2ce50ba6b6dcbfe0'):
         await message.channel.send(file=discord.File('B Labs/The Haunted One\'s Lab.png'))
 
-      elif message.content == ('14e49010c0cf571e3133a585dd833789') or message.content == ('0e3964e70f6aca22f1edc573a01882eb') or message.content == ('03e423335d50461e14f5c71bb089e861') or message.content == ('157546964e5aa203d49b80c828aa53db') or message.content == ('5e06edb4ed226b1711b4acfb7a3aefa3'):
-        await message.channel.send('Yes, that name has a comforting familiarity. You get a memory token.')
+      elif message.content == ('14e49010c0cf571e3133a585dd833789') or message.content == ('0e3964e70f6aca22f1edc573a01882eb') or message.content == ('03e423335d50461e14f5c71bb089e861') or message.content == ('157546964e5aa203d49b80c828aa53db') or message.content == ('5e06edb4ed226b1711b4acfb7a3aefa3') or message.content == ('92495a4830ae96a2982c20b2fa1b8828'):
+        await message.channel.send('Good job finding that. You earned a memory token.')
         with connection.cursor(buffered=True) as cursor:
           cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE UID = %s", (message.author.id))
           connection.commit()
