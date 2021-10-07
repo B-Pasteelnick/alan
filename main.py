@@ -357,9 +357,14 @@ async def on_message(message):
         arguments = message.content.split(' ', 2)
         print(arguments)
         cursor = connection.cursor(buffered=True)
-        cursor.execute("INSERT INTO memories (Character, Memory, UID) VALUES (%s, %s, %s)", (arguments[1], arguments[2], str(message.author.id)))
+        stmtA = (
+          "INSERT INTO memories (Character, Memory, UID)"
+          "VALUES (%s, %s, %s)"
+          )
+        stmtB = (arguments[1], arguments[2], str(message.author.id))
+        cursor.execute(stmtA, stmtB)
         connection.commit()
-        await message.channel.send("A memory for the " + arguements[1] + " has been recorded.")
+        await message.channel.send("A memory for the " + arguments[1] + " has been recorded.")
         connection.close()
         return
 
@@ -368,7 +373,7 @@ async def on_message(message):
         if (checkGuide in message.author.roles):
           cursor.execute("select * from memories")
         else:
-          cursor.execute("select * from memories where UID = %s", (message.author.id,))
+          cursor.execute("select * from memories where UID = %s", (str(message.author.id),))
         record = cursor.fetchall()
         for row in record:
           await message.channel.send(row[0] + " remembers: " + row[1])
