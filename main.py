@@ -355,8 +355,9 @@ async def on_message(message):
 
       elif message.content.startswith("writememory"):
         arguments = message.content.split(' ', 3)
+        print(arguments)
         cursor = connection.cursor(buffered=True)
-        cursor.execute("INSERT INTO memories (Character, Memory, UID) VALUES (%s, %s, %s)", (arguments[1], arguments[2], message.author.id))
+        cursor.execute("INSERT INTO memories (Character, Memory, UID) VALUES (%s, '%s', %s)", (arguments[1], arguments[2], message.author.id))
         connection.commit()
         await message.channel.send("A memory for the " + arguements[1] + " has been recorded.")
         connection.close()
@@ -963,9 +964,9 @@ async def on_message(message):
         await self_edit(m)
 
       elif message.content == ('a3') or message.content == ('a4') or message.content == ('b3') or message.content == ('b4') or message.content == ('c3') or message.content == ('c4') or message.content == ('d3') or message.content == ('d4') or message.content == ('e3') or message.content == ('e4') or message.content == ('f3') or message.content == ('f4') or message.content == ('g3') or message.content == ('g4') or message.content == ('h3') or message.content == ('h4') or message.content == ('na3') or message.content == ('nc3') or message.content == ('nf3') or message.content == ('nh3'):
-        if message.channel.id in ASideChannels:
+        if message.channel.id in Client.ASideChannels:
           m = await message.channel.send('https://lichess.org/qf3rzhpA')
-        elif message.channel.id in BSideChannels:
+        elif message.channel.id in Client.BSideChannels:
           m = await message.channel.send('https://lichess.org/QUWCYDQ4')
 
       elif message.content == ('esarebrokenwiththepowerd'):
