@@ -966,7 +966,6 @@ async def on_message(message):
     -  Rest: 1 AP +1 if Dazed, +1 if Bloodied.
 
 Minor Actions (Each once per set of actions):
-
     -  Stand Guard: Increase Passive Notice by 1 for each action this set: 1 AP.
     -  Patrol: Choose a location and learn actions taking place there. Interact with one for free: 2 AP, +1 for every additional actions interacted with.
     -  Train: Choose a stat or skill. Mark 1 progress toward training. At 10 (or 15 if Stat), increase by 1. May invite someone to help train skills: 1 AP.
@@ -1194,7 +1193,7 @@ Minor Actions (Each once per set of actions):
         else:
           await message.channel.send('That is a name, but it doesn\'t seem to fit you...')
 
-      elif (message.content.startswith('aiden')):
+      elif (message.content.startswith('aiden') or message.content.startswith('armstrong')):
         if (message.author.id == (306992983926898689) or message.author.id == (275464916188790784)):
           await message.channel.send('Yes, that name has a comforting familiarity. You get a memory token.')
           with connection.cursor(buffered=True) as cursor:
