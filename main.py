@@ -959,7 +959,7 @@ async def on_message(message):
         m = await message.channel.send('Of a memory, maybe. But can you use it?')
         await self_edit(m)
 
-      elif message.conent == ('actionlist'):
+      elif message.content == ('actionlist'):
         m = await message.channel.send("""Major Actions (One per set of actions): \n
         Socialize with 3 or less people: 3 AP. +1 AP for each extra 3 people (rounded up). \n
         Investigate with 3 or less people: 3 AP. +1 AP for each extra 3 people (rounded up). \n
