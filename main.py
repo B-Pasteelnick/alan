@@ -959,6 +959,23 @@ async def on_message(message):
         m = await message.channel.send('Of a memory, maybe. But can you use it?')
         await self_edit(m)
 
+      elif message.conent == ('actionlist'):
+        m = await message.channel.send("""Major Actions (One per set of actions): \n
+        Socialize with 3 or less people: 3 AP. +1 AP for each extra 3 people (rounded up). \n
+        Investigate with 3 or less people: 3 AP. +1 AP for each extra 3 people (rounded up). \n
+        Rest: 1 AP +1 if Dazed, +1 if Bloodied. \n \n
+
+        Minor Actions (Each once per set of actions): \n \n
+
+        Stand Guard: Increase Passive Notice by 1 for each action this set: 1 AP. \n
+        Patrol: Choose a location and learn actions taking place there. Interact with one for free: 2 AP, +1 for every additional actions interacted with. \n
+        Train: Choose a stat or skill. Mark 1 progress toward training. At 10 (or 15 if Stat), increase by 1. May invite someone to help train skills: 1 AP. \n
+        Study: Choose an item or other applicable target. Roll INV + Knowledge or Craft and learn more. \n
+        Craft: Choose a project, roll inv, dex, or str + craft (as applicable) and mark progress toward creating it. 1 AP. \n
+        Accept an invite (to any action): 1 AP. First is free. \n
+        Gather: Take things without needing to roll. 1 AP. \n
+        Other: 1 AP.""")
+
       elif message.content == ('wilfredweaver') or message.content == ('dr.wilfredweaver'):
         m = await message.channel.send('What happened to them?')
         await self_edit(m)
@@ -982,8 +999,14 @@ async def on_message(message):
       elif message.content == ('card11e965753fb6d9ed832481f13c016c6f'):
         await message.channel.send(file=discord.File('A Labs/The Dynamo\'s Lab.png'))
 
-      elif message.content == ('card11e71a35a5c47816fb7491d931184fc464d'):
+      elif message.content == ('card71a35a5c47816fb7491d931184fc464d'):
         await message.channel.send(file=discord.File('A Labs/The Haunted One\'s Lab.png'))
+
+      elif message.content == ('card71a35a5c47816fb7491d931184fc464d'):
+        await message.channel.send(file=discord.File('A Labs/The Sidekick\'s Lab.png'))
+
+      elif message.content == ('cardc74f59c52d997627117d94f8b6decc09'):
+        await message.channel.send(file=discord.File('A Labs/The Mentor\'s Lab.png'))
 
       elif message.content == ('cardd0aba11c6b5a7467d76b7f5713eeba8d'):
         await message.channel.send(file=discord.File('A Labs/The Paragon\'s Lab.png'))
@@ -1048,7 +1071,7 @@ async def on_message(message):
       elif message.content == ('card7e9a0b300a3a7d8e2ce50ba6b6dcbfe0'):
         await message.channel.send(file=discord.File('B Labs/The Haunted One\'s Lab.png'))
 
-      elif message.content == ('14e49010c0cf571e3133a585dd833789') or message.content == ('0e3964e70f6aca22f1edc573a01882eb') or message.content == ('03e423335d50461e14f5c71bb089e861') or message.content == ('157546964e5aa203d49b80c828aa53db') or message.content == ('5e06edb4ed226b1711b4acfb7a3aefa3') or message.content == ('92495a4830ae96a2982c20b2fa1b8828'):
+      elif message.content == ('14e49010c0cf571e3133a585dd833789') or message.content == ('0e3964e70f6aca22f1edc573a01882eb') or message.content == ('03e423335d50461e14f5c71bb089e861') or message.content == ('157546964e5aa203d49b80c828aa53db') or message.content == ('5e06edb4ed226b1711b4acfb7a3aefa3') or message.content == ('92495a4830ae96a2982c20b2fa1b8828') or message.content == ('0d1249d14861d8cfee0f06710b85ae7a') or message.content == ('a27f06aac693f89fd574de09cfa04157'):
         await message.channel.send('Good job finding that. You earned a memory token.')
         with connection.cursor(buffered=True) as cursor:
           cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE UID = %s", (message.author.id,))
