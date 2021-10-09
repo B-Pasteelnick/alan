@@ -960,20 +960,20 @@ async def on_message(message):
         await self_edit(m)
 
       elif message.content == ('actionlist'):
-        m = await message.channel.send("""Major Actions (One per set of actions): \n
-        Socialize with 3 or less people: 3 AP. +1 AP for each extra 3 people (rounded up). \n
-        Investigate with 3 or less people: 3 AP. +1 AP for each extra 3 people (rounded up). \n
-        Rest: 1 AP +1 if Dazed, +1 if Bloodied. \n \n
+        m = await message.channel.send("""Major Actions (One per set of actions):
+        Socialize with 3 or less people: 3 AP. +1 AP for each extra 3 people (rounded up).
+        Investigate with 3 or less people: 3 AP. +1 AP for each extra 3 people (rounded up).
+        Rest: 1 AP +1 if Dazed, +1 if Bloodied.
 
-        Minor Actions (Each once per set of actions): \n \n
+        Minor Actions (Each once per set of actions):
 
-        Stand Guard: Increase Passive Notice by 1 for each action this set: 1 AP. \n
-        Patrol: Choose a location and learn actions taking place there. Interact with one for free: 2 AP, +1 for every additional actions interacted with. \n
-        Train: Choose a stat or skill. Mark 1 progress toward training. At 10 (or 15 if Stat), increase by 1. May invite someone to help train skills: 1 AP. \n
-        Study: Choose an item or other applicable target. Roll INV + Knowledge or Craft and learn more. \n
-        Craft: Choose a project, roll inv, dex, or str + craft (as applicable) and mark progress toward creating it. 1 AP. \n
-        Accept an invite (to any action): 1 AP. First is free. \n
-        Gather: Take things without needing to roll. 1 AP. \n
+        Stand Guard: Increase Passive Notice by 1 for each action this set: 1 AP.
+        Patrol: Choose a location and learn actions taking place there. Interact with one for free: 2 AP, +1 for every additional actions interacted with.
+        Train: Choose a stat or skill. Mark 1 progress toward training. At 10 (or 15 if Stat), increase by 1. May invite someone to help train skills: 1 AP.
+        Study: Choose an item or other applicable target. Roll INV + Knowledge or Craft and learn more.
+        Craft: Choose a project, roll inv, dex, or str + craft (as applicable) and mark progress toward creating it. 1 AP.
+        Accept an invite (to any action): 1 AP. First is free.
+        Gather: Take things without needing to roll. 1 AP.
         Other: 1 AP.""")
 
       elif message.content == ('wilfredweaver') or message.content == ('dr.wilfredweaver'):
