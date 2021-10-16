@@ -327,12 +327,12 @@ async def on_message(message):
           cursor = connection.cursor(buffered=True)
           cursor.execute("UPDATE archetypes SET SpecialMemories = %s WHERE Side = %s AND Archetype = %s", (arguments[1], "A", arguments[2]))
           connection.commit()
-          await message.channel.send(target + " now has " + arguments[1] + " special memories.")
+          await message.channel.send(arguments[2] + " now has " + arguments[1] + " special memories.")
         elif message.channel.id in client.BSideChannels:
           cursor = connection.cursor(buffered=True)
           cursor.execute("UPDATE archetypes SET SpecialMemories = %s WHERE Side = %s AND Archetype = %s", (arguments[1], "B", arguments[2]))
           connection.commit()
-          await message.channel.send(target + " now has " + arguments[1] + " special memories.")
+          await message.channel.send(arguments[2] + " now has " + arguments[1] + " special memories.")
         connection.close()
         return
 
@@ -1034,6 +1034,12 @@ Minor Actions (Each once per set of actions):
       elif message.content == ('card4a49d88a563045706ccdd2114594a8ea'):
         await message.channel.send(file=discord.File('A Labs/The Rebel\'s Lab.png'))
 
+      elif message.content == ('card7b0826b1e56c85584529186df839f4ea'):
+        await message.channel.send(file=discord.File('A Labs/The Cynic\'s Lab.png'))
+
+      elif message.content == ('carda8cce9437046853903816b35a2db556c'):
+        await message.channel.send(file=discord.File('A Labs/The Storyteller\'s Lab.png'))
+
       elif message.content == ('cardad954e87cf8f7b9e661a5e39814bb31b'):
         await message.channel.send(file=discord.File('B Labs/The Sidekick\'s Lab.png'))
 
@@ -1069,6 +1075,18 @@ Minor Actions (Each once per set of actions):
 
       elif message.content == ('card7e9a0b300a3a7d8e2ce50ba6b6dcbfe0'):
         await message.channel.send(file=discord.File('B Labs/The Haunted One\'s Lab.png'))
+
+      elif message.content == ('card22b89de7d262d73b471fd84e677dfd22'):
+        await message.channel.send(file=discord.File('B Labs/The Beast\'s Lab.png'))
+
+      elif message.content == ('cardde47a5ea7f3c81f354280112ed7c6482'):
+        await message.channel.send(file=discord.File('B Labs/The Storyteller\'s Lab.png'))
+
+      elif message.content == ('cardd1b0714977957b6f8c40a1bb15f4f0a1'):
+        await message.channel.send(file=discord.File('B Labs/The Trickster\'s Lab.png'))
+
+      elif message.content == ('card960360bb4770d9233f884aa7c58bdf8c'):
+        await message.channel.send(file=discord.File('B Labs/The Rebel\'s Lab.png'))
 
       elif message.content == ('14e49010c0cf571e3133a585dd833789') or message.content == ('0e3964e70f6aca22f1edc573a01882eb') or message.content == ('03e423335d50461e14f5c71bb089e861') or message.content == ('157546964e5aa203d49b80c828aa53db') or message.content == ('5e06edb4ed226b1711b4acfb7a3aefa3') or message.content == ('92495a4830ae96a2982c20b2fa1b8828') or message.content == ('0d1249d14861d8cfee0f06710b85ae7a') or message.content == ('a27f06aac693f89fd574de09cfa04157') or message.content == ('e66c291bb6cc4e9c5a6f0436ad70bdab'):
         await message.channel.send('Good job finding that. You earned a flashback.')
