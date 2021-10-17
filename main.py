@@ -14,7 +14,7 @@ client.activeChannels = []
 client.allPCs = [853698538473914418, 853703038644912158, 858164604719071253, 858164641586216981, 858251891049496577, 858478351819866143, 858885465444712518, 853826338482028574, 853826359838244874, 853703410620301352, 853826398799134750, 853826418630328340, 858353300885602364, 858425078390456330, 861889058892283915, 862144551581384715]
 client.ASideChannels = [853698538473914418, 853703038644912158, 858164604719071253, 858164641586216981, 858251891049496577, 858478351819866143, 858885465444712518, 861889058892283915]
 client.BSideChannels = [853826338482028574, 853826359838244874, 853703410620301352, 853826398799134750, 853826418630328340, 858353300885602364, 858425078390456330, 862144551581384715]
-client.QRCodes = ['635d56d81aa0db2a8898f7914607a654', '7793bf5a129fe7ec463331771eb4b068', 'b42a1f1be94d2574694f905178561155', '83288fd1c08947df1df435361e337829', 'a3315e1fa6db89e835e4b823e075d772' , '17ab435f479535056b22efb5a67ae168', 'b60a68666f77e2ab1ed7c42ad45a48bf', 'de49007a1fd6d06e317287b01e1e5a53', '89304d89314e43d8adc713ceb2c8cd79', '7cd550ed288f44efb21b5c82122fe987']
+client.QRCodes = ['635d56d81aa0db2a8898f7914607a654', '7793bf5a129fe7ec463331771eb4b068', 'b42a1f1be94d2574694f905178561155', '83288fd1c08947df1df435361e337829', 'a3315e1fa6db89e835e4b823e075d772' , '17ab435f479535056b22efb5a67ae168', 'b60a68666f77e2ab1ed7c42ad45a48bf', 'de49007a1fd6d06e317287b01e1e5a53', '89304d89314e43d8adc713ceb2c8cd79', '7cd550ed288f44efb21b5c82122fe987', 'f88b55ef1eae61f15f77d7d1a83e1950']
 
 #client.playerIDS = {}
 
@@ -1089,7 +1089,7 @@ Minor Actions (Each once per set of actions):
       elif message.content == ('card960360bb4770d9233f884aa7c58bdf8c'):
         await message.channel.send(file=discord.File('B Labs/The Rebel\'s Lab.png'))
 
-      elif message.content == ('14e49010c0cf571e3133a585dd833789') or message.content == ('0e3964e70f6aca22f1edc573a01882eb') or message.content == ('03e423335d50461e14f5c71bb089e861') or message.content == ('157546964e5aa203d49b80c828aa53db') or message.content == ('5e06edb4ed226b1711b4acfb7a3aefa3') or message.content == ('92495a4830ae96a2982c20b2fa1b8828') or message.content == ('0d1249d14861d8cfee0f06710b85ae7a') or message.content == ('a27f06aac693f89fd574de09cfa04157') or message.content == ('e66c291bb6cc4e9c5a6f0436ad70bdab') or message.content == (f88b55ef1eae61f15f77d7d1a83e1950) or message.content in client.QRCodes:
+      elif message.content == ('14e49010c0cf571e3133a585dd833789') or message.content == ('0e3964e70f6aca22f1edc573a01882eb') or message.content == ('03e423335d50461e14f5c71bb089e861') or message.content == ('157546964e5aa203d49b80c828aa53db') or message.content == ('5e06edb4ed226b1711b4acfb7a3aefa3') or message.content == ('92495a4830ae96a2982c20b2fa1b8828') or message.content == ('0d1249d14861d8cfee0f06710b85ae7a') or message.content == ('a27f06aac693f89fd574de09cfa04157') or message.content == ('e66c291bb6cc4e9c5a6f0436ad70bdab') or message.content in client.QRCodes:
         await message.channel.send('Good job finding that. You earned a flashback.')
         with connection.cursor(buffered=True) as cursor:
           cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE UID = %s", (message.author.id,))
