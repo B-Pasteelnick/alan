@@ -800,6 +800,14 @@ async def on_message(message):
           m = await message.channel.send('The beginning of the end. https://forms.gle/UguffiJY6pGQ36pJ8')
           await self_edit(m)
 
+      elif message.content == ('chapter2poll'):
+        if message.channel.id in client.ASideChannels:
+          m = await message.channel.send('Lightning struck twice. https://forms.gle/MrtjhEsAFzCsoqwD7')
+          await self_edit(m)
+        elif message.channel.id in client.BSideChannels:
+          m = await message.channel.send('Lightning struck twice. https://forms.gle/TrWn5gEwLAAaUorY8')
+          await self_edit(m)
+
       elif message.content == ('test'):
         m = await message.channel.send('Perhaps it is.')
         await self_edit(m)
