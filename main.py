@@ -359,7 +359,7 @@ async def on_message(message):
         print(arguments)
         cursor = connection.cursor(buffered=True)
         stmtA = (
-          "INSERT INTO memories (Character, Memory, UID) VALUES (%s, %s, %s)"
+          "INSERT INTO memories (Character, Memory, UID) values (%s, %s, %s)"
           )
         stmtB = (str(arguments[1]), str(arguments[2]), str(message.author.id))
         cursor.execute(stmtA, stmtB)
