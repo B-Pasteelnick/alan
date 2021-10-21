@@ -808,6 +808,10 @@ async def on_message(message):
           m = await message.channel.send('Lightning struck twice. https://forms.gle/TrWn5gEwLAAaUorY8')
           await self_edit(m)
 
+      elif message.content == ('ihearavoice'):
+        m = await message.channel.send('One of your characters is recieving contact from a mysterious source. Respond to it with the phrase "The Voice is Heard", and list your living characters by archetype. It will select which of your characters it is reaching out to. Respond to it in character, as if it was voice appearing in that character\'s mind at a non-eventful time during the night (Outside any actions). Please do not speak to the voice out of character.')
+        await self_edit(m)
+
       elif message.content == ('test'):
         m = await message.channel.send('Perhaps it is.')
         await self_edit(m)
