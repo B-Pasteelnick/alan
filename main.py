@@ -809,7 +809,7 @@ async def on_message(message):
           await self_edit(m)
 
       elif message.content == ('ihearavoice'):
-        m = await message.channel.send('One of your characters is recieving contact from a mysterious source. Respond to it with the phrase "The Voice is Heard", and list your living characters by archetype. It will select which of your characters it is reaching out to. Respond to it in character, as if it was voice appearing in that character\'s mind at a non-eventful time during the night (Outside any actions). Please do not speak to the voice out of character.')
+        m = await message.channel.send('One of your characters is recieving contact from a mysterious source. Respond to it with the phrase "The Voice is Heard", and list your living characters by archetype. It will select which of your characters it is reaching out to. Respond to it in character, as if it was voice appearing in that character\'s mind at a non-eventful time during the night (Outside any actions). You may only send one message per message the voice sends to you. Do not speak to the voice out of character in any way.')
         await self_edit(m)
 
       elif message.content == ('test'):
