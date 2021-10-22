@@ -828,6 +828,18 @@ async def on_message(message):
         m = await message.channel.send('Is that all we are?')
         await self_edit(m)
 
+      elif message.content == ('terranovak'):
+        m = await message.channel.send('The hellhound herself. If she tracked us down, we\'re in deep trouble.')
+        await self_edit(m)
+
+      elif message.content == ('sheridankent'):
+        m = await message.channel.send('Don\'t know how to deal with this one. Don\'t know what he wants. Don\'t know why he wants it.')
+        await self_edit(m)
+
+      elif message.content == ('erebusinc'):
+        m = await message.channel.send('Terra\'s regiment. Seen a few of them running around since it all began. Mostly it was us running.')
+        await self_edit(m)
+
       elif message.content == ('game'):
         m = await message.channel.send('The stakes are too high.')
         await self_edit(m)
