@@ -913,6 +913,10 @@ async def on_message(message):
         m = await message.channel.send('The & always means there\'s more to come.')
         await self_edit(m)
 
+      elif message.content == ('gacacbbcac'):
+        m = await message.channel.send('You strum the notes and find some kind of connection...')
+        await self_edit(m)
+
       elif message.content == ('&'):
         m = await message.channel.send('That would be bad.')
         await self_edit(m)
