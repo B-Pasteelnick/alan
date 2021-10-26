@@ -917,6 +917,10 @@ async def on_message(message):
         m = await message.channel.send('You strum the notes and find some kind of connection...')
         await self_edit(m)
 
+      elif message.content == ('050748'):
+        m = await message.channel.send('Yes! That\'s it. Your phone unlocks!')
+        await self_edit(m)
+
       elif message.content == ('&'):
         m = await message.channel.send('That would be bad.')
         await self_edit(m)
