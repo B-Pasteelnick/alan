@@ -828,7 +828,7 @@ async def on_message(message):
         m = await message.channel.send('Is that all we are?')
         await self_edit(m)
 
-      elif message.content == ('julie'):
+      elif message.content == ('julie') and message.channel.id in client.BSideChannels:
         m = await message.channel.send('Juliette Armstrong, butler, bodyguard, and sister. How could you have forgotten her? There was so much going on, I suppose you could cut yourself a little slack. That said... she\'d pulled you out of almost as many fires as you\'d been able to start. An inspiration.')
         await self_edit(m)
 
@@ -935,10 +935,6 @@ async def on_message(message):
 
       elif message.content == ('offthebeatenpath'):
         m = await message.channel.send('There is no path unbeaten here.')
-        await self_edit(m)
-
-      elif message.content == ('Julie'):
-        m = await message.channel.send('Juliette Armstrong, butler and bodyguard. How could you have forgotten her? There was so much going on, I suppose you could cut yourself a little slack..')
         await self_edit(m)
 
       elif message.content == ('forget'):
@@ -1216,7 +1212,7 @@ Minor Actions (Each once per set of actions):
 
       elif (message.content.startswith('ken')):
         if (message.author.id == (449781760083886080) or message.author.id == (112651984275849216)):
-          await message.channel.send('Yes, that name has a comforting familiarity. You get a flashback.')
+          await message.channel.send('That name has a comforting familiarity, and you get a flashback. It may or may not be exactly correct, for you, though...')
           with connection.cursor(buffered=True) as cursor:
             cursor.execute("UPDATE Players SET Tokens = Tokens + 1 WHERE UID = %s", (message.author.id,))
             connection.commit()
