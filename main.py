@@ -828,6 +828,10 @@ async def on_message(message):
         m = await message.channel.send('Is that all we are?')
         await self_edit(m)
 
+      elif message.content == ('julie'):
+        m = await message.channel.send('Juliette Armstrong, butler, bodyguard, and sister. How could you have forgotten her? There was so much going on, I suppose you could cut yourself a little slack. That said... she\'d pulled you out of almost as many fires as you\'d been able to start. An inspiration.')
+        await self_edit(m)
+
       elif message.content == ('terranovak'):
         m = await message.channel.send('The hellhound herself. If she tracked us down, we\'re in deep trouble.')
         await self_edit(m)
