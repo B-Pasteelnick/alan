@@ -360,7 +360,7 @@ async def on_message(message):
         arguments = message.content.split(' ', 2)
         print(arguments)
         cursor = connection.cursor(buffered=True)
-        cursor.execute("INSERT INTO `pxjxsg6c1d91xf93`.`memories` (`Character`,`Memory`,`UID`) VALUES (%s, %s, %s)")
+        cursor.execute("INSERT INTO `pxjxsg6c1d91xf93`.`memories` (`Character`,`Memory`,`UID`) VALUES (%s, %s, %s)", (arguments[1], arguments[2], message.author.id))
         connection.commit()
         await message.channel.send("A memory for the " + arguments[1] + " has been recorded.")
         connection.close()
