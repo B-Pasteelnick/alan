@@ -374,7 +374,7 @@ async def on_message(message):
           cursor.execute("select * from memories where UID = %s", (str(message.author.id),))
         record = cursor.fetchall()
         for row in record:
-          await message.channel.send(str(row[0]) + " remembers: " + str(row[1]))
+          await message.channel.send(str(row[0]).capitalize() + " remembers: " + str(row[1]))
         connection.close()
         return
 
@@ -1041,7 +1041,7 @@ Minor Actions (Each once per set of actions):
       elif message.content == ('card71a35a5c47816fb7491d931184fc464d'):
         await message.channel.send(file=discord.File('A Labs/The Haunted One\'s Lab.png'))
 
-      elif message.content == ('card71a35a5c47816fb7491d931184fc464d'):
+      elif message.content == ('card8195177d2f0a82d2d1cca6d8f28d6225'):
         await message.channel.send(file=discord.File('A Labs/The Sidekick\'s Lab.png'))
 
       elif message.content == ('cardc74f59c52d997627117d94f8b6decc09'):
