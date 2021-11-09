@@ -17,6 +17,7 @@ client.BSideChannels = [853826338482028574, 853826359838244874, 8537034106203013
 client.QRCodes = ['635d56d81aa0db2a8898f7914607a654', '7793bf5a129fe7ec463331771eb4b068', 'b42a1f1be94d2574694f905178561155', '83288fd1c08947df1df435361e337829', 'a3315e1fa6db89e835e4b823e075d772' , '17ab435f479535056b22efb5a67ae168', 'b60a68666f77e2ab1ed7c42ad45a48bf', 'de49007a1fd6d06e317287b01e1e5a53', '89304d89314e43d8adc713ceb2c8cd79', '7cd550ed288f44efb21b5c82122fe987', 'f88b55ef1eae61f15f77d7d1a83e1950' ,'d0cf77a1b78eb90ce453833bc03783fc']
 client.HauntFull = ['Take 1 Harm', 'Take 2 Stress', '-1 This Action', 'Heal 1 Harm', 'Nothing Happens...', 'Take 2 Harm', 'Take 2 Stress', '-1 This Action', 'Good luck', 'Heal 1 Harm']
 client.Haunts = client.HauntFull.copy()
+client.voiceBlacklist = [449781760083886080, 336671543423795201] #Gary, Joey
 
 #client.playerIDS = {}
 
@@ -805,8 +806,12 @@ async def on_message(message):
           await self_edit(m)
 
       elif message.content == ('ihearavoice'):
-        m = await message.channel.send('One of your characters is recieving contact from a mysterious source. Respond to it with the phrase "The Voice is Heard", and list your living characters by archetype. It will select which of your characters it is reaching out to. Respond to it in character, as if it was voice appearing in that character\'s mind at a non-eventful time during the night (Outside any actions). You may only send one message per message the voice sends to you. Do not speak to the voice out of character in any way.')
-        await self_edit(m)
+        if message.author.id in client.voiceBlacklist:
+          m = await message.channel.send('Please respond with the following passage, verbatim. Do not communicate further. \n \n“A strange disturbance impedes communication. Some alien influence has disrupted your influence. It’s strong, but you are chipping away. Next time, you’ll be able to break through and make contact.”')
+          await self_edit(m)
+        else:
+          m = await message.channel.send('One of your characters is recieving contact from a mysterious source. Respond to it with the phrase "The Voice is Heard", and list your living characters by archetype. It will select which of your characters it is reaching out to. Respond to it in character, as if it was voice appearing in that character\'s mind at a non-eventful time during the night (Outside any actions). You may only send one message per message the voice sends to you. Do not speak to the voice out of character in any way.')
+          await self_edit(m)
 
       elif message.content == ('test'):
         m = await message.channel.send('Perhaps it is.')
