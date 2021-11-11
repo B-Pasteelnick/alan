@@ -63,7 +63,7 @@ async def on_message(message):
 
     oMess = message.content
 
-    if message.content.startswith("writememory"):
+    if message.content.startswith("&writememory"):
       arguments = message.content.split(' ', 2)
       print(arguments)
       cursor = connection.cursor(buffered=True)
