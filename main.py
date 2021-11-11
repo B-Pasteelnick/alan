@@ -62,6 +62,17 @@ async def on_message(message):
       return
 
     oMess = message.content
+
+    if message.content.startswith("writememory"):
+      arguments = message.content.split(' ', 2)
+      print(arguments)
+      cursor = connection.cursor(buffered=True)
+      cursor.execute("INSERT INTO `pxjxsg6c1d91xf93`.`memories` (`Character`,`Memory`,`UID`) VALUES (%s, %s, %s)", (arguments[1], arguments[2], message.author.id))
+      connection.commit()
+      await message.channel.send("A memory for the " + arguments[1] + " has been recorded.")
+      connection.close()
+      return
+
     message.content = message.content.casefold()
 
     #if 'alan' in message.content:
@@ -254,7 +265,7 @@ async def on_message(message):
           cursor.execute("UPDATE archetypes SET Memories = %s WHERE Side = %s AND Archetype = %s", (curr, "A", target))
           cursor.execute("UPDATE archetypes SET SpentMemories = SpentMemories + 1 WHERE Side = %s AND Archetype = %s", ("A", target))
           connection.commit()
-          await message.channel.send(target + " now has " + str(curr) + " memories.")
+          await message.channel.send(target + " now has " + str(curr) + " memories. Use &writememory [archetype] [message] to describe the memory!")
         elif message.channel.id in client.BSideChannels:
           cursor = connection.cursor(buffered=True)
           cursor.execute("select * from archetypes where Side = %s and Archetype = %s", ("B", target))
@@ -266,7 +277,7 @@ async def on_message(message):
           cursor.execute("UPDATE archetypes SET Memories = %s WHERE Side = %s AND Archetype = %s", (curr, "B", target))
           cursor.execute("UPDATE archetypes SET SpentMemories = SpentMemories + 1 WHERE Side = %s AND Archetype = %s", ("B", target))
           connection.commit()
-          await message.channel.send(target + " now has " + str(curr) + " memories.")
+          await message.channel.send(target + " now has " + str(curr) + " memories. Use &writememory [archetype] [message] to describe the memory!")
         connection.close()
         return
 
@@ -354,16 +365,6 @@ async def on_message(message):
           cursor.execute("UPDATE archetypes SET SpentMemories = %s WHERE Side = %s AND Archetype = %s", (arguments[1], "B", arguments[2]))
           connection.commit()
           await message.channel.send(target + " now has " + arguments[1] + " spent memories.")
-        connection.close()
-        return
-
-      elif message.content.startswith("writememory"):
-        arguments = message.content.split(' ', 2)
-        print(arguments)
-        cursor = connection.cursor(buffered=True)
-        cursor.execute("INSERT INTO `pxjxsg6c1d91xf93`.`memories` (`Character`,`Memory`,`UID`) VALUES (%s, %s, %s)", (arguments[1], arguments[2], message.author.id))
-        connection.commit()
-        await message.channel.send("A memory for the " + arguments[1] + " has been recorded.")
         connection.close()
         return
 
