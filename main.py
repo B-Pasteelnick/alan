@@ -36,6 +36,12 @@ print(connection)
   #connection.commit()
 connection.close()
 
+connection = connect(
+host=os.getenv("DBHOST"),
+user=os.getenv("DBUSER"),
+password=os.getenv("DBPASS"),
+database="pxjxsg6c1d91xf93",
+)
 
 
 async def self_edit(message):
@@ -109,12 +115,6 @@ async def on_message(message):
       #  await message.channel.send("Added " + oMess[16:] + " to B Side")
       #  return
 
-      connection = connect(
-      host=os.getenv("DBHOST"),
-      user=os.getenv("DBUSER"),
-      password=os.getenv("DBPASS"),
-      database="pxjxsg6c1d91xf93",
-      )
 
       if checkGuide in message.author.roles and message.content.startswith("harm"):
         target = message.content[5:].capitalize()
