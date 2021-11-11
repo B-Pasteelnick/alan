@@ -1414,5 +1414,5 @@ Minor Actions (Each once per set of actions):
       else:
         await message.channel.send(oMess[1:])
         connection.close()
-  connection.close()
+    connection.close()
 client.run(token)
