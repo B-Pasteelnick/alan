@@ -14,7 +14,7 @@ client.activeChannels = []
 client.allPCs = [853698538473914418, 853703038644912158, 858164604719071253, 858164641586216981, 858251891049496577, 858478351819866143, 858885465444712518, 853826338482028574, 853826359838244874, 853703410620301352, 853826398799134750, 853826418630328340, 858353300885602364, 858425078390456330, 861889058892283915, 862144551581384715]
 client.ASideChannels = [853698538473914418, 853703038644912158, 858164604719071253, 858164641586216981, 858251891049496577, 858478351819866143, 858885465444712518, 861889058892283915]
 client.BSideChannels = [853826338482028574, 853826359838244874, 853703410620301352, 853826398799134750, 853826418630328340, 858353300885602364, 858425078390456330, 862144551581384715]
-client.QRCodes = ['635d56d81aa0db2a8898f7914607a654', '7793bf5a129fe7ec463331771eb4b068', 'b42a1f1be94d2574694f905178561155', '83288fd1c08947df1df435361e337829', 'a3315e1fa6db89e835e4b823e075d772' , '17ab435f479535056b22efb5a67ae168', 'b60a68666f77e2ab1ed7c42ad45a48bf', 'de49007a1fd6d06e317287b01e1e5a53', '89304d89314e43d8adc713ceb2c8cd79', '7cd550ed288f44efb21b5c82122fe987', 'f88b55ef1eae61f15f77d7d1a83e1950' ,'d0cf77a1b78eb90ce453833bc03783fc']
+client.QRCodes = ['635d56d81aa0db2a8898f7914607a654', '7793bf5a129fe7ec463331771eb4b068', 'b42a1f1be94d2574694f905178561155', '83288fd1c08947df1df435361e337829', 'a3315e1fa6db89e835e4b823e075d772' , '17ab435f479535056b22efb5a67ae168', 'b60a68666f77e2ab1ed7c42ad45a48bf', 'de49007a1fd6d06e317287b01e1e5a53', '89304d89314e43d8adc713ceb2c8cd79', '7cd550ed288f44efb21b5c82122fe987', 'f88b55ef1eae61f15f77d7d1a83e1950' ,'d0cf77a1b78eb90ce453833bc03783fc', '23f734b1f1f9f0a01942ef7534e938f9', 'bb2b474eddae6ea6774ad8e88d202ebc']
 client.HauntFull = ['Take 1 Harm', 'Take 2 Stress', '-1 This Action', 'Heal 1 Harm', 'Nothing Happens...', 'Take 2 Harm', 'Take 2 Stress', '-1 This Action', 'Good luck', 'Heal 1 Harm']
 client.Haunts = client.HauntFull.copy()
 client.voiceBlacklist = [449781760083886080, 336671543423795201] #Gary, Joey
@@ -915,7 +915,7 @@ async def on_message(message):
         await self_edit(m)
 
       elif message.content == ('connectingthedots'):
-        m = await message.channel.send('There is a reward for this. It isn\'t ready yet. We will get back to you.')
+        m = await message.channel.send('If you do it right, everything becomes clear. Mess it up...')
         await self_edit(m)
 
       elif message.content == ('ampersandtechnologies'):
@@ -1006,6 +1006,14 @@ async def on_message(message):
 
       elif message.content == ('end'):
         m = await message.channel.send('Of a memory, maybe. But can you use it?')
+        await self_edit(m)
+
+      elif message.content == ('mel') or message.content == ('melinda'):
+        m = await message.channel.send('Mel. Was she still in danger? You can’t know, here, but you\'re going to get back there...')
+        await self_edit(m)
+
+      elif message.content == ('holly'):
+        m = await message.channel.send('She was working on it. She wouldn\'t let me down.')
         await self_edit(m)
 
       elif message.content == ('actionlist'):
