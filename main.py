@@ -36,12 +36,7 @@ print(connection)
   #connection.commit()
 connection.close()
 
-connection = connect(
-host=os.getenv("DBHOST"),
-user=os.getenv("DBUSER"),
-password=os.getenv("DBPASS"),
-database="pxjxsg6c1d91xf93",
-)
+
 
 
 async def self_edit(message):
@@ -69,6 +64,13 @@ async def on_message(message):
 
     oMess = message.content
 
+    connection = connect(
+    host=os.getenv("DBHOST"),
+    user=os.getenv("DBUSER"),
+    password=os.getenv("DBPASS"),
+    database="pxjxsg6c1d91xf93",
+    )
+
     if message.content.startswith("&writememory"):
       arguments = message.content.split(' ', 2)
       print(arguments)
@@ -83,6 +85,7 @@ async def on_message(message):
 
     #if 'alan' in message.content:
     #  await message.add_reaction('👋')
+
 
     if message.content.startswith('&'):
 
@@ -1411,5 +1414,5 @@ Minor Actions (Each once per set of actions):
       else:
         await message.channel.send(oMess[1:])
         connection.close()
-
+  connection.close()
 client.run(token)
