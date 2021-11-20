@@ -17,7 +17,7 @@ client.BSideChannels = [853826338482028574, 853826359838244874, 8537034106203013
 client.QRCodes = ['635d56d81aa0db2a8898f7914607a654', '7793bf5a129fe7ec463331771eb4b068', 'b42a1f1be94d2574694f905178561155', '83288fd1c08947df1df435361e337829', 'a3315e1fa6db89e835e4b823e075d772' , '17ab435f479535056b22efb5a67ae168', 'b60a68666f77e2ab1ed7c42ad45a48bf', 'de49007a1fd6d06e317287b01e1e5a53', '89304d89314e43d8adc713ceb2c8cd79', '7cd550ed288f44efb21b5c82122fe987', 'f88b55ef1eae61f15f77d7d1a83e1950' ,'d0cf77a1b78eb90ce453833bc03783fc', '23f734b1f1f9f0a01942ef7534e938f9', 'bb2b474eddae6ea6774ad8e88d202ebc']
 client.HauntFull = ['Take 1 Harm', 'Take 2 Stress', '-1 This Action', 'Heal 1 Harm', 'Nothing Happens...', 'Take 2 Harm', 'Take 2 Stress', '-1 This Action', 'Good luck', 'Heal 1 Harm']
 client.Haunts = client.HauntFull.copy()
-client.voiceBlacklist = [449781760083886080, 336671543423795201] #Gary, Joey
+client.voiceBlacklist = [148560657640325121, 336671543423795201] #Jack, Joey
 
 #client.playerIDS = {}
 
@@ -80,6 +80,47 @@ async def on_message(message):
       await message.channel.send("A memory for the " + arguments[1] + " has been recorded.")
       connection.close()
       return
+
+    elif message.content.startswith('weavemessage'):
+      args = message.content.split(' ', 2)
+      args[1] = args[1].casefold()
+
+      if args[1] == ("hauntedone"):
+        await client.get_channel(858164604719071253).send("A message is weaved into the Haunted One's mind...\n" + args[2])
+      elif args[1] == ("trickster"):
+        await client.get_channel(853698538473914418).send("A message is weaved into the Trickster's mind...\n" + args[2])
+      elif args[1] == ("eee"):
+        await client.get_channel(858164641586216981).send("A message is weaved into the EEE's mind...\n" + args[2])
+      elif args[1] == ("storyteller"):
+        await client.get_channel(858251891049496577).send("A message is weaved into the Storyteller's mind...\n" + args[2])
+        await client.get_channel(858353300885602364).send("A message is weaved into the Storyteller's mind...\n" + args[2])
+      elif args[1] == ("paragon"):
+        await client.get_channel(853703038644912158).send("A message is weaved into the Paragon's mind...\n" + args[2])
+        await client.get_channel(853703410620301352).send("A message is weaved into the Paragon's mind...\n" + args[2])
+      elif args[1] == ("dynamo"):
+        await client.get_channel(861889058892283915).send("A message is weaved into the Dynamo's mind...\n" + args[2])
+      elif args[1] == ("mentor"):
+        await client.get_channel(858478351819866143).send("A message is weaved into the Mentor's mind...\n" + args[2])
+      elif args[1] == ("geniusditz"):
+        await client.get_channel(858885465444712518).send("A message is weaved into the Genius Ditz's mind...\n" + args[2])
+      elif args[1] == ("hedonist"):
+        await client.get_channel(862144551581384715).send("A message is weaved into the Hedonist's mind...\n" + args[2])
+      elif args[1] == ("sidekick"):
+        await client.get_channel(853826398799134750).send("A message is weaved into the Sidekick's mind...\n" + args[2])
+      elif args[1] == ("ob") or args[1] == ("obstructivebureaucrat"):
+        await client.get_channel(853703410620301352).send("A message is weaved into the Obstrucitve Bureaucrat's mind...\n" + args[2])
+      elif args[1] == ("fae"):
+        await client.get_channel(853826418630328340).send("A message is weaved into the Fae's mind...\n" + args[2])
+      elif args[1] == ("cynic"):
+        await client.get_channel(853826338482028574).send("A message is weaved into the Cynic's mind...\n" + args[2])
+      elif args[1] == ("rebel"):
+        await client.get_channel(858425078390456330).send("A message is weaved into the Rebel's mind...\n" + args[2])
+      elif args[1] == ("beast"):
+        await client.get_channel(858353300885602364).send("A message is weaved into the Beast's mind...\n" + args[2])
+      elif args[1] == ("sns") or args[1] == ("strongandsilent") or args[1] == ("s&s") or args[1] == ("strong&silent"):
+        await client.get_channel(853826359838244874).send("A message is weaved into the Strong and Silent's mind...\n" + args[2])
+      return
+
 
     message.content = message.content.casefold()
 
@@ -1014,6 +1055,13 @@ async def on_message(message):
 
       elif message.content == ('holly'):
         m = await message.channel.send('She was working on it. She wouldn\'t let me down.')
+        await self_edit(m)
+
+      elif message.content == ('climb'):
+        cursor = connection.cursor(buffered=True)
+        cursor.execute("UPDATE players SET Tokens = Tokens+1 WHERE Name = 'Stairs'")
+        connection.commit()
+        m = await message.channel.send('You climb...')
         await self_edit(m)
 
       elif message.content == ('actionlist'):
