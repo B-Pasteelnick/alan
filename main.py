@@ -107,6 +107,7 @@ async def on_message(message):
         await client.get_channel(862144551581384715).send("A message is weaved into the Hedonist's mind...\n" + args[2])
       elif args[1] == ("sidekick"):
         await client.get_channel(853826398799134750).send("A message is weaved into the Sidekick's mind...\n" + args[2])
+        await client.get_channel(858478351819866143).send("A message is weaved into the Sidekick's mind...\n" + args[2])
       elif args[1] == ("ob") or args[1] == ("obstructivebureaucrat"):
         await client.get_channel(853703410620301352).send("A message is weaved into the Obstrucitve Bureaucrat's mind...\n" + args[2])
       elif args[1] == ("fae"):
