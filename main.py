@@ -1065,6 +1065,16 @@ async def on_message(message):
         m = await message.channel.send('You climb...')
         await self_edit(m)
 
+      elif message.content == ('checkclimb'):
+        cursor = connection.cursor(buffered=True)
+        cursor.execute("select * from players where Name = 'Stairs'")
+        record = cursor.fetchall()
+        for row in record:
+          curr = row[1]
+        m = await message.channel.send('climb is ', curr)
+        await self_edit(m)
+
+
       elif message.content == ('actionlist'):
         m = await message.channel.send("""Major Actions (One per set of actions):
     -  Socialize with 3 or less people: 3 AP. +1 AP for each extra 3 people (rounded up).
