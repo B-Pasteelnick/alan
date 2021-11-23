@@ -863,6 +863,9 @@ async def on_message(message):
         m = await message.channel.send('How do you calculate a color?')
         await self_edit(m)
 
+      elif message.content == ('9400d3') or message.content == ('#9400d3'):
+        await bot.add_reaction(message, 🕷)
+
       elif message.content == ('bandingtogether') or message.content == ('1d'):
         m = await message.channel.send('It\'s probably the first thing you thought of. Let us know what it is.')
         await self_edit(m)
