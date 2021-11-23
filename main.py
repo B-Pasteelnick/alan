@@ -851,6 +851,88 @@ async def on_message(message):
           m = await message.channel.send('Lightning struck twice. https://forms.gle/TrWn5gEwLAAaUorY8')
           await self_edit(m)
 
+      elif message.content == ('chapter3poll'):
+        m = await message.channel.send('When worlds collide. https://forms.gle/hjThsSQkRa6AtkCNA')
+        await self_edit(m)
+
+      elif message.content == ('whatcolorami?'):
+        m = await message.channel.send('The little bar up there? If only you had a tool to inspect it with...')
+        await self_edit(m)
+
+      elif message.content == ('added'):
+        m = await message.channel.send('How do you calculate a color?')
+        await self_edit(m)
+
+      elif message.content == ('bandingtogether') or message.content == ('1d'):
+        m = await message.channel.send('It\'s probably the first thing you thought of. Let us know what it is.')
+        await self_edit(m)
+
+      elif message.content == ('1direction') or message.content == ('onedirection'):
+        m = await message.channel.send('Recollections at 0:00.')
+        await self_edit(m)
+
+      elif message.content == ('you'):
+        m = await message.channel.send('Had to pick one of them.')
+        await self_edit(m)
+
+      elif message.content == ('&:&&&&&&&&&&'):
+        m = await message.channel.send('Learning from experience.')
+        await self_edit(m)
+
+      elif message.content == ('meetinthemiddle'):
+        if message.author.id == (209560384313491456):
+          role = get(message.server.roles, name='Paragon')
+          await client.add_roles(message.author, role)
+        elif message.author.id == (367539851559567360):
+          role = get(message.server.roles, name='Dynamo')
+          await client.add_roles(message.author, role)
+        elif message.author.id == (449781760083886080):
+          role = get(message.server.roles, name='EEE')
+          await client.add_roles(message.author, role)
+        elif message.author.id == (148560657640325121):
+          role = get(message.server.roles, name='Haunted One')
+          await client.add_roles(message.author, role)
+        elif message.author.id == (306992983926898689):
+          role = get(message.server.roles, name='Genius Ditz')
+          await client.add_roles(message.author, role)
+        elif message.author.id == (336671543423795201):
+          role = get(message.server.roles, name='Trickster')
+          await client.add_roles(message.author, role)
+        elif message.author.id == (501107249960189982):
+          role = get(message.server.roles, name='Storyteller')
+          await client.add_roles(message.author, role)
+        elif message.author.id == (354347011635544066):
+          role = get(message.server.roles, name='Mentor')
+          await client.add_roles(message.author, role)
+        elif message.author.id == (236845578317856769):
+          role = get(message.server.roles, name='Hedonist')
+          await client.add_roles(message.author, role)
+        elif message.author.id == (371627728643948566):
+          role = get(message.server.roles, name='Sidekick')
+          await client.add_roles(message.author, role)
+        elif message.author.id == (315992836002676751):
+          role = get(message.server.roles, name='Obstructive Bureaucrat')
+          await client.add_roles(message.author, role)
+        elif message.author.id == (676468054691020810):
+          role = get(message.server.roles, name='Fae')
+          await client.add_roles(message.author, role)
+        elif message.author.id == (268470573137526785):
+          role = get(message.server.roles, name='Cynic')
+          await client.add_roles(message.author, role)
+        elif message.author.id == (275464916188790784):
+          role = get(message.server.roles, name='Rebel')
+          await client.add_roles(message.author, role)
+        elif message.author.id == (112651984275849216):
+          role = get(message.server.roles, name='Storyteller')
+          await client.add_roles(message.author, role)
+          role = get(message.server.roles, name='Beast')
+          await client.add_roles(message.author, role)
+        elif message.author.id == (468679170227175424):
+          role = get(message.server.roles, name='Strong & Silent')
+          await client.add_roles(message.author, role)
+        m = await message.channel.send('All that from a color, hm? You deserve your own...')
+        await self_edit(m)
+
       elif message.content == ('ihearavoice'):
         if message.author.id in client.voiceBlacklist:
           m = await message.channel.send('Please respond with the following passage, verbatim. Do not communicate further. \n \n“A strange disturbance impedes communication. Some alien influence has disrupted your influence. It’s strong, but you are chipping away. Next time, you’ll be able to break through and make contact.”')
