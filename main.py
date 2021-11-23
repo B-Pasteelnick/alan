@@ -1073,6 +1073,10 @@ async def on_message(message):
         m = await message.channel.send('We\'ve already forgotten so much. We cannot afford to forget any more.')
         await self_edit(m)
 
+      elif message.content == ('bofa'):
+        m = await message.channel.send("DEEZ NUTS LMFAO")
+        await self_edit(m)
+
       elif message.content.replace('.', '') == ('alann'):
         m = await message.channel.send('Ben just likes referencing himself. Little vain if you ask me. This isn\'t relevant.')
         await self_edit(m)
