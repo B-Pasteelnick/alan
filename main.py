@@ -885,54 +885,54 @@ async def on_message(message):
 
       elif message.content == ('meetinthemiddle'):
         if message.author.id == (209560384313491456):
-          role = get(message.server.roles, name='Paragon')
+          role = get(message.guild.roles, name='Paragon')
           await client.add_roles(message.author, role)
         elif message.author.id == (367539851559567360):
-          role = get(message.server.roles, name='Dynamo')
+          role = get(message.guild.roles, name='Dynamo')
           await client.add_roles(message.author, role)
         elif message.author.id == (449781760083886080):
-          role = get(message.server.roles, name='EEE')
+          role = get(message.guild.roles, name='EEE')
           await client.add_roles(message.author, role)
         elif message.author.id == (148560657640325121):
-          role = get(message.server.roles, name='Haunted One')
+          role = get(message.guild.roles, name='Haunted One')
           await client.add_roles(message.author, role)
         elif message.author.id == (306992983926898689):
-          role = get(message.server.roles, name='Genius Ditz')
+          role = get(message.guild.roles, name='Genius Ditz')
           await client.add_roles(message.author, role)
         elif message.author.id == (336671543423795201):
-          role = get(message.server.roles, name='Trickster')
+          role = get(message.guild.roles, name='Trickster')
           await client.add_roles(message.author, role)
         elif message.author.id == (501107249960189982):
-          role = get(message.server.roles, name='Storyteller')
+          role = get(message.guild.roles, name='Storyteller')
           await client.add_roles(message.author, role)
         elif message.author.id == (354347011635544066):
-          role = get(message.server.roles, name='Mentor')
+          role = get(message.guild.roles, name='Mentor')
           await client.add_roles(message.author, role)
         elif message.author.id == (236845578317856769):
-          role = get(message.server.roles, name='Hedonist')
+          role = get(message.guild.roles, name='Hedonist')
           await client.add_roles(message.author, role)
         elif message.author.id == (371627728643948566):
-          role = get(message.server.roles, name='Sidekick')
+          role = get(message.guild.roles, name='Sidekick')
           await client.add_roles(message.author, role)
         elif message.author.id == (315992836002676751):
-          role = get(message.server.roles, name='Obstructive Bureaucrat')
+          role = get(message.guild.roles, name='Obstructive Bureaucrat')
           await client.add_roles(message.author, role)
         elif message.author.id == (676468054691020810):
-          role = get(message.server.roles, name='Fae')
+          role = get(message.guild.roles, name='Fae')
           await client.add_roles(message.author, role)
         elif message.author.id == (268470573137526785):
-          role = get(message.server.roles, name='Cynic')
+          role = get(message.guild.roles, name='Cynic')
           await client.add_roles(message.author, role)
         elif message.author.id == (275464916188790784):
-          role = get(message.server.roles, name='Rebel')
+          role = get(message.guild.roles, name='Rebel')
           await client.add_roles(message.author, role)
         elif message.author.id == (112651984275849216):
-          role = get(message.server.roles, name='Storyteller')
+          role = get(message.guild.roles, name='Storyteller')
           await client.add_roles(message.author, role)
-          role = get(message.server.roles, name='Beast')
+          role = get(message.guild.roles, name='Beast')
           await client.add_roles(message.author, role)
         elif message.author.id == (468679170227175424):
-          role = get(message.server.roles, name='Strong & Silent')
+          role = get(message.guild.roles, name='Strong & Silent')
           await client.add_roles(message.author, role)
         m = await message.channel.send('All that from a color, hm? You deserve your own...')
         await self_edit(m)
