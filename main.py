@@ -136,7 +136,7 @@ async def on_message(message):
       print(message.content)
 
       checkGuide = discord.utils.get(message.guild.roles, name='Guides')
-      if checkGuide in message.author.roles and message.content.startswith('announceall'):
+      if (checkGuide in message.author.roles or message.author.id == 275464916188790784) and message.content.startswith('announceall'):
         for i in client.allPCs:
           await client.get_channel(i).send("ANNOUNCEMENT: \n" + oMess[12:])
         return
