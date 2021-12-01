@@ -945,6 +945,22 @@ async def on_message(message):
           m = await message.channel.send('One of your characters is recieving contact from a mysterious source. Respond to it with the phrase "The Voice is Heard", and list your living characters by archetype. It will select which of your characters it is reaching out to. Respond to it in character, as if it was voice appearing in that character\'s mind at a non-eventful time during the night (Outside any actions). You may only send one message per message the voice sends to you. Do not speak to the voice out of character in any way.')
           await self_edit(m)
 
+      elif message.content == ('saviour'):
+        m = await message.channel.send("You have agreed to help the figure. It will respond to you shortly.")
+        await self_edit(m)
+
+      elif message.content == ('apostle'):
+        m = await message.channel.send("You have agreed to help the figure, but you have some words for it. Let us know what they are, and the figure will respond in kind.")
+        await self_edit(m)
+
+      elif message.content == ('apostasy'):
+        m = await message.channel.send("You decide not to help the figure. It will respond to you shortly.")
+        await self_edit(m)
+
+      elif message.content == ('atonement'):
+        m = await message.channel.send("You decide not to help the figure, but you have some words for it. Let us know what they are, and the figure will respond in kind.")
+        await self_edit(m)
+
       elif message.content == ('test'):
         m = await message.channel.send('Perhaps it is.')
         await self_edit(m)
