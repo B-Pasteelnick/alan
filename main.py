@@ -1218,6 +1218,9 @@ Minor Actions (Each once per set of actions):
       elif message.content == ('esarebrokenwiththepowerd'):
         await message.channel.send(file=discord.File('&esarebrokenwiththePowerD.png'))
 
+      elif message.content == ('78e3f38cfa5f01fef0ba268f8f8d0420'):
+        await message.channel.send(file=discord.File('EEE - Part 6.html'))
+
       elif message.content == ('cardbcd28d078b562cbc168cb62a018ddaca'):
         await message.channel.send(file=discord.File('A Labs/The Fae\'s Lab.png'))
 
