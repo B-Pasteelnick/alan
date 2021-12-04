@@ -60,7 +60,7 @@ async def on_message(message):
     if message.author == client.user:
         return
     if not message.guild:
-      await client.get_channel(855934709410562068).send(message.author,'is speaking.')
+      await message.channel.send("go away plz")
       return
 
     oMess = message.content
@@ -154,6 +154,10 @@ async def on_message(message):
         for i in client.BSideChannels:
           await client.get_channel(i).send("ANNOUNCEMENT: \n" + oMess[14:])
         return
+
+      elif checkGuide in message.author.roles and message.content.startswith('echotoaside'):
+        for i in client.ASideChannels:
+          await client.get_channel(i).send("ANNOUNCEMENT: \n" + oMess[12:])
 
 
       #if checkGuide in message.author.roles and message.content.startswith('adda archetype'):
