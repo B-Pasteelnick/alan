@@ -72,6 +72,11 @@ async def on_message(message):
     database="pxjxsg6c1d91xf93",
     )
 
+    if message.content.startswith("&sendecho"):
+      arguments = message.content.split(' ', 3)
+      ch = client.get_channel(arguments[1])
+      ch.send(arguments[3])
+
     if message.content.startswith("&writememory"):
       arguments = message.content.split(' ', 2)
       print(arguments)
