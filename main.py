@@ -73,7 +73,7 @@ async def on_message(message):
     )
 
     if message.content.startswith("&sendecho"):
-      arguments = message.content.split(' ', 3)
+      arguments = message.content.split(' ', 2)
       ch = client.get_channel(int(arguments[1]))
       await ch.send(arguments[2])
       print("send message to", arguments[1])
