@@ -60,7 +60,7 @@ async def on_message(message):
     if message.author == client.user:
         return
     if not message.guild:
-      await message.channel.send('Not here. Go back to the server.')
+      await client.get_channel(855934709410562068).send(message.author,'is speaking.')
       return
 
     oMess = message.content
