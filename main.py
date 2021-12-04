@@ -978,7 +978,10 @@ async def on_message(message):
         await self_edit(m)
 
       elif message.content == ('julie') and message.channel.id in client.BSideChannels:
-        m = await message.channel.send('Juliette Armstrong, butler, bodyguard, and sister. How could you have forgotten her? There was so much going on, I suppose you could cut yourself a little slack. That said... she\'d pulled you out of almost as many fires as you\'d been able to start. An inspiration.')
+        if message.channel.id == (862144551581384715):
+          m = await message.channel.send('Juliette Armstrong, butler and bodyguard. How could you have forgotten her? There was so much going on, I suppose you could cut yourself a little slack. That said... she\'d pulled you out of almost as many fires as you\'d been able to start. An inspiration.')
+        else:
+          m = await message.channel.send('Juliette Armstrong, butler, bodyguard, and sister. How could you have forgotten her? There was so much going on, I suppose you could cut yourself a little slack. That said... she\'d pulled you out of almost as many fires as you\'d been able to start. An inspiration.')
         await self_edit(m)
 
       elif message.content == ('terranovak'):
