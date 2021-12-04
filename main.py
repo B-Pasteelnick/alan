@@ -75,8 +75,9 @@ async def on_message(message):
     if message.content.startswith("&sendecho"):
       arguments = message.content.split(' ', 3)
       ch = client.get_channel(int(arguments[1]))
-      ch.send(arguments[2])
+      await ch.send(arguments[2])
       print("send message to", arguments[1])
+      return
 
     if message.content.startswith("&writememory"):
       arguments = message.content.split(' ', 2)
