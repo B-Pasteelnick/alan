@@ -159,6 +159,9 @@ async def on_message(message):
       elif checkGuide in message.author.roles and message.content.startswith('echotoaside'):
         for i in client.ASideChannels:
           await client.get_channel(i).send(oMess[12:])
+      elif checkGuide in message.author.roles and message.content.startswith('echotobside'):
+        for i in client.BSideChannels:
+          await client.get_channel(i).send(oMess[12:])
 
 
       #if checkGuide in message.author.roles and message.content.startswith('adda archetype'):
