@@ -1239,10 +1239,6 @@ Minor Actions (Each once per set of actions):
         m = await message.channel.send('You have discovered a special flashback...')
         await self_edit(m)
 
-      elif message.content == ('dmchristine') and checkGuide in message.author.roles:
-        christine = await client.get_user(278715486827446272)
-        await client.send_message(christine, "Hello!")
-
       elif message.content == ('cardbcd28d078b562cbc168cb62a018ddaca'):
         await message.channel.send(file=discord.File('A Labs/The Fae\'s Lab.png'))
 
@@ -1529,12 +1525,16 @@ Minor Actions (Each once per set of actions):
         bars = '\n**-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------**\n'
         first = 'You awaken alone in a shadowed room. A flickering, sourceless, flame, mere inches away, makes you aware of the drifting grey shape of this place. You cannot see the dark edges that skulk from the light... or perhaps you cannot remember. Memory begins to flood back, though jagged holes and shifting faces keep you from recalling clear. You remember *what you are*. You do not remember **why you are here**. You remember *who you were*. You do not remember **your name**. You remember *what you can do*. You do not remember **what you must do**.\n\nSomething... powerful... glints in the fire. Your hand, outstretched, runs and billows like smoke. You cannot reach it, not yet. When your memories - those that have not deserted you - are solid in your mind, then your body will be ready to bear the heat of the crucible!'
 
-        if message.channel in client.activeChannels:
-          await message.channel.send("Don’t strain. Better to forget, first.")
-          connection.close()
-          return
+
+
+        # if message.channel in client.activeChannels:
+        #   await message.channel.send("Don’t strain. Better to forget, first.")
+        #   connection.close()
+        #   return
 
         m = await message.channel.send(bars + first + bars)
+
+        return
         
         bold = False;
         italics = False;
