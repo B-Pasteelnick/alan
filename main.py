@@ -1239,6 +1239,10 @@ Minor Actions (Each once per set of actions):
         m = await message.channel.send('You have discovered a special flashback...')
         await self_edit(m)
 
+      elif message.content == ('dmchristine') and checkGuide in message.author.roles:
+        christine = await client.get_user(278715486827446272)
+        await client.send_message(christine, "Hello!")
+
       elif message.content == ('cardbcd28d078b562cbc168cb62a018ddaca'):
         await message.channel.send(file=discord.File('A Labs/The Fae\'s Lab.png'))
 
