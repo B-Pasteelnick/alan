@@ -42,7 +42,7 @@ connection.close()
 
 async def self_edit(message): 
   # await asyncio.sleep(5)
-  # m = message.content
+  m = message.content
   # for i in m:
   #   m = m[1:]
   #   await asyncio.sleep(1)
