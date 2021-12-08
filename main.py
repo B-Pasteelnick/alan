@@ -40,16 +40,16 @@ connection.close()
 
 
 
-async def self_edit(message):
-  await asyncio.sleep(5)
-  m = message.content
-  for i in m:
-    m = m[1:]
-    await asyncio.sleep(1)
-    if not m:
-      await message.edit(content='You seem to have forgotten...')
-      return
-    await message.edit(content=m)
+async def self_edit(message): 
+  # await asyncio.sleep(5)
+  # m = message.content
+  # for i in m:
+  #   m = m[1:]
+  #   await asyncio.sleep(1)
+  #   if not m:
+  #     await message.edit(content='You seem to have forgotten...')
+  #     return
+  #   await message.edit(content=m) 
 
 @client.event
 async def on_ready():
