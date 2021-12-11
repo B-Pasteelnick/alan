@@ -897,6 +897,9 @@ async def on_message(message):
         m = await message.channel.send('Learning from experience.')
         await self_edit(m)
 
+      elif message.content == ('pocketfullofsunshine'):
+        m = await message.channel.send('Come find the GMs, tell us you found this.')
+
       elif message.content == ('meetinthemiddle'):
         if message.author.id == (209560384313491456):
           role = get(message.guild.roles, name='Paragon')
