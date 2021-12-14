@@ -1,2 +1,10 @@
 # A.L.A.N.N.
-Discord Bot
+This is a Discord bot developed by Ben Pasteelnick and Theo Van Doosseleare. It coded in python and hosted on Heroku. Its purpose was to serve as a feature in a tabletop roleplaying game run by the two developers called DR: Echoes & Memories, and administrated a server with the active players. As of 12/11/2021, the game has ended, so it is no longer being actively developed but will continue to be hosted (So long as it remains free to do so on Heroku). The specifics of its functionality are as follows:
+
+The bot's primary function is to respond to user given commands. The character to signal that a command is being input is '&'. There is a long list of potential commands, as we attempted to predict what key terms the players might try to input into the bot. Most of these commands have a very simple functionality, as they simply respond with a message. Some commands were only accessible by certain people or certain 'sides' of the game (A side and B side), or a single command could have multiple results depending on who used it.
+
+One notable function is the self_edit function, which causes a message sent to slowly delete itself, one character at a time, starting from the front of the message. Once a message was fully deleted, it would be replaced with a new message: "You seem to have forgotten...". This function has been commented out because the players, towards the end of the game, unlocked the ability for the bots messages to stay without being deleted. Before that point, this was one of the main features of the bot.
+
+One of the most used commands (as it was a tabletop roleplaying game) was &roll XdY, which would roll X number of Y sided dice. Because the game's system ruled that any dice showing a value 4 or higher counted as a "success" on that roll, the successes were automatically calculated.
+
+Notably, there is also an SQL database that tracks various things about the players and their characters, which the bot regularly interfaced with.
