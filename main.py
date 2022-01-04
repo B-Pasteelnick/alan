@@ -143,6 +143,7 @@ async def on_message(message):
       print(message.content)
 
       checkGuide = discord.utils.get(message.guild.roles, name='Guides')
+      checkAscended = discord.utils.get(message.guild.roles, name='Ascended')
       if (checkGuide in message.author.roles or message.author.id == 275464916188790784) and message.content.startswith('announceall'):
         for i in client.allPCs:
           await client.get_channel(i).send("ANNOUNCEMENT: \n" + oMess[12:])
@@ -430,7 +431,7 @@ async def on_message(message):
 
       elif message.content == ("recallmemories"):
         cursor = connection.cursor(buffered=True)
-        if (checkGuide in message.author.roles):
+        if checkGuide in message.author.roles or checkAscended in message.author.roles:
           cursor.execute("select * from memories")
         else:
           cursor.execute("select * from memories where UID = %s", (str(message.author.id),))
