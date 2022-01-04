@@ -37,10 +37,10 @@ print(connection)
   #connection.commit()
 connection.close()
 
+# HELLO! WELCOME TO THE ECHO.
+# FOR THE MOST PART, MY COMMENTS WILL BE IN ALL CAPS, TO HELP THEM STAND OUT TO YOU.
 
-
-
-async def self_edit(message): 
+async def self_edit(message): #THIS WAS REMOVED WHEN THE ECHO APPEARD TO HELP YOU. SEEMS LIKE YOU GUYS FOUND IT A LITTLE ANNOYING...
   # await asyncio.sleep(5)
   m = message.content
   # for i in m:
@@ -89,6 +89,7 @@ async def on_message(message):
       connection.close()
       return
 
+    #I, UH, DON'T THINK THIS WAS USED A SINGLE TIME.
     elif message.content.startswith('weavemessage'):
       args = message.content.split(' ', 2)
       args[1] = args[1].casefold()
@@ -134,8 +135,7 @@ async def on_message(message):
     message.content = message.content.casefold()
 
     #if 'alan' in message.content:
-    #  await message.add_reaction('👋')
-
+    #  await message.add_reaction('👋') #HAHA, WOULDA BEEN FUNNY.
 
     if message.content.startswith('&'):
 
@@ -155,7 +155,7 @@ async def on_message(message):
         for i in client.BSideChannels:
           await client.get_channel(i).send("ANNOUNCEMENT: \n" + oMess[14:])
         return
-
+      #THIS WAS HOW I TALKED TO YOU!
       elif checkGuide in message.author.roles and message.content.startswith('echotoaside'):
         for i in client.ASideChannels:
           await client.get_channel(i).send(oMess[12:])
@@ -174,7 +174,7 @@ async def on_message(message):
       #  connection.commit()
       #  await message.channel.send("Added " + oMess[16:] + " to B Side")
       #  return
-
+      # THIS DATABASE STUFF WAS A SERIOUS PAIN
 
       if checkGuide in message.author.roles and message.content.startswith("harm"):
         target = message.content[5:].capitalize()
@@ -411,7 +411,6 @@ async def on_message(message):
         connection.close()
         return
 
-
       elif message.content.startswith("setspent"):
         arguments = message.content.split(' ', 2)
 
@@ -427,6 +426,7 @@ async def on_message(message):
           await message.channel.send(target + " now has " + arguments[1] + " spent memories.")
         connection.close()
         return
+        #THIS... DIDN'T END UP MATTERING. OOPS.
 
       elif message.content == ("recallmemories"):
         cursor = connection.cursor(buffered=True)
@@ -794,8 +794,11 @@ async def on_message(message):
           stress = row[5]
           special = row[6]
         await message.channel.send("The Obstructive Bureaucrat has " + str(echoes) + " echoes, " + str(memories) + " memories, " + str(special) + " special memories, " + str(harm) + " harm, and " + str(stress) + " stress.")
+
+        #I WASN'T JOKING WHEN I SAID IT WAS A PAIN. DID YOU SEE ALL THAT? JUST TO KEEP TRACK OF STATS......
       
 
+      # THESE WERE SOME OF THE FIRST COMMANDS WRITTEN. TESTED SOME ROLE CAPABILITIES.
       #permRole = discord.utils.get(message.guild.roles, name='Normie')
       #if permRole not in message.author.roles:
       #  await message.channel.send('You don\'t have the right permissions.')
@@ -809,6 +812,37 @@ async def on_message(message):
       #  role = discord.utils.get(message.guild.roles, name='Normie')
       #  await message.author.remove_roles(role)
 
+      # THIS IS THE MOST RECENT COMMAND. MAYBE YOU WANT TO TRY IT?
+      elif message.content == ('ascend'):
+        m = await message.channel.send('Just like climbing. But from up here, you can see everything...')
+        role = discord.utils.get()
+
+      #OH, YOU JUST DID THESE ONES!
+      elif message.content == ('piercetheveil'):
+        await message.channel.send(file=discord.File('main.py'))
+
+      elif message.content == ('fragment'):
+        if message.author.id == 275464916188790784 or message.author.id == 367539851559567360:
+          await message.channel.send(file=discord.File('fragments/a bit.png'))
+        elif message.author.id == 148560657640325121 or message.author.id == 315992836002676751:
+          await message.channel.send(file=discord.File('fragments/a chunk.png'))
+        elif message.author.id == 112651984275849216 or message.author.id == 449781760083886080:
+          await message.channel.send(file=discord.File('fragments/a fragment.png'))
+        elif message.author.id == 336671543423795201 or message.author.id == 468679170227175424:
+          await message.channel.send(file=discord.File('fragments/a piece.png'))
+        elif message.author.id == 209560384313491456 or message.author.id == 236845578317856769:
+          await message.channel.send(file=discord.File('fragments/a remnant.png'))
+        elif message.author.id == 268470573137526785 or message.author.id == 354347011635544066:
+          await message.channel.send(file=discord.File('fragments/a scrap.png'))
+        elif message.author.id == 371627728643948566 or message.author.id == 501107249960189982:
+          await message.channel.send(file=discord.File('fragments/a shard.png'))
+        elif message.author.id == 676468054691020810 or message.author.id == 306992983926898689:
+          await message.channel.send(file=discord.File('fragments/a shred.png'))
+
+      elif message.content == ('finalpoll'):
+        await message.channel.send()
+
+      #MOSTLY FLAVOR DOWN HERE.
       elif message.content == ('8622985399'):
         m = await message.channel.send('A phone number, maybe? It\'s all a mess.')
         await self_edit(m)
@@ -885,6 +919,7 @@ async def on_message(message):
         m = await message.channel.send('It\'s probably the first thing you thought of. Let us know what it is.')
         await self_edit(m)
 
+      #THIS STEP WAS ACCIDENTALLY TOO DIFFICULT. WHOOPS.
       elif message.content == ('1direction') or message.content == ('onedirection'):
         m = await message.channel.send('Recollections at 0:00.')
         await self_edit(m)
@@ -954,6 +989,7 @@ async def on_message(message):
         m = await message.channel.send('All that from a color, hm? You deserve your own...')
         await self_edit(m)
 
+      #THIS WAS FOR THE FAE'S "THEVOICE" ACCOUNT.
       elif message.content == ('ihearavoice'):
         if message.author.id in client.voiceBlacklist:
           m = await message.channel.send('Please respond with the following passage, verbatim. Do not communicate further. \n \n“A strange disturbance impedes communication. Some alien influence has disrupted your influence. It’s strong, but you are chipping away. Next time, you’ll be able to break through and make contact.”')
@@ -962,6 +998,7 @@ async def on_message(message):
           m = await message.channel.send('One of your characters is recieving contact from a mysterious source. Respond to it with the phrase "The Voice is Heard", and list your living characters by archetype. It will select which of your characters it is reaching out to. Respond to it in character, as if it was voice appearing in that character\'s mind at a non-eventful time during the night (Outside any actions). You may only send one message per message the voice sends to you. Do not speak to the voice out of character in any way.')
           await self_edit(m)
 
+      #THESE WERE FOR PARAGON A'S SPECIAL FLASHBACKS
       elif message.content == ('saviour'):
         m = await message.channel.send("You have agreed to help the figure. It will respond to you shortly.")
         await self_edit(m)
@@ -978,12 +1015,13 @@ async def on_message(message):
         m = await message.channel.send("You decide not to help the figure, but you have some words for it. Let us know what they are, and the figure will respond in kind.")
         await self_edit(m)
 
+      #MORE FLAVOR
       elif message.content == ('test'):
         m = await message.channel.send('Perhaps it is.')
         await self_edit(m)
 
       elif message.content == ('echoes&memories'):
-        m = await message.channel.send('We\'re excited to see you!')
+        m = await message.channel.send('It\'s been one hell of a ride. We hoped it was everything you dreamt it would be.')
         await self_edit(m)
 
       elif message.content == ('hope\'speak') or message.content == ('hopespeak') or message.content == ('ultimate') or message.content == ('danganronpa'):
@@ -1057,6 +1095,7 @@ async def on_message(message):
         m = await message.channel.send('Let us know your thoughts. https://forms.gle/h3evqrGxyZo9PPXo8')
         await self_edit(m)
 
+      #THIS WAS FOR THE HAUNTED ONE'S HAUNT TRAIT. DON'T ASK ME WHYY I STUCK IT HERE, OF ALL PLACES.
       elif message.content == ('haunt') and checkGuide in message.author.roles:
         if len(client.Haunts) < 4: 
           client.Haunts = client.HauntFull.copy()
@@ -1110,6 +1149,7 @@ async def on_message(message):
         m = await message.channel.send('We\'ve already forgotten so much. We cannot afford to forget any more.')
         await self_edit(m)
 
+      #XD
       elif message.content == ('bofa'):
         m = await message.channel.send("DEEZ NUTS LMFAO")
         await self_edit(m)
@@ -1538,7 +1578,7 @@ Minor Actions (Each once per set of actions):
         m = await message.channel.send(bars + first + bars)
 
         return
-        
+        #THIS IS A SPECIAL VERSION OF THE SELFEDIT FUNCTION. IT MANAGES BOLD AND ITALIC TEXT. KINDA MESSY. WHOOPS
         bold = False;
         italics = False;
         client.activeChannels.append(message.channel)
@@ -1576,7 +1616,7 @@ Minor Actions (Each once per set of actions):
           else: await m.edit(content=bars + first + bars)
         client.activeChannels.remove(message.channel)
 
-
+      #THE MOST USED FUNCTION AWARD GOES TO...
       elif message.content.startswith('roll'):
         full = message.content[4:]
         result = ""
