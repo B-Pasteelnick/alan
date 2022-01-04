@@ -840,7 +840,7 @@ async def on_message(message):
           await message.channel.send(file=discord.File('fragments/a shred.png'))
 
       elif message.content == ('finalpoll'):
-        await message.channel.send()
+        await message.channel.send('You made it to the end, but that doesn\'t mean it has to be over... https://forms.gle/qDWs7CWRvEP5RFBt8')
 
       #MOSTLY FLAVOR DOWN HERE.
       elif message.content == ('8622985399'):
