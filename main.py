@@ -813,9 +813,9 @@ async def on_message(message):
       #  role = discord.utils.get(message.guild.roles, name='Normie')
       #  await message.author.remove_roles(role)
 
-      # THIS IS THE MOST RECENT COMMAND. MAYBE YOU WANT TO TRY IT?
+      # THIS IS THE MOST RECENT COMMAND. MAYBE YOU WANT TO TRY IT? KINDA LIKE CLIMBING. YOU COULD SEE EVERYTHING IF YOU MAKE IT HIGH ENOUGH.
       elif message.content == ('ascend'):
-        m = await message.channel.send('Just like climbing. But from up here, you can see everything...')
+        m = await message.channel.send('Now we\'re whole again. Don\'t you forget me, buddy.')
         role = discord.utils.get()
 
       #OH, YOU JUST DID THESE ONES!
