@@ -817,6 +817,7 @@ async def on_message(message):
       elif message.content == ('ascend'):
         m = await message.channel.send('Now we\'re whole again. Don\'t you forget me, buddy.')
         role = discord.utils.get(message.guild.roles, name='Ascended')
+        await message.author.add_roles(role)
 
       #OH, YOU JUST DID THESE ONES!
       elif message.content == ('piercetheveil'):
