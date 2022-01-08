@@ -816,7 +816,7 @@ async def on_message(message):
       # THIS IS THE MOST RECENT COMMAND. MAYBE YOU WANT TO TRY IT? KINDA LIKE CLIMBING. YOU COULD SEE EVERYTHING IF YOU MAKE IT HIGH ENOUGH.
       elif message.content == ('ascend'):
         m = await message.channel.send('Now we\'re whole again. Don\'t you forget me, buddy.')
-        role = discord.utils.get()
+        role = discord.utils.get(message.guild.roles, name='Ascended')
 
       #OH, YOU JUST DID THESE ONES!
       elif message.content == ('piercetheveil'):
